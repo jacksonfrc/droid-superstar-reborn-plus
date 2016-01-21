@@ -1,0 +1,55 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+.vertical-group {
+  display: block;
+}
+
+.horizontal-group {
+  display: none;
+}
+
+.tab-spacer {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.workspace {
+  position: absolute;
+  top: 35px;
+  left: 10px;
+  height: calc(100% - 45px);
+  background-color: lightgrey;
+}
+
+.components {
+  position: absolute;
+  top: 10px;
+  height: calc(100% - 20px);
+  background-color: lightgrey;
+}
+
+.tab-spacer-horizontal {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: calc(100% - 20px);
+}
+
+.workspace-horizontal {
+  position: absolute;
+  top: 35px;
+  left: 10px;
+  width: calc(100% - 20px);
+  background-color: lightgrey;
+}
+
+.components-horizontal {
+  position: absolute;
+  left: 10px;
+  width: calc(100% - 20px);
+  background-color: lightgrey;
+}

@@ -1,0 +1,10 @@
+<ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft=""
+        android:layout_marginStart=""
+        android:layout_marginBottom="" />
