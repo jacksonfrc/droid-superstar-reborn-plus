@@ -29,7 +29,7 @@ app.on("ready", function () {
     // Send events to render process.
     var render = mainWindow.webContents;
 
-    //mainWindow.openDevTools();
+    mainWindow.openDevTools();
 
     mainWindow.loadURL("file://" + __dirname + "/index.html");
 

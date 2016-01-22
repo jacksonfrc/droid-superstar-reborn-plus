@@ -9,7 +9,7 @@
 *
 */
 
-window.$ = require("./jquery.js");
+window.$ = require("./js/jquery.js");
 var render = require('electron').ipcRenderer;
 
 $(window).load(vertical);
