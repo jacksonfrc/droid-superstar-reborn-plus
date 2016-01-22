@@ -41,7 +41,7 @@ app.on("ready", function () {
     var template = [{
         label: "File",
         submenu: [
-            { label: "New Tab", selector: "" },
+            { label: "New Tab", click: function() { render.send("newTab"); } },
             { type: "separator" },
             { label: "Quit", accelerator: "Command+Q", click: function() { app.quit(); }}
         ]}, {
