@@ -2,7 +2,6 @@ const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 var Menu = require("menu");
-var Scale = require(__dirname + '/scale.js');
 
 electron.crashReporter.start();
 
@@ -15,6 +14,10 @@ app.on('window-all-closed', function() {
   }
 });
 
+const factor16by9 = 0.5625;
+const factor8by5 = 0.625;
+const factor4by3 = 0.75;
+
 app.on("ready", function () {
     mainWindow = new BrowserWindow({
         "width":      800,
@@ -23,7 +26,10 @@ app.on("ready", function () {
         "min-height": 600
     });
 
-    mainWindow.openDevTools();
+    // Send events to render process.
+    var render = mainWindow.webContents;
+
+    //mainWindow.openDevTools();
 
     mainWindow.loadURL("file://" + __dirname + "/index.html");
 
@@ -53,12 +59,12 @@ app.on("ready", function () {
         submenu: [
             { label: "Aspect Ratio",
               submenu: [
-                { label: "16:9" },
+                { label: "16:9", click: function() { render.send("changeAspectRatio", factor16by9); } },
                 { type: "separator" },
-                { label: "8:5" },
-                { label: "4:3" }
+                { label: "8:5", click: function() { render.send("changeAspectRatio", factor8by5); } },
+                { label: "4:3", click: function() { render.send("changeAspectRatio", factor4by3); } }
             ]},
-            { label: "Rotate", accelerator: "Command+Q", click: function() { Scale.rotate; }}
+            { label: "Rotate", click: function() { render.send("rotate"); } }
         ]},
     ];
 

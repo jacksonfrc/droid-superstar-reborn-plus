@@ -3,14 +3,6 @@
   padding: 0px;
 }
 
-.vertical-group {
-  display: block;
-}
-
-.horizontal-group {
-  display: none;
-}
-
 .tab-spacer {
   position: absolute;
   top: 10px;

@@ -6,43 +6,71 @@
        4:3      |        0.75
        8:5      |        0.625
       16:9      |       0.5625
- *
- */
+*
+*/
 
+window.$ = require("./jquery.js");
+var render = require('electron').ipcRenderer;
+
+$(window).load(vertical);
+$(window).resize(vertical);
+
+// Default to 9:16
+var v = true;
+var aspectRatio = 0.5625;
 
 function vertical() {
-  var aspect = document.getElementById("workspace");
-  var height = aspect.clientHeight;
-  var width = 0.5625 * height;
-  aspect.style.width = width + "px"
-  document.getElementById("workspace-tabs").style.width = width + "px";
-  width += 20;
-  document.getElementById("components").style.left = width + "px";
-  width += 10;
-  document.getElementById("components").style.width = "calc(100% - " + width + "px)";
+  $("#vertical-group").show();
+  $("#horizontal-group").hide();
+
+  var width = aspectRatio * $("#workspace").height();
+  $("#workspace").width(width);
+  $("#tabs").width(width);
+  $("#components").css({
+    "left": width + 20 + "px",
+    "width": "calc(100% - " + (width + 30) + "px)"
+  });
+
+  v = true;
 }
 
 function horizontal() {
-  var aspect = document.getElementById("workspace");
-  var width = aspect.clientWidth;
-  var height = 0.5625 * width;
-  aspect.style.height = height + "px"
-  height += 45;
-  document.getElementById("components").style.top = height + "px";
-  height += 10;
-  document.getElementById("components").style.height = "calc(100% - " + height + "px)";
+  $("#vertical-group").hide();
+  $("#horizontal-group").show();
+
+  var height = aspectRatio * $("#workspace-horizontal").width();
+  $("#workspace-horizontal").height(height);
+  $("#components-horizontal").css({
+    "top": height + 45 + "px",
+    "height": "calc(100% - " + (height + 55) + "px)"
+  });
+
+  v = false;
 }
 
-function rotate() {
-  var vert = document.getElementById("vertical-group");
-  var horz = document.getElementById("horizontal-group");
+render.on("rotate", function () {
+  if (v) {
+    $(window).off("resize", vertical);
+    $(window).on("resize", horizontal);
 
-  if (vert) {
-    vert.style.display = "none";
-    horz.style.display = "block";
+    horizontal();
+
   } else {
-    vert.style.display = "block";
-    horz.style.display = "none";
+    $(window).off("resize", horizontal);
+    $(window).on("resize", vertical);
+
+    vertical();
+
+  }
+});
+
+render.on("changeAspectRatio", function (event, ratio) {
+  aspectRatio = ratio;
+
+  if (v) {
+    vertical();
+  } else {
+    horizontal();
   }
 
-}
+});

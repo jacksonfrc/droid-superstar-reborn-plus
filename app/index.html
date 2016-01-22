@@ -12,16 +12,10 @@
 <body>
 
   <script src="scale.js"></script>
-  <script>
-    window.onload = vertical;
-    window.addEventListener("resize", vertical);
-    //window.onload = horizontal;
-    //window.addEventListener("resize", horizontal);
-  </script>
 
-<div class="vertical-group">
+<div id="vertical-group">
 
-  <div id="workspace-tabs" class="tab-spacer tab-group">
+  <div id="tabs" class="tab-spacer tab-group">
     <div class="tab-item">
       <span class="icon icon-cancel icon-close-tab"></span>
       Tab
@@ -74,7 +68,7 @@
 
 <div id="horizontal-group">
 
-  <div id="workspace-tabs" class="tab-spacer-horizontal tab-group">
+  <div id="tabs" class="tab-spacer-horizontal tab-group">
     <div class="tab-item">
       <span class="icon icon-cancel icon-close-tab"></span>
       Tab
@@ -92,9 +86,9 @@
     </div>
   </div>
 
-  <div id="workspace" class="workspace-horizontal"></div>
+  <div id="workspace-horizontal" class="workspace-horizontal"></div>
 
-  <div id="components" class="components-horizontal">
+  <div id="components-horizontal" class="components-horizontal">
     <nav class = "dropdown-nav">
       <div class="menu-item">
           <h4><a href="#">Component Category A</a></h4>
