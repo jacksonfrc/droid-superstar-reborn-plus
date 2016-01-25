@@ -31,32 +31,7 @@
     </div>
 
 
-    <div id="workspace" class="workspace" >
-
-
-
-      <img id="1" src="/" draggable="true" ondragstart="drag(event)" alt="Image 1"/>
-<img id="2" src="/" draggable="true" ondragstart="drag(event)" alt="Image 2"/>
-<img id="3" src="/" draggable="true" ondragstart="drag(event)" alt="Image 3"/>
-<img id="4" src="/" draggable="true" ondragstart="drag(event)" alt="Image 4"/>
-<img id="5" src="/" draggable="true" ondragstart="drag(event)" alt="Image 5"/>
-
-<div id="playlist" style="    position: absolute;
-    top: 150px;
-    left: 20px;
-    width: 400px;
-    height: 306px;
-    padding: 15px 0 0 15px;
-    background-color:#e5e5e5;" ondrop="drop(event)" ondragover="allowDrop(event)">
-    
-</div>
-
-
-
-
-
-
-
+    <div id="workspace" class="workspace" ondrop="drop(event)" ondragover="allowDrop(event)" >
 
     </div>
 
@@ -65,33 +40,30 @@
            <div class="menu-item">
                 <h4><a href="#">Component Category A</a></h4>
                 <ul>
-                     <li draggable="true"><a href="#">Component 1</a></li>
-                     <li draggable="true"><a href="#">Component 2</a></li>
-                     <li draggable="true"><a href="#">Component 3</a></li>
+                     <li draggable="true" ondragstart="drag(event)"><a href="#">Component 1</a></li>
+                     <li draggable="true" ondragstart="drag(event)"><a href="#">Component 2</a></li>
+                     <li draggable="true" ondragstart="drag(event)"><a href="#">Component 3</a></li>
                 </ul>
            </div>
            <div class="menu-item">
                 <h4><a href="#">Component Category B</a></h4>
                 <ul>
-                     <li draggable="true"><a href="#">Component 1</a></li>
-                     <li draggable="true"><a href="#">Component 2</a></li>
-                     <li draggable="true"><a href="#">Component 3</a></li>
+                     <li draggable="true" ondragstart="drag(event)"><a href="#">Component 1</a></li>
+                     <li draggable="true" ondragstart="drag(event)"><a href="#">Component 2</a></li>
+                     <li draggable="true" ondragstart="drag(event)"><a href="#">Component 3</a></li>
                 </ul>
           </div>
           <div class="menu-item">
                <h4><a href="#">Component Category B</a></h4>
                <ul>
-                    <li draggable="true"><a href="#">Component 1</a></li>
-                    <li draggable="true"><a href="#">Component 2</a></li>
-                    <li draggable="true"><a href="#">Component 3</a></li>
+                    <li draggable="true" ondragstart="drag(event)"><a href="#">Component 1</a></li>
+                    <li draggable="true" ondragstart="drag(event)"><a href="#">Component 2</a></li>
+                    <li draggable="true" ondragstart="drag(event)"><a href="#">Component 3</a></li>
                </ul>
          </div>
       </nav>
 
-      <div class="drag-test-item" draggable="true" ondragstart="drag(event)"> DRAG TEST AfS </div>
-      <div class="testdroparea" ondrop="drop(event)" ondragover="allowDrop(event)" style="height: 300px; width:300px; background-color: #ffffff; position: absolute;">
-
-      </div>
+     
     </div>
     </div>
 
@@ -103,13 +75,18 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
-  ev.dataTransfer.setData('text/html',ev.target.id);
+   ev.dataTransfer.setData("text/plain", ev.target.id);
+
+  //ev.dataTransfer.setData("text/html",ev.target.id);
 }
 
 function drop(ev) {
   ev.preventDefault();
-  var data=ev.dataTransfer.getData('text/html');
-  ev.target.appendChild(document.getElementById(data).cloneNode(true));
+  //var data=ev.dataTransfer.getData("text/html");
+  var data2 = document.createElement('inserted-div');
+  data2.innerHTML = ev.dataTransfer.getData("text/html");
+  document.getElementById('workspace').appendChild(data2);
+
 }
 
 /*
