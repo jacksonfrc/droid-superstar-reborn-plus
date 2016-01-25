@@ -7,13 +7,17 @@
   <link rel="stylesheet" href="css/photon/css/photon.css">
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/dragula.css">
+    <link rel="stylesheet" href="css/example.css">
 
 </head>
 <body>
 
   <script src="js/scaling.js"></script>
   <script src="js/tabs.js"></script>
-
+<script src="js/dragula.js"></script>
+ 
+    <script src="js/example.js"></script>
   <div id="vertical-group">
 
     <div id="tabs" class="tab-spacer tab-group">
@@ -25,92 +29,29 @@
         <span class="icon icon-plus"></span>
       </div>
     </div>
+ 
+      <div class="workspace">    
+      <div id='right-copy-1tomany' class='container'>
+        <div>When elements are copyable, they can't be sorted in their origin container</div>
+        <div>Copying prevents original elements from being dragged. A copy gets created and <em>that</em> gets dragged instead</div>
+        <div>Whenever that happens, a <code>cloned</code> event is raised</div>
+        <div>Note that the clones get destroyed if they're not dropped into another container</div>
+        <div>You'll be dragging a copy, so when they're dropped into another container you'll see the duplication.</div>
+      </div>
+      </div>
+     
 
-    <div id="workspace" class="workspace"></div>
+    <div class="components">
 
-    <div id="components" class="components">
-      <nav class = "dropdown-nav">
-			     <div class="menu-item">
-			          <h4><a href="#">Component Category A</a></h4>
-			          <ul>
-			               <li><a href="#">Component 1</a></li>
-			               <li><a href="#">Component 2</a></li>
-			               <li><a href="#">Component 3</a></li>
-			          </ul>
-		       </div>
-		       <div class="menu-item">
-			          <h4><a href="#">Component Category B</a></h4>
-			          <ul>
-			               <li><a href="#">Component 1</a></li>
-			               <li><a href="#">Component 2</a></li>
-			               <li><a href="#">Component 3</a></li>
-			          </ul>
-		      </div>
-          <div class="menu-item">
-               <h4><a href="#">Component Category B</a></h4>
-               <ul>
-                    <li><a href="#">Component 1</a></li>
-                    <li><a href="#">Component 2</a></li>
-                    <li><a href="#">Component 3</a></li>
-               </ul>
-         </div>
-		  </nav>
+       <div id='left-copy-1tomany' class='container'><div>Copying prevents original elements from being dragged. A copy gets created and <em>that</em> gets dragged instead</div></div> </div> 
+ 
+         
     </div>
+      
 
-  </div>
 
-  <div id="horizontal-group">
+  
 
-    <div id="tabs" class="tab-spacer-horizontal tab-group">
-      <div class="tab-item">
-        <span class="icon icon-cancel icon-close-tab"></span>
-        Tab
-      </div>
-      <div class="tab-item active">
-        <span class="icon icon-cancel icon-close-tab"></span>
-        Tab active
-      </div>
-      <div class="tab-item">
-        <span class="icon icon-cancel icon-close-tab"></span>
-        Tab
-      </div>
-      <div class="tab-item tab-item-fixed">
-        <span class="icon icon-plus"></span>
-      </div>
-    </div>
-
-    <div id="workspace-horizontal" class="workspace-horizontal"></div>
-
-    <div id="components-horizontal" class="components-horizontal">
-      <nav class = "dropdown-nav">
-			     <div class="menu-item">
-			          <h4><a href="#">Component Category A</a></h4>
-			          <ul>
-			               <li><a href="#">Component 1</a></li>
-			               <li><a href="#">Component 2</a></li>
-			               <li><a href="#">Component 3</a></li>
-			          </ul>
-		       </div>
-		       <div class="menu-item">
-			          <h4><a href="#">Component Category B</a></h4>
-			          <ul>
-			               <li><a href="#">Component 1</a></li>
-			               <li><a href="#">Component 2</a></li>
-			               <li><a href="#">Component 3</a></li>
-			          </ul>
-		      </div>
-          <div class="menu-item">
-               <h4><a href="#">Component Category B</a></h4>
-               <ul>
-                    <li><a href="#">Component 1</a></li>
-                    <li><a href="#">Component 2</a></li>
-                    <li><a href="#">Component 3</a></li>
-               </ul>
-         </div>
-		  </nav>
-    </div>
-
-  </div>
 
 </body>
 </html>

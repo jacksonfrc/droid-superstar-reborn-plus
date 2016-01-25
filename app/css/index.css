@@ -54,3 +54,10 @@ input {
   width: calc(100% - 20px);
   background-color: lightgrey;
 }
+
+.container > div {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
