@@ -37,6 +37,30 @@ app.on("ready", function () {
         mainWindow =  null;
     });
 
+    // Create array of components
+        // Each component within list has: css code, html code, xml code, java code, component name
+    var componentsList = [];
+
+    // Loop through component XML files
+        var fs = require('fs');
+        fs.readdir('../components/android/', function (err, files) {
+         if (err)
+            throw err;
+         for (var index in files) {
+            // Print folders of each android component to terminal
+            console.log(files[index]);
+         }
+         });
+    // Loop through component HTML/CSS files
+        fs.readdir('../components/web/', function (err, files) {
+         if (err)
+            throw err;
+         for (var index in files) {
+            // Print folders of each android component to terminal
+            console.log(files[index]);
+         }
+         });
+
     // Create the Application's main menu
     var template = [{
         label: "File",
