@@ -179,8 +179,7 @@ function helper(event) {
     y = "<label class=\"mdl-radio mdl-js-radio mdl-js-ripple-effect\" for=\"option-1\">\r\n  <input type=\"radio\" id=\"option-1\" class=\"mdl-radio__button\" name=\"options\" value=\"1\" checked>\r\n  <span class=\"mdl-radio__label\">First<\/span>\r\n<\/label>";
     }
      if(this.id = "c52"){
-    y = "<label class=\"mdl-radio mdl-js-radio mdl-js-ripple-effect\" for=\"option-2\">\r\n  <input type=\"radio\" id=\"option-2\" class=\"mdl-radio__button\" name=\"options\" value=\"2\">\r\n  <span class=\"mdl-radio__label\">Second<\/span>\r\n<\/label>
- ";
+    y = "<label class=\"mdl-radio mdl-js-radio mdl-js-ripple-effect\" for=\"option-2\">\r\n  <input type=\"radio\" id=\"option-2\" class=\"mdl-radio__button\" name=\"options\" value=\"2\">\r\n  <span class=\"mdl-radio__label\">Second<\/span>\r\n<\/label>";
     }
      if(this.id = "c53"){
     y = "<label class=\"mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect\" for=\"icon-toggle-1\">\r\n  <input type=\"checkbox\" id=\"icon-toggle-1\" class=\"mdl-icon-toggle__input\" checked>\r\n  <i class=\"mdl-icon-toggle__label material-icons\">format_bold<\/i>\r\n<\/label>";
