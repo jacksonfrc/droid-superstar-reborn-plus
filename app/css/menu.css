@@ -61,13 +61,13 @@
   list-style-type: none;
   overflow: hidden;
   padding: 0px;
-  transition: height 1s ease;
+  transition: height 0.1s ease;
 }
 
 .menu-item:hover ul {
-  height: 93px;
+  height: 100%;
 }
 
 .menu-item:hover ul {
-  height: 93px;
+  height: 100%;
 }
