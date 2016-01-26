@@ -1,7 +1,7 @@
 window.$ = require("./js/jquery.js");
 require("./js/jquery-ui/jquery-ui.js");
 
-const y = "<button class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Button</button>";
+const y;
 
 
 
@@ -822,7 +822,7 @@ function helper(event) {
     
     
     
-  return y
+  return y;
 }
 
 function handleDropEvent( event, ui ) {
