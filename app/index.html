@@ -7,13 +7,17 @@
   <link rel="stylesheet" href="css/photon/css/photon.css">
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/material.css">
 
 </head>
 <body>
 
   <script src="js/scaling.js"></script>
   <script src="js/tabs.js"></script>
+  <script src="js/dragging.js"></script>
+  <script src="js/material.js"></script>
 
+  <!-- VERTICAL GROUP START -->
   <div id="vertical-group">
 
     <div id="tabs" class="tab-spacer tab-group">
@@ -26,16 +30,18 @@
       </div>
     </div>
 
-    <div id="workspace" class="workspace"></div>
+    <div id="workspace" class="workspace">
+
+    </div>
 
     <div id="components" class="components">
       <nav class = "dropdown-nav">
 			     <div class="menu-item">
 			          <h4><a href="#">Component Category A</a></h4>
 			          <ul>
-			               <li><a href="#">Component 1</a></li>
+                     <li id="c-a1"><a href="#">Component 1</a></li>
 			               <li><a href="#">Component 2</a></li>
-			               <li><a href="#">Component 3</a></li>
+			               <li id="c-a3"><a href="#">Component 3</a></li>
 			          </ul>
 		       </div>
 		       <div class="menu-item">
@@ -58,6 +64,7 @@
     </div>
 
   </div>
+  <!-- VERTICAL GROUP END -->
 
   <div id="horizontal-group">
 
@@ -83,7 +90,7 @@
 
     <div id="components-horizontal" class="components-horizontal">
       <nav class = "dropdown-nav">
-			     <div class="menu-item">
+			     <div id="right" class="menu-item">
 			          <h4><a href="#">Component Category A</a></h4>
 			          <ul>
 			               <li><a href="#">Component 1</a></li>
