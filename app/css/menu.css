@@ -5,14 +5,12 @@
 
 .menu-item {
   background: #fff;
-  /*width: 200px;*/
 }
 
 .menu-item h4 a {
   color: white;
   display: block;
   text-decoration: none;
-  /*width: 200px;*/
 }
 
 .menu-item h4 {
@@ -24,11 +22,11 @@
   font-size: 15px;
   font-weight: 500;
   padding: 7px 12px;
-  background: -webkit-linear-gradient(top, #a90329 0%,#8f0222 44%,#6d0019 100%);
+  background: #009688;
 }
 
 .menu-item h4:hover {
-  background: -webkit-linear-gradient(top,  #cc002c 0%,#6d0019 100%);
+  background: #00796b;
 }
 
 .alpha p {
@@ -42,7 +40,6 @@
   text-decoration: none;
   color: #aaa;
   display: block;
-  /*width: 200px;*/
 }
 
 .menu-item li {
@@ -67,4 +64,3 @@
 .menu-item:hover ul {
   height: 100%;
 }
-
