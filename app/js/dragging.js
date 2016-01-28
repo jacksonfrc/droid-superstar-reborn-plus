@@ -1,7 +1,7 @@
 window.$ = require("./js/jquery.js");
 require("./js/jquery-ui/jquery-ui.js");
 
-const button = "<button class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Button</button>";
+const button = "<button class='context-menu-one mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Button</button>";
 
 $(init);
 
