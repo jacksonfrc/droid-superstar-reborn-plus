@@ -17,10 +17,13 @@ $(function() {
             "fold1": {
                 "name": "Properties", 
                 "items": {
-                    "fold1-key1": {"name": "Height"},
-                    "fold1-key2": {"name": "Width"},
+                    "fold1-key1": {"name": "Border Colour"},
+                    "fold1-key2": {"name": "Visibility"},
+                    "fold1-key3": {"name": "Padding"},
+                    "fold1-key4": {"name": "Height"},
+                    "fold1-key5": {"name": "Width"},
                     "fold2": {
-                        "name": "Colour", 
+                        "name": "Background Colour", 
                         "items": {
                             "fold2-key1": {"name": "Red"},
                             "fold2-key2": {"name": "Blue"},
