@@ -12,17 +12,16 @@
 window.$ = require("./js/jquery.js");
 var render = require('electron').ipcRenderer;
 
+// Default to 9:16 and vertical orientation.
 $(window).load(vertical);
 $(window).resize(vertical);
 
-// Default to 9:16
-var v = true;
+//$(window).load(horizontal);
+//$(window).resize(horizontal);
+
 var aspectRatio = 0.5625;
 
 function vertical() {
-  $("#vertical-group").show();
-  $("#horizontal-group").hide();
-
   var width = aspectRatio * $("#workspace").height();
   $("#workspace").width(width);
   $("#tabs").width(width);
@@ -30,47 +29,44 @@ function vertical() {
     "left": width + 20 + "px",
     "width": "calc(100% - " + (width + 30) + "px)"
   });
-
-  v = true;
 }
 
 function horizontal() {
-  $("#vertical-group").hide();
-  $("#horizontal-group").show();
-
-  var height = aspectRatio * $("#workspace-horizontal").width();
-  $("#workspace-horizontal").height(height);
-  $("#components-horizontal").css({
+  var height = aspectRatio * $("#workspace").width();
+  $("#workspace").height(height);
+  $("#components").css({
     "top": height + 45 + "px",
     "height": "calc(100% - " + (height + 55) + "px)"
   });
-
-  v = false;
 }
 
 render.on("rotate", function () {
-  if (v) {
-    $(window).off("resize", vertical);
-    $(window).on("resize", horizontal);
-
-    horizontal();
-
-  } else {
+  if ($("#workspace").hasClass("horizontal")) {
     $(window).off("resize", horizontal);
     $(window).on("resize", vertical);
 
-    vertical();
+    $("#tabs").removeClass("horizontal").addClass("vertical");
+    $("#workspace").removeClass("horizontal").addClass("vertical");
+    $("#components").removeClass("horizontal").addClass("vertical");
 
+    vertical();
+  } else {
+    $(window).off("resize", vertical);
+    $(window).on("resize", horizontal);
+
+    $("#tabs").removeClass("vertical").addClass("horizontal");
+    $("#workspace").removeClass("vertical").addClass("horizontal");
+    $("#components").removeClass("vertical").addClass("horizontal");
+
+    horizontal();
   }
 });
 
 render.on("changeAspectRatio", function (event, ratio) {
   aspectRatio = ratio;
-
-  if (v) {
-    vertical();
-  } else {
+  if ($("#workspace").hasClass("horizontal")) {
     horizontal();
+  } else {
+    vertical();
   }
-
 });

@@ -16,16 +16,13 @@
   <script src="js/scaling.js"></script>
   <script src="js/tabs.js"></script>
   <script src="js/dragging.js"></script>
-<!--  <script src="js/material.js"></script> -->
+  <script src="js/material.js"></script>
   <script src="js/rightclick.js"></script>
 
   <script src="js/jQuery-contextMenu/dist/jquery.contextMenu.js"></script>
   <script src="js/jQuery-contextMenu/dist/jquery.ui.position.min.js"></script>
 
-  <!-- VERTICAL GROUP START -->
-  <div id="vertical-group">
-
-    <div id="tabs" class="tab-spacer tab-group">
+    <div id="tabs" class="tab-group vertical">
       <div id="tab0" class="tab-item active" onclick="activateTab(this)">
         <span class="icon icon-cancel icon-close-tab" onclick="closeTab(this)"></span>
         <input id="tab-name0" type="text" value="New Tab"/>
@@ -35,9 +32,9 @@
       </div>
     </div>
 
-    <div id="workspace" class="workspace"></div>
+    <div id="workspace" class="vertical"></div>
 
-    <div id="components" class="components">
+    <div id="components" class="vertical">
  <nav class = "dropdown-nav">
 			     <div class="menu-item">
 			          <h4><a href="#">Badges</a></h4>
@@ -168,9 +165,7 @@
 
     </div>
 
-  </div>
-  <!-- VERTICAL GROUP END -->
-
+<!--
   <div id="horizontal-group">
 
     <div id="tabs" class="tab-spacer-horizontal tab-group">
@@ -323,6 +318,6 @@
     </div>
 
   </div>
-
+-->
 </body>
 </html>

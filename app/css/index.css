@@ -8,6 +8,7 @@
 * {
   margin: 0px;
   padding: 0px;
+  font-family: "Roboto";
 }
 
 input {
@@ -19,14 +20,22 @@ input {
   text-align: center;
 }
 
-.tab-spacer {
+#tabs.vertical {
   position: absolute;
   top: 10px;
   left: 10px;
   font-family: "Roboto";
 }
 
-.workspace {
+#tabs.horizontal {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: calc(100% - 20px);
+  font-family: "Roboto";
+}
+
+#workspace.vertical {
   position: absolute;
   top: 35px;
   left: 10px;
@@ -34,22 +43,7 @@ input {
   background-color: lightgrey;
 }
 
-.components {
-  position: absolute;
-  top: 10px;
-  height: calc(100% - 20px);
-  background-color: lightgrey;
-  font-family: "Roboto";
-}
-
-.tab-spacer-horizontal {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: calc(100% - 20px);
-}
-
-.workspace-horizontal {
+#workspace.horizontal {
   position: absolute;
   top: 35px;
   left: 10px;
@@ -57,9 +51,18 @@ input {
   background-color: lightgrey;
 }
 
-.components-horizontal {
+#components.vertical {
+  position: absolute;
+  top: 10px;
+  height: calc(100% - 20px);
+  background-color: lightgrey;
+  font-family: "Roboto";
+}
+
+#components.horizontal {
   position: absolute;
   left: 10px;
   width: calc(100% - 20px);
   background-color: lightgrey;
+  font-family: "Roboto";
 }

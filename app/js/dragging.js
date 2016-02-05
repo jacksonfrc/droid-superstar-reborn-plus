@@ -30,13 +30,11 @@ function handleDropEvent(event, ui) {
   // CSS needs to be relative %
   var newDiv = $(ui.helper).clone()
       .removeClass('ui-draggable-dragging')
-
       .css({
         "position": "absolute",
         "left": ui.offset.left - 10 + "px",
         "top": ui.offset.top - 35 + "px"
       });
-
 
   $(this).append(newDiv);
 
