@@ -3,10 +3,10 @@ window.$ = require("./js/jquery.js");
 
 $(function() {
         $.contextMenu({
-        selector: '.context-menu-one', 
+        selector: '.context-menu-one',
         callback: function(key, options) {
             var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m); 
+            window.console && console.log(m) || alert(m);
         },
         items: {
             //"edit": {"name": "Edit", "icon": "edit"},
@@ -46,7 +46,11 @@ $(function() {
             "sep3": "---------",
             "fold1a": {
                 "name": "Delete", 
-                "icon": "delete"
+                "icon": "delete",
+                callback: function(key, opt){
+                    $(this).remove();
+                //alert("Clicked on " + key + "element: ");
+            } 
             }
         }
     });
