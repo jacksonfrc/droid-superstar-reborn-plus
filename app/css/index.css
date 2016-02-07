@@ -11,13 +11,71 @@
   font-family: "Roboto";
 }
 
+*:focus {
+    outline: none;
+}
+
+::-webkit-input-placeholder {
+    color: #000;
+}
+
 input {
   margin: 0px;
   padding: 0px 8px;
+  margin-left: 15px;
+  width: 100%;
   background: none;
   border: none;
   font-size: 100%;
   text-align: center;
+  z-index: 100;
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
+}
+
+.tab-group {
+  display: flex;
+  float: left;
+  height: 25px;
+}
+
+.tab-item {
+  position: relative;
+  flex: 1;
+  padding: 3px;
+  float: left;
+  font-size: 12px;
+  text-align: center;
+  border-left: 1px solid #989698;
+  background-color: #b8b6b8;
+}
+.tab-item:first-child {
+  border-left: 0;
+}
+.tab-item.active {
+  background-color: #d4d2d4;
+}
+.tab-item .icon-close-tab {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  width: 15px;
+  height: 15px;
+  font-size: 15px;
+  line-height: 15px;
+  text-align: center;
+  color: #666;
+  border-radius: 3px;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.tab-item-fixed {
+  flex: none;
+  padding: 3px 10px;
 }
 
 #tabs.vertical {

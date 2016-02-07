@@ -12,12 +12,16 @@ function activateTab(e) {
   $(e).addClass("active");
 }
 
+function changeName(e) {
+  $(e).attr("id", $(e).val());
+}
+
 function newTab() {
   count++;
-  var id = "tab" + count;
+  var id = "tab " + count;
   $("<div>").attr("id", id).attr("class", "tab-item").attr("onclick", "activateTab(this)")
-  .append($("<span>").attr('class', 'icon icon-cancel icon-close-tab').attr("onclick", "closeTab(this)"))
-  .append("New Tab")
+  .append($("<img>").attr("src", "icons/ic_clear_black_24px.svg").attr("class", "icon-close-tab").attr("onclick", "closeTab(this)"))
+  .append($("<input>").attr("id", "New Tab").attr("type", "text").attr("placeholder", "New Tab").attr("oninput", "changeName(this)"))
   .insertBefore($(".tab-item-fixed"));
 }
 
