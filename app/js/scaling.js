@@ -16,9 +16,6 @@ var render = require('electron').ipcRenderer;
 $(window).load(vertical);
 $(window).resize(vertical);
 
-//$(window).load(horizontal);
-//$(window).resize(horizontal);
-
 var aspectRatio = 0.5625;
 
 function vertical() {
@@ -45,18 +42,18 @@ render.on("rotate", function () {
     $(window).off("resize", horizontal);
     $(window).on("resize", vertical);
 
-    $("#tabs").removeClass("horizontal").addClass("vertical");
-    $("#workspace").removeClass("horizontal").addClass("vertical");
-    $("#components").removeClass("horizontal").addClass("vertical");
+    $("#tabs").removeAttr("style").removeClass("horizontal").addClass("vertical");
+    $("#workspace").removeAttr("style").removeClass("horizontal").addClass("vertical");
+    $("#components").removeAttr("style").removeClass("horizontal").addClass("vertical");
 
     vertical();
   } else {
     $(window).off("resize", vertical);
     $(window).on("resize", horizontal);
 
-    $("#tabs").removeClass("vertical").addClass("horizontal");
-    $("#workspace").removeClass("vertical").addClass("horizontal");
-    $("#components").removeClass("vertical").addClass("horizontal");
+    $("#tabs").removeAttr("style").removeClass("vertical").addClass("horizontal");
+    $("#workspace").removeAttr("style").removeClass("vertical").addClass("horizontal");
+    $("#components").removeAttr("style").removeClass("vertical").addClass("horizontal");
 
     horizontal();
   }
