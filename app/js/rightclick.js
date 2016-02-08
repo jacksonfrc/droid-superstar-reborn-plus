@@ -959,7 +959,7 @@ $(function() {
     }); // end of selector: '.context-menu-textfield' contextMenu
 
  $.contextMenu({
-        selector: '.workspace',
+        selector: '.ui-droppable.vertical',
         callback: function(key, options) {
             var m = "clicked: " + key;
             window.console && console.log(m) || alert(m);
@@ -985,7 +985,7 @@ $(function() {
                                     var backgroundColorInput = $(".context-menu-backgroundcolor-input input").val().toString();
                                     if (window.console) console.log($(backgroundColorInput));
                                     // Change element's CSS to inputted value
-                                    $(".workspace").css("background-color", backgroundColorInput);
+                                    $(".ui-droppable.vertical").css("background-color", backgroundColorInput);
      
                                 }
                             }
@@ -997,6 +997,14 @@ $(function() {
             "fold1a": {
                 "name": "Rotate Workspace", 
                 callback: function(key, opt){
+$(window).off("resize", vertical);
+    $(window).on("resize", horizontal);
+
+    $("#tabs").removeAttr("style").removeClass("vertical").addClass("horizontal");
+    $("#workspace").removeAttr("style").removeClass("vertical").addClass("horizontal");
+    $("#components").removeAttr("style").removeClass("vertical").addClass("horizontal");
+
+                    
                     //call rotation function
                     horizontal();
             } 
@@ -1005,7 +1013,7 @@ $(function() {
     }); // end of selector: '.workspace' contextMenu
 
 $.contextMenu({
-        selector: '.workspace-horizontal',
+        selector: '.ui-droppable.horizontal',
         callback: function(key, options) {
             var m = "clicked: " + key;
             window.console && console.log(m) || alert(m);
@@ -1031,7 +1039,7 @@ $.contextMenu({
                                     var backgroundColorInput = $(".context-menu-backgroundcolor-input input").val().toString();
                                     if (window.console) console.log($(backgroundColorInput));
                                     // Change element's CSS to inputted value
-                                    $(".workspace-horizontal").css("background-color", backgroundColorInput);
+                                    $(".ui-droppable.horizontal").css("background-color", backgroundColorInput);
      
                                 }
                             }
@@ -1043,6 +1051,12 @@ $.contextMenu({
             "fold1a": {
                 "name": "Rotate Workspace", 
                 callback: function(key, opt){
+                        $(window).off("resize", horizontal);
+    $(window).on("resize", vertical);
+                        $("#tabs").removeAttr("style").removeClass("horizontal").addClass("vertical");
+    $("#workspace").removeAttr("style").removeClass("horizontal").addClass("vertical");
+    $("#components").removeAttr("style").removeClass("horizontal").addClass("vertical");
+
                     //call rotation function
                     vertical();
             } 
