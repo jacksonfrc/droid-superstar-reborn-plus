@@ -37,7 +37,9 @@ function horizontal() {
   });
 }
 
-render.on("rotate", function () {
+render.on("rotate", rotate);
+
+function rotate() {
   if ($("#workspaces").hasClass("horizontal")) {
     $(window).off("resize", horizontal);
     $(window).on("resize", vertical);
@@ -57,9 +59,9 @@ render.on("rotate", function () {
     $("#components").removeAttr("style").removeClass("vertical").addClass("horizontal");
 
     horizontal();
-    
+
   }
-});
+}
 
 render.on("changeAspectRatio", function (event, ratio) {
   aspectRatio = ratio;
