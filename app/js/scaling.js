@@ -19,8 +19,8 @@ $(window).resize(vertical);
 var aspectRatio = 0.5625;
 
 function vertical() {
-  var width = aspectRatio * $("#workspace").height();
-  $("#workspace").width(width);
+  var width = aspectRatio * $("#workspaces").height();
+  $("#workspaces").width(width);
   $("#tabs").width(width);
   $("#components").css({
     "left": width + 20 + "px",
@@ -29,8 +29,8 @@ function vertical() {
 }
 
 function horizontal() {
-  var height = aspectRatio * $("#workspace").width();
-  $("#workspace").height(height);
+  var height = aspectRatio * $("#workspaces").width();
+  $("#workspaces").height(height);
   $("#components").css({
     "top": height + 45 + "px",
     "height": "calc(100% - " + (height + 55) + "px)"
@@ -38,24 +38,26 @@ function horizontal() {
 }
 
 render.on("rotate", function () {
-  if ($("#workspace").hasClass("horizontal")) {
+  if ($("#workspaces").hasClass("horizontal")) {
     $(window).off("resize", horizontal);
     $(window).on("resize", vertical);
 
     $("#tabs").removeAttr("style").removeClass("horizontal").addClass("vertical");
-    $("#workspace").removeAttr("style").removeClass("horizontal").addClass("vertical");
+    $("#workspaces").removeAttr("style").removeClass("horizontal").addClass("vertical");
     $("#components").removeAttr("style").removeClass("horizontal").addClass("vertical");
 
     vertical();
+
   } else {
     $(window).off("resize", vertical);
     $(window).on("resize", horizontal);
 
     $("#tabs").removeAttr("style").removeClass("vertical").addClass("horizontal");
-    $("#workspace").removeAttr("style").removeClass("vertical").addClass("horizontal");
+    $("#workspaces").removeAttr("style").removeClass("vertical").addClass("horizontal");
     $("#components").removeAttr("style").removeClass("vertical").addClass("horizontal");
 
     horizontal();
+    
   }
 });
 

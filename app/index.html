@@ -22,7 +22,7 @@
   <script src="js/jQuery-contextMenu/dist/jquery.ui.position.min.js"></script>
 
     <div id="tabs" class="tab-group vertical">
-      <div id="tab 0" class="tab-item active" onclick="activateTab(this)">
+      <div id="0" class="tab-item active" onclick="activateTab(this)">
         <img src="icons/ic_clear_black_24px.svg" class="icon-close-tab" onclick="closeTab(this)">
         <input id="New Tab" type="text" oninput="changeName(this)" placeholder="New Tab">
       </div>
@@ -31,7 +31,9 @@
       </div>
     </div>
 
-    <div id="workspace" class="vertical"></div>
+    <div id="workspaces" class="vertical">
+      <div id="0"></div>
+    </div>
 
     <div id="components" class="vertical">
  <nav class = "dropdown-nav">

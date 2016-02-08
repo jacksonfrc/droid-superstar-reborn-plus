@@ -8,35 +8,42 @@ function init() {
     helper: idHelper,
     cursor: "move",
     revert: "invalid",
-    snap: "#workspace",
-    snapMode: "inner",
+    containment: "#workspaces",
     scroll: false
   });
-  $("#workspace").droppable({
+  $("#workspaces").droppable({
     drop: handleDropEvent
   });
 }
 
 function handleDropEvent(event, ui) {
-/*
-  var el = $(ui.helper).css({
-    "position": "absolute",
-    "left": ui.offset.left - 10 + "px",
-    "top": ui.offset.top - 35 + "px"
-  }).draggable();
-*/
-  console.log(ui.helper);
+  // activeTab is set in tabs.js
+  var activeTabSelector = "#workspaces > #" + activeTab;
+  leftPosition = ((ui.offset.left - 10) / $(activeTabSelector).width()) * 100;
+  topPosition = ((ui.offset.top - 35) / $(activeTabSelector).height()) * 100;
 
-  // CSS needs to be relative %
-  var newDiv = $(ui.helper).clone()
-      .removeClass('ui-draggable-dragging')
+  if (!$(ui.helper).hasClass("working")) {
+
+    var newElem = $(ui.helper)
+      .clone()
+      .addClass("working")
+      .removeClass("ui-draggable")
+      .removeClass("ui-draggable-handle")
+      .draggable({ containment: "#workspaces" })
       .css({
         "position": "absolute",
-        "left": ui.offset.left - 10 + "px",
-        "top": ui.offset.top - 35 + "px"
+        "left": leftPosition + "%",
+        "top": topPosition + "%"
       });
+      $(activeTabSelector).append(newElem);
+  } else {
 
-  $(this).append(newDiv);
+    $(ui.helper).css({
+      "position": "absolute",
+      "left": leftPosition + "%",
+      "top": topPosition + "%"
+    });
+  }
 
 }
 
@@ -95,5 +102,5 @@ function idHelper(event) {
         return "<form action=\"#\">\r\n  <div class=\"context-menu-one mdl-textfield mdl-js-textfield\">\r\n    <textarea class=\"mdl-textfield__input\" type=\"text\" rows= \"3\" id=\"sample5\" ><\/textarea>\r\n    <label class=\"mdl-textfield__label\" for=\"sample5\">Text lines...<\/label>\r\n  <\/div>\r\n<\/form>";
     }
 
-    return "<div>No Component.</div>";
+    //return "<div>Component Error.</div>";
 }

@@ -11,6 +11,10 @@
   font-family: "Roboto";
 }
 
+body {
+  z-index: 20;
+}
+
 *:focus {
     outline: none;
 }
@@ -93,7 +97,7 @@ input {
   font-family: "Roboto";
 }
 
-#workspace.vertical {
+#workspaces.vertical {
   position: absolute;
   top: 35px;
   left: 10px;
@@ -101,12 +105,18 @@ input {
   background-color: lightgrey;
 }
 
-#workspace.horizontal {
+#workspaces.horizontal {
   position: absolute;
   top: 35px;
   left: 10px;
   width: calc(100% - 20px);
   background-color: lightgrey;
+}
+
+#workspaces > div {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
 }
 
 #components.vertical {
@@ -115,6 +125,7 @@ input {
   height: calc(100% - 20px);
   background-color: lightgrey;
   font-family: "Roboto";
+  z-index: 30;
 }
 
 #components.horizontal {
@@ -123,4 +134,5 @@ input {
   width: calc(100% - 20px);
   background-color: lightgrey;
   font-family: "Roboto";
+  z-index: 30;
 }
