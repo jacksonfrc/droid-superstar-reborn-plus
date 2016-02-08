@@ -997,16 +997,22 @@ $(function() {
             "fold1a": {
                 "name": "Rotate Workspace", 
                 callback: function(key, opt){
-$(window).off("resize", vertical);
-    $(window).on("resize", horizontal);
+                    var bgTransfer = $(".ui-droppable.vertical").css("background-color");
 
-    $("#tabs").removeAttr("style").removeClass("vertical").addClass("horizontal");
-    $("#workspace").removeAttr("style").removeClass("vertical").addClass("horizontal");
-    $("#components").removeAttr("style").removeClass("vertical").addClass("horizontal");
+
+                    $(window).off("resize", vertical);
+                    $(window).on("resize", horizontal);
+
+                    $("#tabs").removeAttr("style").removeClass("vertical").addClass("horizontal");
+                    $("#workspaces").removeAttr("style").removeClass("vertical").addClass("horizontal");
+                    $("#components").removeAttr("style").removeClass("vertical").addClass("horizontal");
 
                     
                     //call rotation function
                     horizontal();
+                    //Apply old bg colour
+                    $(".ui-droppable.horizontal").css("background-color", bgTransfer);
+
             } 
             }
         }
@@ -1051,14 +1057,20 @@ $.contextMenu({
             "fold1a": {
                 "name": "Rotate Workspace", 
                 callback: function(key, opt){
+                        var bgTransfer = $(".ui-droppable.horizontal").css("background-color");
+
                         $(window).off("resize", horizontal);
-    $(window).on("resize", vertical);
+                        $(window).on("resize", vertical);
                         $("#tabs").removeAttr("style").removeClass("horizontal").addClass("vertical");
-    $("#workspace").removeAttr("style").removeClass("horizontal").addClass("vertical");
-    $("#components").removeAttr("style").removeClass("horizontal").addClass("vertical");
+                        $("#workspaces").removeAttr("style").removeClass("horizontal").addClass("vertical");
+                        $("#components").removeAttr("style").removeClass("horizontal").addClass("vertical");
+
 
                     //call rotation function
                     vertical();
+                    //Apply old bg colour
+                    $(".ui-droppable.vertical").css("background-color", bgTransfer);
+
             } 
             }
         }
