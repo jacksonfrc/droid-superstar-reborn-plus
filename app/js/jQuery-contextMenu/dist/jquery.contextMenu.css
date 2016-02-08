@@ -204,3 +204,7 @@
 .context-menu-accesskey {
   text-decoration: underline;
 }
+
+.context-menu-input > label > input {
+  color: #000;
+}
