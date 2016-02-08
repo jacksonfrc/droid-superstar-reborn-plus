@@ -29,6 +29,7 @@ function vertical() {
 }
 
 function horizontal() {
+
   var height = aspectRatio * $("#workspaces").width();
   $("#workspaces").height(height);
   $("#components").css({
@@ -65,7 +66,7 @@ function rotate() {
 
 render.on("changeAspectRatio", function (event, ratio) {
   aspectRatio = ratio;
-  if ($("#workspace").hasClass("horizontal")) {
+  if ($("#workspaces").hasClass("horizontal")) {
     horizontal();
   } else {
     vertical();
