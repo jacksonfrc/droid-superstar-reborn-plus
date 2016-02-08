@@ -64,3 +64,10 @@
 .menu-item:hover ul {
   height: 100%;
 }
+
+.context-menu-item > label > input {
+  border-color: #bdbdbd;
+  border-style: solid;
+  border-width: 1px;
+  margin-left: 1.5px !important;
+}
