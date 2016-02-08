@@ -9,13 +9,9 @@
 *
 */
 
-window.$ = require("./js/jquery.js");
-var render = require('electron').ipcRenderer;
-
-// Default to 9:16 and vertical orientation.
+// Window defaults to 9:16 and vertical orientation.
 $(window).load(vertical);
 $(window).resize(vertical);
-
 var aspectRatio = 0.5625;
 
 function vertical() {

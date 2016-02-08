@@ -1,5 +1,3 @@
-window.$ = require("./js/jquery.js");
-require("./js/jquery-ui/jquery-ui.js");
 
 $(init);
 

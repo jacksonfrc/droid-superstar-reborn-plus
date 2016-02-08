@@ -1,5 +1,3 @@
-window.$ = require("./js/jquery.js");
-var render = require('electron').ipcRenderer;
 
 var count = 0;
 var activeTab = 0;
