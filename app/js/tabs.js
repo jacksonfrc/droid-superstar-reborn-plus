@@ -1,6 +1,7 @@
 
 var count = 0;
 var activeTab = 0;
+var activeWorkspace = "#workspaces > #" + activeTab;
 
 function closeTab(e) {
   $(e).parent().remove();
@@ -9,10 +10,11 @@ function closeTab(e) {
 
 function activateTab(e) {
   activeTab = $(e).attr("id");
+  activeWorkspace = "#workspaces > #" + activeTab;
   $("div").removeClass("active");
   $(e).addClass("active");
   $("#workspaces").children().hide();
-  $("#workspaces > #" + activeTab).show();
+  $(activeWorkspace).show();
 }
 
 function changeName(e) {
