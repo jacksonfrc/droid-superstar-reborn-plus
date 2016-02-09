@@ -35,6 +35,15 @@ input {
   z-index: 100;
 }
 
+#dialog {
+  display: none;
+  overflow: hidden;
+}
+
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+
 .icon {
   width: 15px;
   height: 15px;

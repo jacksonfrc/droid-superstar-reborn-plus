@@ -42,6 +42,7 @@ app.on("ready", function () {
     var template = [{
         label: "File",
         submenu: [
+            { label: "New Project", click: function() { render.send("setTitle"); } },
             { label: "New Tab", click: function() { render.send("newTab"); } },
             { type: "separator" },
             { label: "Save As An Android Project", click: function() { render.send("exportJava"); } },
