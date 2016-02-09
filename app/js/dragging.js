@@ -58,12 +58,23 @@ function idHelper(event) {
     } else if (cId == "c4") {
         return "<span class=\"context-menu-badge mdl-badge\" data-badge=\"\u2665\">Mood<\/span>";
     } else if (cId == "c5") {
-        return "<button class=\"context-menu-button mdl-button mdl-js-button mdl-button--fab mdl-button--colored\">\r\n  <i class=\"material-icons\">add<\/i>\r\n<\/button>";
+        return "<button class=\"context-menu-button mdl-button mdl-js-button mdl-button--fab mdl-button--colored\">\r\n  <i class=\"material-icons\">+<\/i>\r\n<\/button>";
     }else if (cId == "c7") {
-        return "<button class=\"context-menu-button mdl-button mdl-js-button mdl-button--fab\">\r\n  <i class=\"material-icons\">add<\/i>\r\n<\/button>";
+        return "<button class=\"context-menu-button mdl-button mdl-js-button mdl-button--fab\">\r\n  <i class=\"material-icons\">+<\/i>\r\n<\/button>";
     }  else if (cId == "c9") {
-        return "<button class=\"context-menu-button mdl-button mdl-js-button mdl-button--fab\" disabled>\r\n  <i class=\"material-icons\">add<\/i>\r\n<\/button>";
-    }  else if (cId == "c16") {
+        return "<button class=\"context-menu-button mdl-button mdl-js-button mdl-button--fab\" disabled>\r\n  <i class=\"material-icons\">+<\/i>\r\n<\/button>";
+    } else if(cId =="c15"){
+    return "<button class='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'> Button</button>";
+    
+    }
+    
+       else if (cId == "c63"){
+    
+    return "<form action=\"#\">\r\n  <div class=\"mdl-textfield mdl-js-textfield mdl-textfield--expandable\">\r\n    <label class=\"mdl-button mdl-js-button mdl-button--icon\" for=\"sample6\">\r\n      <i class=\"material-icons\">search<\/i>\r\n    <\/label>\r\n    <div class=\"mdl-textfield__expandable-holder\">\r\n      <input class=\"mdl-textfield__input\" type=\"text\" id=\"sample6\">\r\n      <label class=\"mdl-textfield__label\" for=\"sample-expandable\">Expandable Input<\/label>\r\n    <\/div>\r\n  <\/div>\r\n<\/form>";
+    
+    }
+    
+    else if (cId == "c16") {
         return "<button class=\"context-menu-button mdl-button mdl-js-button\">\r\n  Button\r\n<\/button>";
     }  else if (cId == "c19") {
         return "<button class=\"context-menu-button mdl-button mdl-js-button mdl-button--primary\">\r\n  Button\r\n<\/button>";
@@ -98,6 +109,8 @@ function idHelper(event) {
     } else if (cId == "c62") {
         return "<form action=\"#\">\r\n  <div class=\"context-menu-textfield mdl-textfield mdl-js-textfield\">\r\n    <textarea class=\"mdl-textfield__input\" type=\"text\" rows= \"3\" id=\"sample5\" ><\/textarea>\r\n    <label class=\"mdl-textfield__label\" for=\"sample5\">Text lines...<\/label>\r\n  <\/div>\r\n<\/form>";
     }
+    
+ 
 
     //return "<div>Component Error.</div>";
 }
