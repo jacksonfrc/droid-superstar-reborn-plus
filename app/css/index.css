@@ -125,7 +125,6 @@ input {
   height: calc(100% - 20px);
   background-color: lightgrey;
   font-family: "Roboto";
-  z-index: 30;
 }
 
 #components.horizontal {
@@ -134,5 +133,4 @@ input {
   width: calc(100% - 20px);
   background-color: lightgrey;
   font-family: "Roboto";
-  z-index: 30;
 }

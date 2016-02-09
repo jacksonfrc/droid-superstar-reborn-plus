@@ -1,5 +1,3 @@
-window.$ = require("./js/jquery.js");
-require("./js/jquery-ui/jquery-ui.js");
 
 $(init);
 
@@ -18,9 +16,9 @@ function init() {
 
 function handleDropEvent(event, ui) {
   // activeTab is set in tabs.js
-  var activeTabSelector = "#workspaces > #" + activeTab;
-  leftPosition = ((ui.offset.left - 10) / $(activeTabSelector).width()) * 100;
-  topPosition = ((ui.offset.top - 35) / $(activeTabSelector).height()) * 100;
+  //var activeTabSelector = "#workspaces > #" + activeTab;
+  leftPosition = ((ui.offset.left - 10) / $(activeWorkspace).width()) * 100;
+  topPosition = ((ui.offset.top - 35) / $(activeWorkspace).height()) * 100;
 
   if (!$(ui.helper).hasClass("working")) {
 
@@ -35,7 +33,7 @@ function handleDropEvent(event, ui) {
         "left": leftPosition + "%",
         "top": topPosition + "%"
       });
-      $(activeTabSelector).append(newElem);
+      $(activeWorkspace).append(newElem);
   } else {
 
     $(ui.helper).css({
