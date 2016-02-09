@@ -64,7 +64,7 @@ function idHelper(event) {
     }  else if (cId == "c9") {
         return "<button class=\"context-menu-button mdl-button mdl-js-button mdl-button--fab\" disabled>\r\n  <i class=\"material-icons\">+<\/i>\r\n<\/button>";
     } else if(cId =="c15"){
-    return "<button class='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'> Button</button>";
+    return "<button class='context-menu-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored'> Button</button>";
     
     }
     
