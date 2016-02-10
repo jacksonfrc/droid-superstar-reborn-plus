@@ -11,6 +11,10 @@
   font-family: "Roboto";
 }
 
+*:focus {
+    outline: none;
+}
+
 ::-webkit-input-placeholder {
     color: #000;
 }
@@ -24,10 +28,6 @@
   font-size: 100%;
   text-align: center;
   z-index: 10;
-}
-
-#tab-name:focus {
-    outline: none;
 }
 
 #project {
