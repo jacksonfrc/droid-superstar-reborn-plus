@@ -1,245 +1,81 @@
 window.$ = require("./js/jquery.js");
 
+var rightClickedElementObject;
 
 $(function() {
-    /*
-        $.contextMenu({
-        selector: '.context-menu-one',
-        callback: function(key, options) {
-            var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m);
-        },
-        items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
-            "fold1": {
-                "name": "Properties", 
-                "items": {
-                    "fold1-key1": {"name": "Border Colour"},
-                    "fold1-key2": {"name": "Visibility"},
-                    "fold1-key3": {"name": "Padding"},
-                    "fold1-key4": {"name": "Height"},
-                    "fold1-key5": {"name": "Width"},
-                    "fold2": {
-                        "name": "Background Colour", 
-                        "items": {
-                            "fold2-key1": {"name": "Red"},
-                            "fold2-key2": {"name": "Blue"},
-                            "fold2-key3": {"name": "Green"}
-                        }
-                },
-                name: {
-                name: "Component ID", 
-                type: 'text', 
-                value: "", 
-                events: {
-                    keyup: function(e) {
-                        // add some fancy key handling here?
-                        window.console && console.log('key: '+ e.keyCode); 
-                    }
-                }
-            },
-            }
-            },
-            "sep3": "---------",
-            "fold1a": {
-                "name": "Delete", 
-                "icon": "delete",
-                callback: function(key, opt){
-                    $(this).remove();
-                //alert("Clicked on " + key + "element: ");
-            } 
-            }
-        }
-    }); // end of selector: '.context-menu-one' contextMenu
-        */
 
         $.contextMenu({
         selector: '.context-menu-badge',
-        callback: function(key, options) {
-            var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m);
-        },
+        build: function($triggerElement, e){
+            rightClickedElementObject = $triggerElement;
+            console.log(rightClickedElementObject);
+            return {
+            callback: function(){},
         items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
             "fold1": {
                 "name": "Properties", 
                 "items": {
                     "fold1-key1": {
-                        name: "Border Colour",
-                        className: "context-menu-badge-bordercolor-input", 
+                        name: "Background Colour (DOESNT WORK)",
+                        className: "context-menu-badge-backgroundcolor-input", 
                         type: 'text', 
                         value: "", 
                         events: {
                             keyup: function(e) {
                                 if(e.keyCode == '13') {
                                     // Assign input from text box
-                                    var borderColorInput = $(".context-menu-badge-bordercolor-input input").val().toString();
-                                    if (window.console) console.log($(borderColorInput));
+                                    var backgroundColorInput = $(".context-menu-badge-backgroundcolor-input input").val().toString();
+                                    if (window.console) console.log($(backgroundColorInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-badge").css("border-color", borderColorInput +'px');
-     
-                                }
-                            }
-                        }
-                    },
-                    "fold1-key2": {"name": "Visibility"},
-                    "fold1-key3": {"name": "Padding"},
-                    "fold1-key4":  {
-                        name: "Height",
-                        className: "context-menu-badge-height-input", 
-                        type: 'text', 
-                        value: "", 
-                        events: {
-                            keyup: function(e) {
-                                if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var heightInput = $(".context-menu-badge-height-input input").val().toString();
-                                    if (window.console) console.log($(heightInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-badge").css("height", heightInput +'px');
-     
-                                }
-                            }
-                        }
-                    },
-                    "fold1-key5": {"name": "Width"},
-                    "fold2": {
-                        "name": "Background Colour(#XXXXXXX)", 
-                        "items": {
-                            "fold2-key1": {"name": "Red",
-                            callback: function(key, opt){
-                                $(this).css("background-color", "red");
-                             } 
+                                    $(rightClickedElementObject).css("background-color", backgroundColorInput);
 
-                        },
-                            "fold2-key2": {"name": "Blue"},
-                            "fold2-key3": {"name": "Green"}
+
+                                }
+                            }
                         }
-                },
-                name: {
-                name: "Component ID",
-                className: "context-menu-badge-comp-id-input", 
-                type: 'text', 
-                value: "", 
-                events: {
-                    keyup: function(e) {
-                        if(e.keyCode == '13') {
-                            //$(".context-menu-badge").css("background-color", "blue");
-                            $(".context-menu-badge").attr('id', $(".context-menu-badge-comp-id-input input").val().toString());
-                            if (window.console) console.log($(".context-menu-badge-comp-id-input input").val().toString());
+                    }, 
+                "fold4":  {
+                        name: "Element Text",
+                        className: "context-menu-badge-elementtext-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    $(rightClickedElementObject).html($(".context-menu-badge-elementtext-input input").val().toString());
+                                    if (window.console) console.log($(".context-menu-badge-elementtext-input input").val().toString());
+                                }
+                            }
                         }
-                    }
-                }
-            },
-            }
-            },
+                    },
             "sep3": "---------",
             "fold1a": {
                 "name": "Delete", 
                 "icon": "delete",
                 callback: function(key, opt){
                     $(this).remove();
-                //alert("Clicked on " + key + "element: ");
             } 
             }
+            }   
         }
-    }); // end of selector: '.context-menu-badge' contextMenu
+    }
+}
+}
+}); // end of selector: '.context-menu-badge' contextMenu   
 
         $.contextMenu({
         selector: '.context-menu-button',
-        callback: function(key, options) {
-            var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m);
-        },
+        build: function($triggerElement, e){
+            rightClickedElementObject = $triggerElement;
+            console.log(rightClickedElementObject);
+            return {
+            callback: function(){},
         items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
             "fold1": {
                 "name": "Properties", 
                 "items": {
                     "fold1-key1": {
-                        name: "Border Colour",
-                        className: "context-menu-button-bordercolor-input", 
-                        type: 'text', 
-                        value: "", 
-                        events: {
-                            keyup: function(e) {
-                                if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var borderColorInput = $(".context-menu-button-bordercolor-input input").val().toString();
-                                    if (window.console) console.log($(borderColorInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-button").css("border-color", borderColorInput +'px');
-     
-                                }
-                            }
-                        }
-                    },
-                    "fold1-key2": {
-                        name: "Border Radius",
-                        className: "context-menu-button-borderradius-input", 
-                        type: 'text', 
-                        value: "", 
-                        events: {
-                            keyup: function(e) {
-                                if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var borderRadiusInput = $(".context-menu-button-borderradius-input input").val().toString();
-                                    if (window.console) console.log($(borderRadiusInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-button").css("border-radius", borderRadiusInput +'px');
-     
-                                }
-                            }
-                        }
-                    },
-                    "fold1-key3": {
-                        name: "Border Width",
-                        className: "context-menu-button-borderwidth-input", 
-                        type: 'text', 
-                        value: "", 
-                        events: {
-                            keyup: function(e) {
-                                if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var borderWidthInput = $(".context-menu-button-borderwidth-input input").val().toString();
-                                    if (window.console) console.log($(borderWidthInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-button").css("border-width", borderWidthInput +'px');
-     
-                                }
-                            }
-                        }
-                    },
-                    "fold1-key4":    {
-                name: "Border Style",
-                className: "context-menu-button-borderstyle-input",  
-                type: 'text', 
-                value: "", 
-                events: {
-                            keyup: function(e) {
-                                
-                                    // Assign input from text box
-                                    var borderStyleInput = $(".context-menu-button-borderstyle-input input").val().toString();
-                                    if (window.console) console.log($(borderStyleInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-button").css("border-style", borderStyleInput);
-                               }
-                            }
-            },                 
-                    "fold1-key5":  {
-                        name: "Height",
+                        name: "Height", 
                         className: "context-menu-button-height-input", 
                         type: 'text', 
                         value: "", 
@@ -250,12 +86,13 @@ $(function() {
                                     var heightInput = $(".context-menu-button-height-input input").val().toString();
                                     if (window.console) console.log($(heightInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-button").css("height", heightInput +'px');
+                                    $(rightClickedElementObject).css("height", heightInput +'px');
+     
                                 }
                             }
                         }
                     },
-                    "fold1-key6":  {
+                    "fold1-key2": {
                         name: "Width",
                         className: "context-menu-button-width-input", 
                         type: 'text', 
@@ -267,156 +104,186 @@ $(function() {
                                     var widthInput = $(".context-menu-button-width-input input").val().toString();
                                     if (window.console) console.log($(widthInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-button").css("width", widthInput +'px');
-                                }
-                            }
-                        }
-                    },
-                    "fold2": {
-                        "name": "Background Colour", 
-                        "items": {
-                            "fold2-key1": {"name": "Red",
-                            callback: function(key, opt){
-                                $(this).css("background-color", "red");
-                             } 
-
-                        },
-                            "fold2-key2": {"name": "Blue"},
-                            "fold2-key3": {"name": "Green"}
-                        }
-                },
-                name: {
-                name: "Component ID",
-                className: "context-menu-button-comp-id-input", 
-                type: 'text', 
-                value: "", 
-                events: {
-                    keyup: function(e) {
-                        if(e.keyCode == '13') {
-                            //$(".context-menu-button").css("background-color", "blue");
-                            $(".context-menu-button").attr('id', $(".context-menu-button-comp-id-input input").val().toString());
-                            if (window.console) console.log($(".context-menu-button-comp-id-input input").val().toString());
-                        }
-                    }
-                }
-            },
-            }
-            },
-            "sep3": "---------",
-            "fold1a": {
-                "name": "Delete", 
-                "icon": "delete",
-                callback: function(key, opt){
-                    $(this).remove();
-                //alert("Clicked on " + key + "element: ");
-            } 
-            }
-        }
-    }); // end of selector: '.context-menu-button' contextMenu
-
- $.contextMenu({
-        selector: '.context-menu-slider',
-        callback: function(key, options) {
-            var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m);
-        },
-        items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
-            "fold1": {
-                "name": "Properties", 
-                "items": {
-                    "fold1-key1": {
-                        name: "Border Colour",
-                        className: "context-menu-slider-bordercolor-input", 
-                        type: 'text', 
-                        value: "", 
-                        events: {
-                            keyup: function(e) {
-                                if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var borderColorInput = $(".context-menu-slider-bordercolor-input input").val().toString();
-                                    if (window.console) console.log($(borderColorInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-slider").css("border-color", borderColorInput +'px');
-     
-                                }
-                            }
-                        }
-                    },
-                    "fold1-key2": {
-                        name: "Border Radius",
-                        className: "context-menu-slider-borderradius-input", 
-                        type: 'text', 
-                        value: "", 
-                        events: {
-                            keyup: function(e) {
-                                if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var borderRadiusInput = $(".context-menu-slider-borderradius-input input").val().toString();
-                                    if (window.console) console.log($(borderRadiusInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-slider").css("border-radius", borderRadiusInput +'px');
+                                    $(rightClickedElementObject).css("width", widthInput +'px');
      
                                 }
                             }
                         }
                     },
                     "fold1-key3": {
-                        name: "Border Width",
-                        className: "context-menu-slider-borderwidth-input", 
+                        name: "Linked Activity",
+                        className: "context-menu-button-linkaddress-input", 
                         type: 'text', 
                         value: "", 
                         events: {
                             keyup: function(e) {
                                 if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var borderWidthInput = $(".context-menu-slider-borderwidth-input input").val().toString();
-                                    if (window.console) console.log($(borderWidthInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-slider").css("border-width", borderWidthInput +'px');
-     
+                                    // Accept input at press of enter key (13)
+                                    var linkAddressInput = $(".context-menu-button-linkaddress-input input").val().toString();
+                                    // Convert spaces to underscores
+                                    linkAddressInput = linkAddressInput.replace(/ /g,"_");
+                                    // Print input to console
+                                    if (window.console) console.log($(linkAddressInput));
+                                    // Wrap link around element
+                                     $(rightClickedElementObject).wrap('<a href="' + linkAddressInput + '" />');
                                 }
                             }
                         }
                     },
                     "fold1-key4":    {
-                name: "Border Style",
-                className: "context-menu-slider-borderstyle-input",  
-                type: 'text', 
-                value: "", 
-                events: {
+                        name: "Element Text",
+                        className: "context-menu-button-innertext-input",  
+                        type: 'text', 
+                        value: "", 
+                        events: {
                             keyup: function(e) {
-                                
-                                    // Assign input from text box
-                                    var borderStyleInput = $(".context-menu-slider-borderstyle-input input").val().toString();
-                                    if (window.console) console.log($(borderStyleInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-slider").css("border-style", borderStyleInput);
+                                if(e.keyCode == '13') {
+
+                                // Accept input from text nox
+                                var innerTextInput = $(".context-menu-button-innertext-input input").val().toString();
+                                // Print input to console
+                                if (window.console) console.log($(innerTextInput));
+                                // Set button's text to input text
+                                $(rightClickedElementObject).html(innerTextInput);
+                               }
                                }
                             }
             },                 
                     "fold1-key5":  {
-                        name: "Height",
-                        className: "context-menu-slider-height-input", 
+                        name: "Background Colour",
+                        className: "context-menu-button-backgroundcolor-input", 
                         type: 'text', 
                         value: "", 
                         events: {
                             keyup: function(e) {
                                 if(e.keyCode == '13') {
                                     // Assign input from text box
-                                    var heightInput = $(".context-menu-slider-height-input input").val().toString();
-                                    if (window.console) console.log($(heightInput));
+                                    var backgroundColorInput = $(".context-menu-button-backgroundcolor-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(backgroundColorInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-slider").css("height", heightInput +'px');
+                                    $(rightClickedElementObject).css("background-color", backgroundColorInput);
                                 }
                             }
                         }
                     },
                     "fold1-key6":  {
+                        name: "Font Colour",
+                        className: "context-menu-button-fontcolor-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontColorInput = $(".context-menu-button-fontcolor-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontColorInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).css("color", fontColorInput);
+                                }
+                            }
+                        }
+                    },
+                "fold2":  {
+                        name: "Font Style",
+                        className: "context-menu-button-fontstyle-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontStyleInput = $(".context-menu-button-fontstyle-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontStyleInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).css("font-style", fontStyleInput);
+                                }
+                            }
+                        }
+                    },
+                    "fold3":  {
+                        name: "Font Weight",
+                        className: "context-menu-button-fontweight-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontWeightInput = $(".context-menu-button-fontweight-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontWeightInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).css("font-weight", fontWeightInput);
+                                }
+                            }
+                        }
+                    },
+                "fold4":  {
+                        name: "Font Family",
+                        className: "context-menu-button-fontfamily-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                               if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontFamilyInput = $(".context-menu-button-fontfamily-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontFamilyInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).css("font-family", fontFamilyInput);
+                                }
+                            }
+                        }
+                    },
+                "fold5":  {
+                        name: "Font Size",
+                        className: "context-menu-button-fontsize-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontSizeInput = $(".context-menu-button-fontsize-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontSizeInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).css("font-size", fontSizeInput + 'px');
+                                }
+                            }
+                        }
+                    },    
+            "sep3": "---------",
+            "fold1a": {
+                "name": "Delete", 
+                "icon": "delete",
+                callback: function(key, opt){
+                    $(this).remove();
+            } 
+            }
+            }   
+        }
+    }
+}
+}
+});  // end of selector: '.context-menu-button' contextMenu
+
+        $.contextMenu({
+        selector: '.context-menu-slider',
+        build: function($triggerElement, e){
+            rightClickedElementObject = $triggerElement;
+            console.log(rightClickedElementObject);
+            return {
+            callback: function(){},
+        items: {
+            "fold1": {
+                "name": "Properties", 
+                "items": {
+                    "fold1-key1": {
                         name: "Width",
                         className: "context-menu-slider-width-input", 
                         type: 'text', 
@@ -426,141 +293,41 @@ $(function() {
                                 if(e.keyCode == '13') {
                                     // Assign input from text box
                                     var widthInput = $(".context-menu-slider-width-input input").val().toString();
+                                    // Print input to console
                                     if (window.console) console.log($(widthInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-slider").css("width", widthInput +'px');
+                                    $(rightClickedElementObject).css("width", widthInput +'px');
                                 }
                             }
                         }
                     },
-                    "fold2": {
-                        "name": "Background Colour", 
-                        "items": {
-                            "fold2-key1": {"name": "Red",
-                            callback: function(key, opt){
-                                $(this).css("background-color", "red");
-                             } 
-
-                        },
-                            "fold2-key2": {"name": "Blue"},
-                            "fold2-key3": {"name": "Green"}
-                        }
-                },
-                name: {
-                name: "Component ID",
-                className: "context-menu-slider-comp-id-input", 
-                type: 'text', 
-                value: "", 
-                events: {
-                    keyup: function(e) {
-                        if(e.keyCode == '13') {
-                            //$(".context-menu-button").css("background-color", "blue");
-                            $(".context-menu-slider").attr('id', $(".context-menu-slider-comp-id-input input").val().toString());
-                            if (window.console) console.log($(".context-menu-slider-comp-id-input input").val().toString());
-                        }
-                    }
-                }
-            },
-            }
-            },
             "sep3": "---------",
             "fold1a": {
                 "name": "Delete", 
                 "icon": "delete",
                 callback: function(key, opt){
                     $(this).remove();
-                //alert("Clicked on " + key + "element: ");
             } 
             }
+            }   
         }
-    }); // end of selector: '.context-menu-slider' contextMenu
+    }
+}
+}
+}); // end of selector: '.context-menu-slider' contextMenu
 
- $.contextMenu({
+        $.contextMenu({
         selector: '.context-menu-toggle',
-        callback: function(key, options) {
-            var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m);
-        },
+        build: function($triggerElement, e){
+            rightClickedElementObject = $triggerElement;
+            console.log(rightClickedElementObject);
+            return {
+            callback: function(){},
         items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
             "fold1": {
                 "name": "Properties", 
                 "items": {
                     "fold1-key1": {
-                        name: "Border Colour",
-                        className: "context-menu-toggle-bordercolor-input", 
-                        type: 'text', 
-                        value: "", 
-                        events: {
-                            keyup: function(e) {
-                                if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var borderColorInput = $(".context-menu-toggle-bordercolor-input input").val().toString();
-                                    if (window.console) console.log($(borderColorInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-toggle").css("border-color", borderColorInput +'px');
-     
-                                }
-                            }
-                        }
-                    },
-                    "fold1-key2": {
-                        name: "Border Radius",
-                        className: "context-menu-toggle-borderradius-input", 
-                        type: 'text', 
-                        value: "", 
-                        events: {
-                            keyup: function(e) {
-                                if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var borderRadiusInput = $(".context-menu-toggle-borderradius-input input").val().toString();
-                                    if (window.console) console.log($(borderRadiusInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-toggle").css("border-radius", borderRadiusInput +'px');
-     
-                                }
-                            }
-                        }
-                    },
-                    "fold1-key3": {
-                        name: "Border Width",
-                        className: "context-menu-toggle-borderwidth-input", 
-                        type: 'text', 
-                        value: "", 
-                        events: {
-                            keyup: function(e) {
-                                if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var borderWidthInput = $(".context-menu-toggle-borderwidth-input input").val().toString();
-                                    if (window.console) console.log($(borderWidthInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-toggle").css("border-width", borderWidthInput +'px');
-     
-                                }
-                            }
-                        }
-                    },
-                    "fold1-key4":    {
-                name: "Border Style",
-                className: "context-menu-toggle-borderstyle-input",  
-                type: 'text', 
-                value: "", 
-                events: {
-                            keyup: function(e) {
-                                
-                                    // Assign input from text box
-                                    var borderStyleInput = $(".context-menu-toggle-borderstyle-input input").val().toString();
-                                    if (window.console) console.log($(borderStyleInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-toggle").css("border-style", borderStyleInput);
-                               }
-                            }
-            },                 
-                    "fold1-key5":  {
                         name: "Height",
                         className: "context-menu-toggle-height-input", 
                         type: 'text', 
@@ -570,14 +337,15 @@ $(function() {
                                 if(e.keyCode == '13') {
                                     // Assign input from text box
                                     var heightInput = $(".context-menu-toggle-height-input input").val().toString();
+                                    // Print input to console
                                     if (window.console) console.log($(heightInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-toggle").css("height", heightInput +'px');
+                                    $(rightClickedElementObject).css("height", heightInput +'px');
                                 }
                             }
                         }
                     },
-                    "fold1-key6":  {
+                    "fold1-key2": {
                         name: "Width",
                         className: "context-menu-toggle-width-input", 
                         type: 'text', 
@@ -585,304 +353,171 @@ $(function() {
                         events: {
                             keyup: function(e) {
                                 if(e.keyCode == '13') {
-                                    // Assign input from text box
+                                     // Assign input from text box
                                     var widthInput = $(".context-menu-toggle-width-input input").val().toString();
+                                    // Print input to console
                                     if (window.console) console.log($(widthInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-toggle").css("width", widthInput +'px');
-                                }
-                            }
-                        }
-                    },
-                    "fold2": {
-                        "name": "Background Colour", 
-                        "items": {
-                            "fold2-key1": {"name": "Red",
-                            callback: function(key, opt){
-                                $(this).css("background-color", "red");
-                             } 
-
-                        },
-                            "fold2-key2": {"name": "Blue"},
-                            "fold2-key3": {"name": "Green"}
-                        }
-                },
-                name: {
-                name: "Component ID",
-                className: "context-menu-toggle-comp-id-input", 
-                type: 'text', 
-                value: "", 
-                events: {
-                    keyup: function(e) {
-                        if(e.keyCode == '13') {
-                            //$(".context-menu-button").css("background-color", "blue");
-                            $(".context-menu-toggle").attr('id', $(".context-menu-toggle-comp-id-input input").val().toString());
-                            if (window.console) console.log($(".context-menu-toggle-comp-id-input input").val().toString());
-                        }
-                    }
-                }
-            },
-            }
-            },
-            "sep3": "---------",
-            "fold1a": {
-                "name": "Delete", 
-                "icon": "delete",
-                callback: function(key, opt){
-                    $(this).remove();
-                //alert("Clicked on " + key + "element: ");
-            } 
-            }
-        }
-    }); // end of selector: '.context-menu-toggle' contextMenu
-
- $.contextMenu({
-        selector: '.context-menu-table',
-        callback: function(key, options) {
-            var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m);
-        },
-        items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
-            "fold1": {
-                "name": "Properties", 
-                "items": {
-                    "fold1-key1": {
-                        name: "Border Colour",
-                        className: "context-menu-table-bordercolor-input", 
-                        type: 'text', 
-                        value: "", 
-                        events: {
-                            keyup: function(e) {
-                                if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var borderColorInput = $(".context-menu-table-bordercolor-input input").val().toString();
-                                    if (window.console) console.log($(borderColorInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-table").css("border-color", borderColorInput +'px');
-     
-                                }
-                            }
-                        }
-                    },
-                    "fold1-key2": {
-                        name: "Border Radius",
-                        className: "context-menu-table-borderradius-input", 
-                        type: 'text', 
-                        value: "", 
-                        events: {
-                            keyup: function(e) {
-                                if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var borderRadiusInput = $(".context-menu-table-borderradius-input input").val().toString();
-                                    if (window.console) console.log($(borderRadiusInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-table").css("border-radius", borderRadiusInput +'px');
-     
+                                    $(rightClickedElementObject).css("width", widthInput +'px');
                                 }
                             }
                         }
                     },
                     "fold1-key3": {
-                        name: "Border Width",
-                        className: "context-menu-table-borderwidth-input", 
+                        name: "Element Text",
+                        className: "context-menu-toggle-elementtext-input", 
                         type: 'text', 
                         value: "", 
                         events: {
                             keyup: function(e) {
                                 if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var borderWidthInput = $(".context-menu-table-borderwidth-input input").val().toString();
-                                    if (window.console) console.log($(borderWidthInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-table").css("border-width", borderWidthInput +'px');
-     
+                                    $(rightClickedElementObject).children().html($(".context-menu-toggle-elementtext-input input").val().toString());
+                                    if (window.console) console.log($(".context-menu-toggle-elementtext-input input").val().toString());
                                 }
                             }
                         }
                     },
                     "fold1-key4":    {
-                name: "Border Style",
-                className: "context-menu-table-borderstyle-input",  
-                type: 'text', 
-                value: "", 
-                events: {
+                        name: "Font Colour",
+                        className: "context-menu-toggle-fontcolor-input",  
+                        type: 'text', 
+                        value: "", 
+                        events: {
                             keyup: function(e) {
                                 
                                     // Assign input from text box
-                                    var borderStyleInput = $(".context-menu-table-borderstyle-input input").val().toString();
-                                    if (window.console) console.log($(borderStyleInput));
+                                    var fontColorInput = $(".context-menu-toggle-fontcolor-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontColorInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-table").css("border-style", borderStyleInput);
+                                    $(rightClickedElementObject).css("color", fontColorInput);
                                }
                             }
             },                 
                     "fold1-key5":  {
-                        name: "Height",
-                        className: "context-menu-table-height-input", 
+                        name: "Font Style",
+                        className: "context-menu-toggle-fontstyle-input", 
                         type: 'text', 
                         value: "", 
                         events: {
                             keyup: function(e) {
                                 if(e.keyCode == '13') {
                                     // Assign input from text box
-                                    var heightInput = $(".context-menu-table-height-input input").val().toString();
-                                    if (window.console) console.log($(heightInput));
+                                    var fontStyleInput = $(".context-menu-toggle-fontstyle-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontStyleInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-table").css("height", heightInput +'px');
+                                    $(rightClickedElementObject).css("font-style", fontStyleInput);
                                 }
                             }
                         }
                     },
                     "fold1-key6":  {
-                        name: "Width",
-                        className: "context-menu-table-width-input", 
+                        name: "Font Weight",
+                        className: "context-menu-toggle-fontweight-input", 
                         type: 'text', 
                         value: "", 
                         events: {
                             keyup: function(e) {
                                 if(e.keyCode == '13') {
                                     // Assign input from text box
-                                    var widthInput = $(".context-menu-table-width-input input").val().toString();
-                                    if (window.console) console.log($(widthInput));
+                                    var fontWeightInput = $(".context-menu-toggle-fontweight-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontWeightInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-table").css("width", widthInput +'px');
+                                    $(rightClickedElementObject).css("font-weight", fontWeightInput);
                                 }
                             }
                         }
                     },
-                    "fold2": {
-                        "name": "Background Colour", 
-                        "items": {
-                            "fold2-key1": {"name": "Red",
-                            callback: function(key, opt){
-                                $(this).css("background-color", "red");
-                             } 
-
-                        },
-                            "fold2-key2": {"name": "Blue"},
-                            "fold2-key3": {"name": "Green"}
+                    "fold2":  {
+                        name: "Font Family",
+                        className: "context-menu-toggle-fontfamily-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontFamilyInput = $(".context-menu-toggle-fontfamily-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontFamilyInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).css("font-family", fontFamilyInput);
+                                }
+                            }
                         }
-                },
-                name: {
-                name: "Component ID",
-                className: "context-menu-table-comp-id-input", 
-                type: 'text', 
-                value: "", 
-                events: {
-                    keyup: function(e) {
-                        if(e.keyCode == '13') {
-                            //$(".context-menu-button").css("background-color", "blue");
-                            $(".context-menu-table").attr('id', $(".context-menu-table-comp-id-input input").val().toString());
-                            if (window.console) console.log($(".context-menu-table-comp-id-input input").val().toString());
+                    },
+                    "fold3":  {
+                        name: "Font Size",
+                        className: "context-menu-toggle-fontsize-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontSizeInput = $(".context-menu-toggle-fontsize-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontSizeInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).css("font-size", fontSizeInput);
+                                }
+                            }
                         }
-                    }
-                }
-            },
-            }
-            },
+                    },
             "sep3": "---------",
             "fold1a": {
                 "name": "Delete", 
                 "icon": "delete",
                 callback: function(key, opt){
                     $(this).remove();
-                //alert("Clicked on " + key + "element: ");
-            } 
+           } 
             }
+            }   
         }
-    }); // end of selector: '.context-menu-table' contextMenu
+    }
+}
+}
+});  // end of selector: '.context-menu-toggle' contextMenu
 
- $.contextMenu({
-        selector: '.context-menu-textfield',
-        callback: function(key, options) {
-            var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m);
-        },
+         $.contextMenu({
+        selector: '.context-menu-table',
+        build: function($triggerElement, e){
+            rightClickedElementObject = $triggerElement;
+            console.log(rightClickedElementObject);
+            return {
+            callback: function(){},
         items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
+            "fold1": {
+                "name": "Properties", 
+                "items": {
+                    "fold1a": {
+                        "name": "Delete", 
+                        "icon": "delete",
+                        callback: function(key, opt){
+                            $(this).remove();
+                            } 
+                            }
+                        }   
+                    }
+                }
+}
+}
+}); // end of selector: '.context-menu-table' contextMenu
+
+          $.contextMenu({
+            selector: '.context-menu-textfield',
+            build: function($triggerElement, e){
+            rightClickedElementObject = $triggerElement;
+            console.log(rightClickedElementObject);
+            return {
+            callback: function(){},
+        items: {
             "fold1": {
                 "name": "Properties", 
                 "items": {
                     "fold1-key1": {
-                        name: "Border Colour",
-                        className: "context-menu-textfield-bordercolor-input", 
-                        type: 'text', 
-                        value: "", 
-                        events: {
-                            keyup: function(e) {
-                                if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var borderColorInput = $(".context-menu-textfield-bordercolor-input input").val().toString();
-                                    if (window.console) console.log($(borderColorInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-textfield").css("border-color", borderColorInput +'px');
-     
-                                }
-                            }
-                        }
-                    },
-                    "fold1-key2": {
-                        name: "Border Radius",
-                        className: "context-menu-textfield-borderradius-input", 
-                        type: 'text', 
-                        value: "", 
-                        events: {
-                            keyup: function(e) {
-                                if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var borderRadiusInput = $(".context-menu-textfield-borderradius-input input").val().toString();
-                                    if (window.console) console.log($(borderRadiusInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-textfield").css("border-radius", borderRadiusInput +'px');
-     
-                                }
-                            }
-                        }
-                    },
-                    "fold1-key3": {
-                        name: "Border Width",
-                        className: "context-menu-textfield-borderwidth-input", 
-                        type: 'text', 
-                        value: "", 
-                        events: {
-                            keyup: function(e) {
-                                if(e.keyCode == '13') {
-                                    // Assign input from text box
-                                    var borderWidthInput = $(".context-menu-textfield-borderwidth-input input").val().toString();
-                                    if (window.console) console.log($(borderWidthInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-textfield").css("border-width", borderWidthInput +'px');
-     
-                                }
-                            }
-                        }
-                    },
-                    "fold1-key4":    {
-                name: "Border Style",
-                className: "context-menu-textfield-borderstyle-input",  
-                type: 'text', 
-                value: "", 
-                events: {
-                            keyup: function(e) {
-                                
-                                    // Assign input from text box
-                                    var borderStyleInput = $(".context-menu-textfield-borderstyle-input input").val().toString();
-                                    if (window.console) console.log($(borderStyleInput));
-                                    // Change element's CSS to inputted value
-                                    $(".context-menu-textfield").css("border-style", borderStyleInput);
-                               }
-                            }
-            },                 
-                    "fold1-key5":  {
                         name: "Height",
                         className: "context-menu-textfield-height-input", 
                         type: 'text', 
@@ -892,14 +527,16 @@ $(function() {
                                 if(e.keyCode == '13') {
                                     // Assign input from text box
                                     var heightInput = $(".context-menu-textfield-height-input input").val().toString();
+                                    // Print input to console
                                     if (window.console) console.log($(heightInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-textfield").css("height", heightInput +'px');
+                                    $(rightClickedElementObject).children().css("height", heightInput +'px');
+     
                                 }
                             }
                         }
                     },
-                    "fold1-key6":  {
+                    "fold1-key2": {
                         name: "Width",
                         className: "context-menu-textfield-width-input", 
                         type: 'text', 
@@ -909,54 +546,133 @@ $(function() {
                                 if(e.keyCode == '13') {
                                     // Assign input from text box
                                     var widthInput = $(".context-menu-textfield-width-input input").val().toString();
+                                    // Print input to console
                                     if (window.console) console.log($(widthInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-textfield").css("width", widthInput +'px');
+                                    $(rightClickedElementObject).css("width", widthInput +'px');
+     
                                 }
                             }
                         }
                     },
-                    "fold2": {
-                        "name": "Background Colour", 
-                        "items": {
-                            "fold2-key1": {"name": "Red",
-                            callback: function(key, opt){
-                                $(this).css("background-color", "red");
-                             } 
-
-                        },
-                            "fold2-key2": {"name": "Blue"},
-                            "fold2-key3": {"name": "Green"}
+                    "fold1-key3": {
+                        name: "Element Text",
+                        className: "context-menu-textfield-elementtext-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    $(rightClickedElementObject).children().html($(".context-menu-textfield-elementtext-input input").val().toString());
+                                    if (window.console) console.log($(".context-menu-textfield-elementtext-input input").val().toString());
+                                }
+                            }
                         }
-                },
-                name: {
-                name: "Component ID",
-                className: "context-menu-textfield-comp-id-input", 
+                    },
+                    "fold1-key4":    {
+                name: "Font Colour",
+                className: "context-menu-textfield-fontcolor-input",  
                 type: 'text', 
                 value: "", 
                 events: {
-                    keyup: function(e) {
-                        if(e.keyCode == '13') {
-                            //$(".context-menu-button").css("background-color", "blue");
-                            $(".context-menu-textfield").attr('id', $(".context-menu-textfield-comp-id-input input").val().toString());
-                            if (window.console) console.log($(".context-menu-textfield-comp-id-input input").val().toString());
+                            keyup: function(e) {
+                                    if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontColorInput = $(".context-menu-textfield-fontcolor-input input").val().toString();
+                                    // Print input to consoe
+                                    if (window.console) console.log($(fontColorInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).children().css("color", fontColorInput);
+                                }
+                               }
+                            }
+                    },                 
+                    "fold1-key5":  {
+                        name: "Font Style",
+                        className: "context-menu-textfield-fontstyle-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontStyleInput = $(".context-menu-textfield-fontstyle-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontStyleInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).css("font-style", fontStyleInput);
+                                }
+                            }
                         }
-                    }
-                }
-            },
-            }
-            },
+                    },
+                    "fold1-key6":  {
+                        name: "Font Weight",
+                        className: "context-menu-textfield-fontweight-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontWeightInput = $(".context-menu-textfield-fontweight-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontWeightInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).css("font-weight", fontWeightInput);
+                                }
+                            }
+                        }
+                    },
+                "fold2":  {
+                        name: "Font Family",
+                        className: "context-menu-textfield-fontfamily-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontFamilyInput = $(".context-menu-textfield-fontfamily-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontFamilyInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).css("font-family", fontFamilyInput);
+                                }
+                            }
+                        }
+                    },
+                "fold3":  {
+                        name: "Font Size",
+                        className: "context-menu-textfield-fontsize-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontSizeInput = $(".context-menu-textfield-fontsize-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontSizeInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).children().css("font-size", fontSizeInput);
+                                }
+                            }
+                        }
+                    },
             "sep3": "---------",
             "fold1a": {
                 "name": "Delete", 
                 "icon": "delete",
                 callback: function(key, opt){
                     $(this).remove();
-                //alert("Clicked on " + key + "element: ");
             } 
             }
+            }   
         }
-    }); // end of selector: '.context-menu-textfield' contextMenu
+    }
+}
+}
+});  // end of selector: '.context-menu-textfield' contextMenu
 
  $.contextMenu({
         selector: '.ui-droppable.vertical',
@@ -975,17 +691,17 @@ $(function() {
                 "items": {
                     "fold1-key1": {
                         name: "Background Colour",
-                        className: "context-menu-backgroundcolor-input", 
+                        className: "context-menu-backgroundcolorvert-input", 
                         type: 'text', 
                         value: "", 
                         events: {
                             keyup: function(e) {
                                 if(e.keyCode == '13') {
                                     // Assign input from text box
-                                    var backgroundColorInput = $(".context-menu-backgroundcolor-input input").val().toString();
+                                    var backgroundColorInput = $(".context-menu-backgroundcolorvert-input input").val().toString();
                                     if (window.console) console.log($(backgroundColorInput));
                                     // Change element's CSS to inputted value
-                                    $(".ui-droppable.vertical").css("background-color", backgroundColorInput);
+                                    $(activeWorkspace).css("background-color", backgroundColorInput);
      
                                 }
                             }
@@ -997,21 +713,11 @@ $(function() {
             "fold1a": {
                 "name": "Rotate Workspace", 
                 callback: function(key, opt){
-                    var bgTransfer = $(".ui-droppable.vertical").css("background-color");
-
-
-                    $(window).off("resize", vertical);
-                    $(window).on("resize", horizontal);
-
-                    $("#tabs").removeAttr("style").removeClass("vertical").addClass("horizontal");
-                    $("#workspaces").removeAttr("style").removeClass("vertical").addClass("horizontal");
-                    $("#components").removeAttr("style").removeClass("vertical").addClass("horizontal");
-
-                    
+                    var bgTransfer = $(activeWorkspace).css("background-color");
                     //call rotation function
-                    horizontal();
+                    rotate();
                     //Apply old bg colour
-                    $(".ui-droppable.horizontal").css("background-color", bgTransfer);
+                    $(activeWorkspace).css("background-color", bgTransfer);
 
             } 
             }
@@ -1033,19 +739,19 @@ $.contextMenu({
             "fold1": {
                 "name": "Properties", 
                 "items": {
-                    "fold1-key1": {
+                   "fold1-key1": {
                         name: "Background Colour",
-                        className: "context-menu-backgroundcolor-input", 
+                        className: "context-menu-backgroundcolorhorz-input", 
                         type: 'text', 
                         value: "", 
                         events: {
                             keyup: function(e) {
                                 if(e.keyCode == '13') {
                                     // Assign input from text box
-                                    var backgroundColorInput = $(".context-menu-backgroundcolor-input input").val().toString();
+                                    var backgroundColorInput = $(".context-menu-backgroundcolorhorz-input input").val().toString();
                                     if (window.console) console.log($(backgroundColorInput));
                                     // Change element's CSS to inputted value
-                                    $(".ui-droppable.horizontal").css("background-color", backgroundColorInput);
+                                    $(activeWorkspace).css("background-color", backgroundColorInput);
      
                                 }
                             }
@@ -1057,26 +763,15 @@ $.contextMenu({
             "fold1a": {
                 "name": "Rotate Workspace", 
                 callback: function(key, opt){
-                        var bgTransfer = $(".ui-droppable.horizontal").css("background-color");
-
-                        $(window).off("resize", horizontal);
-                        $(window).on("resize", vertical);
-                        $("#tabs").removeAttr("style").removeClass("horizontal").addClass("vertical");
-                        $("#workspaces").removeAttr("style").removeClass("horizontal").addClass("vertical");
-                        $("#components").removeAttr("style").removeClass("horizontal").addClass("vertical");
-
-
+                    var bgTransfer = $(activeWorkspace).css("background-color");
                     //call rotation function
-                    vertical();
+                    rotate();
                     //Apply old bg colour
-                    $(".ui-droppable.vertical").css("background-color", bgTransfer);
+                    $(activeWorkspace).css("background-color", bgTransfer);
 
             } 
             }
         }
     }); // end of selector: '.workspace-horizontal' contextMenu
-
-
-
 
 }); // end of function
