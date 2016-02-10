@@ -1,74 +1,17 @@
 window.$ = require("./js/jquery.js");
 
+var rightClickedElementObject;
 
 $(function() {
-    /*
-        $.contextMenu({
-        selector: '.context-menu-one',
-        callback: function(key, options) {
-            var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m);
-        },
-        items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
-            "fold1": {
-                "name": "Properties", 
-                "items": {
-                    "fold1-key1": {"name": "Border Colour"},
-                    "fold1-key2": {"name": "Visibility"},
-                    "fold1-key3": {"name": "Padding"},
-                    "fold1-key4": {"name": "Height"},
-                    "fold1-key5": {"name": "Width"},
-                    "fold2": {
-                        "name": "Background Colour", 
-                        "items": {
-                            "fold2-key1": {"name": "Red"},
-                            "fold2-key2": {"name": "Blue"},
-                            "fold2-key3": {"name": "Green"}
-                        }
-                },
-                name: {
-                name: "Component ID", 
-                type: 'text', 
-                value: "", 
-                events: {
-                    keyup: function(e) {
-                        // add some fancy key handling here?
-                        window.console && console.log('key: '+ e.keyCode); 
-                    }
-                }
-            },
-            }
-            },
-            "sep3": "---------",
-            "fold1a": {
-                "name": "Delete", 
-                "icon": "delete",
-                callback: function(key, opt){
-                    $(this).remove();
-                //alert("Clicked on " + key + "element: ");
-            } 
-            }
-        }
-    }); // end of selector: '.context-menu-one' contextMenu
-        */
 
         $.contextMenu({
         selector: '.context-menu-badge',
-        callback: function(key, options) {
-            var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m);
-        },
+        build: function($triggerElement, e){
+            rightClickedElementObject = $triggerElement;
+            console.log(rightClickedElementObject);
+            return {
+            callback: function(){},
         items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
             "fold1": {
                 "name": "Properties", 
                 "items": {
@@ -84,7 +27,7 @@ $(function() {
                                     var borderColorInput = $(".context-menu-badge-bordercolor-input input").val().toString();
                                     if (window.console) console.log($(borderColorInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-badge").css("border-color", borderColorInput +'px');
+                                    $(rightClickedElementObject).css("border-color", borderColorInput +'px');
      
                                 }
                             }
@@ -104,7 +47,7 @@ $(function() {
                                     var heightInput = $(".context-menu-badge-height-input input").val().toString();
                                     if (window.console) console.log($(heightInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-badge").css("height", heightInput +'px');
+                                    $(rightClickedElementObject).css("height", heightInput +'px');
      
                                 }
                             }
@@ -112,17 +55,27 @@ $(function() {
                     },
                     "fold1-key5": {"name": "Width"},
                     "fold2": {
-                        "name": "Background Colour(#XXXXXXX)", 
+                        "name": "Background Colour", 
                         "items": {
                             "fold2-key1": {"name": "Red",
                             callback: function(key, opt){
-                                $(this).css("background-color", "red");
+                                $(rightClickedElementObject).css("background-color", "red");
                              } 
 
                         },
-                            "fold2-key2": {"name": "Blue"},
-                            "fold2-key3": {"name": "Green"}
+                            "fold2-key2": {"name": "Blue",
+                            callback: function(key, opt){
+                                $(rightClickedElementObject).css("background-color", "blue");
+                             } 
+
+                        },
+                            "fold2-key3": {"name": "Green",
+                            callback: function(key, opt){
+                                $(rightClickedElementObject).css("background-color", "green");
+                             } 
+
                         }
+                    }
                 },
                 name: {
                 name: "Component ID",
@@ -132,8 +85,7 @@ $(function() {
                 events: {
                     keyup: function(e) {
                         if(e.keyCode == '13') {
-                            //$(".context-menu-badge").css("background-color", "blue");
-                            $(".context-menu-badge").attr('id', $(".context-menu-badge-comp-id-input input").val().toString());
+                            $(rightClickedElementObject).attr('id', $(".context-menu-badge-comp-id-input input").val().toString());
                             if (window.console) console.log($(".context-menu-badge-comp-id-input input").val().toString());
                         }
                     }
@@ -147,24 +99,21 @@ $(function() {
                 "icon": "delete",
                 callback: function(key, opt){
                     $(this).remove();
-                //alert("Clicked on " + key + "element: ");
             } 
             }
-        }
-    }); // end of selector: '.context-menu-badge' contextMenu
+            }   
+        };
+    }
+}); // end of selector: '.context-menu-badge' contextMenu   
 
         $.contextMenu({
         selector: '.context-menu-button',
-        callback: function(key, options) {
-            var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m);
-        },
+        build: function($triggerElement, e){
+            rightClickedElementObject = $triggerElement;
+            console.log(rightClickedElementObject);
+            return {
+            callback: function(){},
         items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
             "fold1": {
                 "name": "Properties", 
                 "items": {
@@ -180,7 +129,7 @@ $(function() {
                                     var borderColorInput = $(".context-menu-button-bordercolor-input input").val().toString();
                                     if (window.console) console.log($(borderColorInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-button").css("border-color", borderColorInput +'px');
+                                    $(rightClickedElementObject).css("border-color", borderColorInput +'px');
      
                                 }
                             }
@@ -198,7 +147,7 @@ $(function() {
                                     var borderRadiusInput = $(".context-menu-button-borderradius-input input").val().toString();
                                     if (window.console) console.log($(borderRadiusInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-button").css("border-radius", borderRadiusInput +'px');
+                                    $(rightClickedElementObject).css("border-radius", borderRadiusInput +'px');
      
                                 }
                             }
@@ -216,7 +165,7 @@ $(function() {
                                     var borderWidthInput = $(".context-menu-button-borderwidth-input input").val().toString();
                                     if (window.console) console.log($(borderWidthInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-button").css("border-width", borderWidthInput +'px');
+                                    $(rightClickedElementObject).css("border-width", borderWidthInput +'px');
      
                                 }
                             }
@@ -234,7 +183,7 @@ $(function() {
                                     var borderStyleInput = $(".context-menu-button-borderstyle-input input").val().toString();
                                     if (window.console) console.log($(borderStyleInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-button").css("border-style", borderStyleInput);
+                                    $(rightClickedElementObject).css("border-style", borderStyleInput);
                                }
                             }
             },                 
@@ -250,7 +199,7 @@ $(function() {
                                     var heightInput = $(".context-menu-button-height-input input").val().toString();
                                     if (window.console) console.log($(heightInput));
                                     // Change element's CSS to inputted value
-                                    $(rightClickObject).css("height", heightInput +'px');
+                                    $(rightClickedElementObject).css("height", heightInput +'px');
                                 }
                             }
                         }
@@ -267,7 +216,7 @@ $(function() {
                                     var widthInput = $(".context-menu-button-width-input input").val().toString();
                                     if (window.console) console.log($(widthInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-button").css("width", widthInput +'px');
+                                    $(rightClickedElementObject).css("width", widthInput +'px');
                                 }
                             }
                         }
@@ -277,13 +226,23 @@ $(function() {
                         "items": {
                             "fold2-key1": {"name": "Red",
                             callback: function(key, opt){
-                                $(this).css("background-color", "red");
+                                $(rightClickedElementObject).css("background-color", "red");
                              } 
 
                         },
-                            "fold2-key2": {"name": "Blue"},
-                            "fold2-key3": {"name": "Green"}
+                            "fold2-key2": {"name": "Blue",
+                            callback: function(key, opt){
+                                $(rightClickedElementObject).css("background-color", "blue");
+                             } 
+
+                        },
+                            "fold2-key3": {"name": "Green",
+                            callback: function(key, opt){
+                                $(rightClickedElementObject).css("background-color", "green");
+                             } 
+
                         }
+                    }
                 },
                 name: {
                 name: "Component ID",
@@ -293,8 +252,8 @@ $(function() {
                 events: {
                     keyup: function(e) {
                         if(e.keyCode == '13') {
-                            //$(".context-menu-button").css("background-color", "blue");
-                            $(".context-menu-button").attr('id', $(".context-menu-button-comp-id-input input").val().toString());
+                            //$(rightClickedElementObject).css("background-color", "blue");
+                            $(rightClickedElementObject).attr('id', $(".context-menu-button-comp-id-input input").val().toString());
                             if (window.console) console.log($(".context-menu-button-comp-id-input input").val().toString());
                         }
                     }
@@ -308,24 +267,21 @@ $(function() {
                 "icon": "delete",
                 callback: function(key, opt){
                     $(this).remove();
-                //alert("Clicked on " + key + "element: ");
             } 
             }
-        }
-    }); // end of selector: '.context-menu-button' contextMenu
+        }   
+        };
+    }
+});  // end of selector: '.context-menu-button' contextMenu
 
- $.contextMenu({
+        $.contextMenu({
         selector: '.context-menu-slider',
-        callback: function(key, options) {
-            var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m);
-        },
+        build: function($triggerElement, e){
+            rightClickedElementObject = $triggerElement;
+            console.log(rightClickedElementObject);
+            return {
+            callback: function(){},
         items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
             "fold1": {
                 "name": "Properties", 
                 "items": {
@@ -341,7 +297,7 @@ $(function() {
                                     var borderColorInput = $(".context-menu-slider-bordercolor-input input").val().toString();
                                     if (window.console) console.log($(borderColorInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-slider").css("border-color", borderColorInput +'px');
+                                    $(rightClickedElementObject).css("border-color", borderColorInput +'px');
      
                                 }
                             }
@@ -359,7 +315,7 @@ $(function() {
                                     var borderRadiusInput = $(".context-menu-slider-borderradius-input input").val().toString();
                                     if (window.console) console.log($(borderRadiusInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-slider").css("border-radius", borderRadiusInput +'px');
+                                    $(rightClickedElementObject).css("border-radius", borderRadiusInput +'px');
      
                                 }
                             }
@@ -377,7 +333,7 @@ $(function() {
                                     var borderWidthInput = $(".context-menu-slider-borderwidth-input input").val().toString();
                                     if (window.console) console.log($(borderWidthInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-slider").css("border-width", borderWidthInput +'px');
+                                    $(rightClickedElementObject).css("border-width", borderWidthInput +'px');
      
                                 }
                             }
@@ -395,7 +351,7 @@ $(function() {
                                     var borderStyleInput = $(".context-menu-slider-borderstyle-input input").val().toString();
                                     if (window.console) console.log($(borderStyleInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-slider").css("border-style", borderStyleInput);
+                                    $(rightClickedElementObject).css("border-style", borderStyleInput);
                                }
                             }
             },                 
@@ -411,7 +367,7 @@ $(function() {
                                     var heightInput = $(".context-menu-slider-height-input input").val().toString();
                                     if (window.console) console.log($(heightInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-slider").css("height", heightInput +'px');
+                                    $(rightClickedElementObject).css("height", heightInput +'px');
                                 }
                             }
                         }
@@ -428,7 +384,7 @@ $(function() {
                                     var widthInput = $(".context-menu-slider-width-input input").val().toString();
                                     if (window.console) console.log($(widthInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-slider").css("width", widthInput +'px');
+                                    $(rightClickedElementObject).css("width", widthInput +'px');
                                 }
                             }
                         }
@@ -438,13 +394,23 @@ $(function() {
                         "items": {
                             "fold2-key1": {"name": "Red",
                             callback: function(key, opt){
-                                $(this).css("background-color", "red");
+                                $(rightClickedElementObject).css("background-color", "red");
                              } 
 
                         },
-                            "fold2-key2": {"name": "Blue"},
-                            "fold2-key3": {"name": "Green"}
+                            "fold2-key2": {"name": "Blue",
+                            callback: function(key, opt){
+                                $(rightClickedElementObject).css("background-color", "blue");
+                             } 
+
+                        },
+                            "fold2-key3": {"name": "Green",
+                            callback: function(key, opt){
+                                $(rightClickedElementObject).css("background-color", "green");
+                             } 
+
                         }
+                    }
                 },
                 name: {
                 name: "Component ID",
@@ -454,8 +420,8 @@ $(function() {
                 events: {
                     keyup: function(e) {
                         if(e.keyCode == '13') {
-                            //$(".context-menu-button").css("background-color", "blue");
-                            $(".context-menu-slider").attr('id', $(".context-menu-slider-comp-id-input input").val().toString());
+                            //$(rightClickedElementObject).css("background-color", "blue");
+                            $(rightClickedElementObject).attr('id', $(".context-menu-slider-comp-id-input input").val().toString());
                             if (window.console) console.log($(".context-menu-slider-comp-id-input input").val().toString());
                         }
                     }
@@ -469,24 +435,21 @@ $(function() {
                 "icon": "delete",
                 callback: function(key, opt){
                     $(this).remove();
-                //alert("Clicked on " + key + "element: ");
             } 
             }
-        }
-    }); // end of selector: '.context-menu-slider' contextMenu
+        }   
+        };
+    }
+}); // end of selector: '.context-menu-slider' contextMenu
 
- $.contextMenu({
+        $.contextMenu({
         selector: '.context-menu-toggle',
-        callback: function(key, options) {
-            var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m);
-        },
+        build: function($triggerElement, e){
+            rightClickedElementObject = $triggerElement;
+            console.log(rightClickedElementObject);
+            return {
+            callback: function(){},
         items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
             "fold1": {
                 "name": "Properties", 
                 "items": {
@@ -502,7 +465,7 @@ $(function() {
                                     var borderColorInput = $(".context-menu-toggle-bordercolor-input input").val().toString();
                                     if (window.console) console.log($(borderColorInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-toggle").css("border-color", borderColorInput +'px');
+                                    $(rightClickedElementObject).css("border-color", borderColorInput +'px');
      
                                 }
                             }
@@ -520,7 +483,7 @@ $(function() {
                                     var borderRadiusInput = $(".context-menu-toggle-borderradius-input input").val().toString();
                                     if (window.console) console.log($(borderRadiusInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-toggle").css("border-radius", borderRadiusInput +'px');
+                                    $(rightClickedElementObject).css("border-radius", borderRadiusInput +'px');
      
                                 }
                             }
@@ -538,7 +501,7 @@ $(function() {
                                     var borderWidthInput = $(".context-menu-toggle-borderwidth-input input").val().toString();
                                     if (window.console) console.log($(borderWidthInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-toggle").css("border-width", borderWidthInput +'px');
+                                    $(rightClickedElementObject).css("border-width", borderWidthInput +'px');
      
                                 }
                             }
@@ -556,7 +519,7 @@ $(function() {
                                     var borderStyleInput = $(".context-menu-toggle-borderstyle-input input").val().toString();
                                     if (window.console) console.log($(borderStyleInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-toggle").css("border-style", borderStyleInput);
+                                    $(rightClickedElementObject).css("border-style", borderStyleInput);
                                }
                             }
             },                 
@@ -572,7 +535,7 @@ $(function() {
                                     var heightInput = $(".context-menu-toggle-height-input input").val().toString();
                                     if (window.console) console.log($(heightInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-toggle").css("height", heightInput +'px');
+                                    $(rightClickedElementObject).css("height", heightInput +'px');
                                 }
                             }
                         }
@@ -589,7 +552,7 @@ $(function() {
                                     var widthInput = $(".context-menu-toggle-width-input input").val().toString();
                                     if (window.console) console.log($(widthInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-toggle").css("width", widthInput +'px');
+                                    $(rightClickedElementObject).css("width", widthInput +'px');
                                 }
                             }
                         }
@@ -599,13 +562,23 @@ $(function() {
                         "items": {
                             "fold2-key1": {"name": "Red",
                             callback: function(key, opt){
-                                $(this).css("background-color", "red");
+                                $(rightClickedElementObject).css("background-color", "red");
                              } 
 
                         },
-                            "fold2-key2": {"name": "Blue"},
-                            "fold2-key3": {"name": "Green"}
+                            "fold2-key2": {"name": "Blue",
+                            callback: function(key, opt){
+                                $(rightClickedElementObject).css("background-color", "blue");
+                             } 
+
+                        },
+                            "fold2-key3": {"name": "Green",
+                            callback: function(key, opt){
+                                $(rightClickedElementObject).css("background-color", "green");
+                             } 
+
                         }
+                    }
                 },
                 name: {
                 name: "Component ID",
@@ -615,8 +588,8 @@ $(function() {
                 events: {
                     keyup: function(e) {
                         if(e.keyCode == '13') {
-                            //$(".context-menu-button").css("background-color", "blue");
-                            $(".context-menu-toggle").attr('id', $(".context-menu-toggle-comp-id-input input").val().toString());
+                            //$(rightClickedElementObject).css("background-color", "blue");
+                            $(rightClickedElementObject).attr('id', $(".context-menu-toggle-comp-id-input input").val().toString());
                             if (window.console) console.log($(".context-menu-toggle-comp-id-input input").val().toString());
                         }
                     }
@@ -630,24 +603,21 @@ $(function() {
                 "icon": "delete",
                 callback: function(key, opt){
                     $(this).remove();
-                //alert("Clicked on " + key + "element: ");
             } 
             }
-        }
-    }); // end of selector: '.context-menu-toggle' contextMenu
+        }   
+        };
+    }
+}); // end of selector: '.context-menu-toggle' contextMenu
 
- $.contextMenu({
+         $.contextMenu({
         selector: '.context-menu-table',
-        callback: function(key, options) {
-            var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m);
-        },
+        build: function($triggerElement, e){
+            rightClickedElementObject = $triggerElement;
+            console.log(rightClickedElementObject);
+            return {
+            callback: function(){},
         items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
             "fold1": {
                 "name": "Properties", 
                 "items": {
@@ -663,7 +633,7 @@ $(function() {
                                     var borderColorInput = $(".context-menu-table-bordercolor-input input").val().toString();
                                     if (window.console) console.log($(borderColorInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-table").css("border-color", borderColorInput +'px');
+                                    $(rightClickedElementObject).css("border-color", borderColorInput +'px');
      
                                 }
                             }
@@ -681,7 +651,7 @@ $(function() {
                                     var borderRadiusInput = $(".context-menu-table-borderradius-input input").val().toString();
                                     if (window.console) console.log($(borderRadiusInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-table").css("border-radius", borderRadiusInput +'px');
+                                    $(rightClickedElementObject).css("border-radius", borderRadiusInput +'px');
      
                                 }
                             }
@@ -699,7 +669,7 @@ $(function() {
                                     var borderWidthInput = $(".context-menu-table-borderwidth-input input").val().toString();
                                     if (window.console) console.log($(borderWidthInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-table").css("border-width", borderWidthInput +'px');
+                                    $(rightClickedElementObject).css("border-width", borderWidthInput +'px');
      
                                 }
                             }
@@ -717,7 +687,7 @@ $(function() {
                                     var borderStyleInput = $(".context-menu-table-borderstyle-input input").val().toString();
                                     if (window.console) console.log($(borderStyleInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-table").css("border-style", borderStyleInput);
+                                    $(rightClickedElementObject).css("border-style", borderStyleInput);
                                }
                             }
             },                 
@@ -733,7 +703,7 @@ $(function() {
                                     var heightInput = $(".context-menu-table-height-input input").val().toString();
                                     if (window.console) console.log($(heightInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-table").css("height", heightInput +'px');
+                                    $(rightClickedElementObject).css("height", heightInput +'px');
                                 }
                             }
                         }
@@ -750,7 +720,7 @@ $(function() {
                                     var widthInput = $(".context-menu-table-width-input input").val().toString();
                                     if (window.console) console.log($(widthInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-table").css("width", widthInput +'px');
+                                    $(rightClickedElementObject).css("width", widthInput +'px');
                                 }
                             }
                         }
@@ -760,13 +730,23 @@ $(function() {
                         "items": {
                             "fold2-key1": {"name": "Red",
                             callback: function(key, opt){
-                                $(this).css("background-color", "red");
+                                $(rightClickedElementObject).css("background-color", "red");
                              } 
 
                         },
-                            "fold2-key2": {"name": "Blue"},
-                            "fold2-key3": {"name": "Green"}
+                            "fold2-key2": {"name": "Blue",
+                            callback: function(key, opt){
+                                $(rightClickedElementObject).css("background-color", "blue");
+                             } 
+
+                        },
+                            "fold2-key3": {"name": "Green",
+                            callback: function(key, opt){
+                                $(rightClickedElementObject).css("background-color", "green");
+                             } 
+
                         }
+                    }
                 },
                 name: {
                 name: "Component ID",
@@ -777,7 +757,7 @@ $(function() {
                     keyup: function(e) {
                         if(e.keyCode == '13') {
                             //$(".context-menu-button").css("background-color", "blue");
-                            $(".context-menu-table").attr('id', $(".context-menu-table-comp-id-input input").val().toString());
+                            $(rightClickedElementObject).attr('id', $(".context-menu-table-comp-id-input input").val().toString());
                             if (window.console) console.log($(".context-menu-table-comp-id-input input").val().toString());
                         }
                     }
@@ -791,24 +771,21 @@ $(function() {
                 "icon": "delete",
                 callback: function(key, opt){
                     $(this).remove();
-                //alert("Clicked on " + key + "element: ");
             } 
             }
-        }
-    }); // end of selector: '.context-menu-table' contextMenu
+        }   
+        };
+    }
+}); // end of selector: '.context-menu-table' contextMenu
 
- $.contextMenu({
-        selector: '.context-menu-textfield',
-        callback: function(key, options) {
-            var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m);
-        },
+          $.contextMenu({
+            selector: '.context-menu-textfield',
+            build: function($triggerElement, e){
+            rightClickedElementObject = $triggerElement;
+            console.log(rightClickedElementObject);
+            return {
+            callback: function(){},
         items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
             "fold1": {
                 "name": "Properties", 
                 "items": {
@@ -824,7 +801,7 @@ $(function() {
                                     var borderColorInput = $(".context-menu-textfield-bordercolor-input input").val().toString();
                                     if (window.console) console.log($(borderColorInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-textfield").css("border-color", borderColorInput +'px');
+                                    $(rightClickedElementObject).css("border-color", borderColorInput +'px');
      
                                 }
                             }
@@ -842,7 +819,7 @@ $(function() {
                                     var borderRadiusInput = $(".context-menu-textfield-borderradius-input input").val().toString();
                                     if (window.console) console.log($(borderRadiusInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-textfield").css("border-radius", borderRadiusInput +'px');
+                                    $(rightClickedElementObject).css("border-radius", borderRadiusInput +'px');
      
                                 }
                             }
@@ -860,7 +837,7 @@ $(function() {
                                     var borderWidthInput = $(".context-menu-textfield-borderwidth-input input").val().toString();
                                     if (window.console) console.log($(borderWidthInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-textfield").css("border-width", borderWidthInput +'px');
+                                    $(rightClickedElementObject).css("border-width", borderWidthInput +'px');
      
                                 }
                             }
@@ -878,7 +855,7 @@ $(function() {
                                     var borderStyleInput = $(".context-menu-textfield-borderstyle-input input").val().toString();
                                     if (window.console) console.log($(borderStyleInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-textfield").css("border-style", borderStyleInput);
+                                    $(rightClickedElementObject).css("border-style", borderStyleInput);
                                }
                             }
             },                 
@@ -894,7 +871,7 @@ $(function() {
                                     var heightInput = $(".context-menu-textfield-height-input input").val().toString();
                                     if (window.console) console.log($(heightInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-textfield").css("height", heightInput +'px');
+                                    $(rightClickedElementObject).css("height", heightInput +'px');
                                 }
                             }
                         }
@@ -911,7 +888,7 @@ $(function() {
                                     var widthInput = $(".context-menu-textfield-width-input input").val().toString();
                                     if (window.console) console.log($(widthInput));
                                     // Change element's CSS to inputted value
-                                    $(".context-menu-textfield").css("width", widthInput +'px');
+                                    $(rightClickedElementObject).css("width", widthInput +'px');
                                 }
                             }
                         }
@@ -921,13 +898,23 @@ $(function() {
                         "items": {
                             "fold2-key1": {"name": "Red",
                             callback: function(key, opt){
-                                $(this).css("background-color", "red");
+                                $(rightClickedElementObject).css("background-color", "red");
                              } 
 
                         },
-                            "fold2-key2": {"name": "Blue"},
-                            "fold2-key3": {"name": "Green"}
+                            "fold2-key2": {"name": "Blue",
+                            callback: function(key, opt){
+                                $(rightClickedElementObject).css("background-color", "blue");
+                             } 
+
+                        },
+                            "fold2-key3": {"name": "Green",
+                            callback: function(key, opt){
+                                $(rightClickedElementObject).css("background-color", "green");
+                             } 
+
                         }
+                    }
                 },
                 name: {
                 name: "Component ID",
@@ -937,8 +924,8 @@ $(function() {
                 events: {
                     keyup: function(e) {
                         if(e.keyCode == '13') {
-                            //$(".context-menu-button").css("background-color", "blue");
-                            $(".context-menu-textfield").attr('id', $(".context-menu-textfield-comp-id-input input").val().toString());
+                            //$(rightClickedElementObject).css("background-color", "blue");
+                            $(rightClickedElementObject).attr('id', $(".context-menu-textfield-comp-id-input input").val().toString());
                             if (window.console) console.log($(".context-menu-textfield-comp-id-input input").val().toString());
                         }
                     }
@@ -952,11 +939,12 @@ $(function() {
                 "icon": "delete",
                 callback: function(key, opt){
                     $(this).remove();
-                //alert("Clicked on " + key + "element: ");
             } 
             }
-        }
-    }); // end of selector: '.context-menu-textfield' contextMenu
+        }   
+        };
+    }
+}); // end of selector: '.context-menu-textfield' contextMenu
 
  $.contextMenu({
         selector: '.ui-droppable.vertical',
