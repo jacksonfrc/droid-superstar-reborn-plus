@@ -77,22 +77,34 @@ $(function() {
                         }
                     }
                 },
-                name: {
-                name: "Component ID",
-                className: "context-menu-badge-comp-id-input", 
-                type: 'text', 
-                value: "", 
-                events: {
-                    keyup: function(e) {
-                        if(e.keyCode == '13') {
-                            $(rightClickedElementObject).attr('id', $(".context-menu-badge-comp-id-input input").val().toString());
-                            if (window.console) console.log($(".context-menu-badge-comp-id-input input").val().toString());
+                "fold3":  {
+                        name: "Component ID",
+                        className: "context-menu-badge-comp-id-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                $(rightClickedElementObject).attr('id', $(".context-menu-badge-comp-id-input input").val().toString());
+                                 if (window.console) console.log($(".context-menu-badge-comp-id-input input").val().toString());
+                                }
+                            }
                         }
-                    }
-                }
-            },
-            }
-            },
+                    },
+                "fold4":  {
+                        name: "Element Text",
+                        className: "context-menu-badge-elementtext-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    $(rightClickedElementObject).html($(".context-menu-badge-elementtext-input input").val().toString());
+                                    if (window.console) console.log($(".context-menu-badge-elementtext-input input").val().toString());
+                                }
+                            }
+                        }
+                    },
             "sep3": "---------",
             "fold1a": {
                 "name": "Delete", 
@@ -102,8 +114,10 @@ $(function() {
             } 
             }
             }   
-        };
+        }
     }
+}
+}
 }); // end of selector: '.context-menu-badge' contextMenu   
 
         $.contextMenu({
@@ -244,23 +258,34 @@ $(function() {
                         }
                     }
                 },
-                name: {
-                name: "Component ID",
-                className: "context-menu-button-comp-id-input", 
-                type: 'text', 
-                value: "", 
-                events: {
-                    keyup: function(e) {
-                        if(e.keyCode == '13') {
-                            //$(rightClickedElementObject).css("background-color", "blue");
-                            $(rightClickedElementObject).attr('id', $(".context-menu-button-comp-id-input input").val().toString());
-                            if (window.console) console.log($(".context-menu-button-comp-id-input input").val().toString());
+                "fold3":  {
+                        name: "Component ID",
+                        className: "context-menu-button-comp-id-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                $(rightClickedElementObject).attr('id', $(".context-menu-button-comp-id-input input").val().toString());
+                                 if (window.console) console.log($(".context-menu-button-comp-id-input input").val().toString());
+                                }
+                            }
                         }
-                    }
-                }
-            },
-            }
-            },
+                    },
+                "fold4":  {
+                        name: "Element Text",
+                        className: "context-menu-button-elementtext-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    $(rightClickedElementObject).html($(".context-menu-button-elementtext-input input").val().toString());
+                                    if (window.console) console.log($(".context-menu-button-elementtext-input input").val().toString());
+                                }
+                            }
+                        }
+                    },
             "sep3": "---------",
             "fold1a": {
                 "name": "Delete", 
@@ -269,9 +294,11 @@ $(function() {
                     $(this).remove();
             } 
             }
-        }   
-        };
+            }   
+        }
     }
+}
+}
 });  // end of selector: '.context-menu-button' contextMenu
 
         $.contextMenu({
@@ -412,23 +439,34 @@ $(function() {
                         }
                     }
                 },
-                name: {
-                name: "Component ID",
-                className: "context-menu-slider-comp-id-input", 
-                type: 'text', 
-                value: "", 
-                events: {
-                    keyup: function(e) {
-                        if(e.keyCode == '13') {
-                            //$(rightClickedElementObject).css("background-color", "blue");
-                            $(rightClickedElementObject).attr('id', $(".context-menu-slider-comp-id-input input").val().toString());
-                            if (window.console) console.log($(".context-menu-slider-comp-id-input input").val().toString());
+                "fold3":  {
+                        name: "Component ID",
+                        className: "context-menu-slider-comp-id-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                $(rightClickedElementObject).attr('id', $(".context-menu-slider-comp-id-input input").val().toString());
+                                 if (window.console) console.log($(".context-menu-slider-comp-id-input input").val().toString());
+                                }
+                            }
                         }
-                    }
-                }
-            },
-            }
-            },
+                    },
+                "fold4":  {
+                        name: "Element Text",
+                        className: "context-menu-slider-elementtext-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    $(rightClickedElementObject).html($(".context-menu-slider-elementtext-input input").val().toString());
+                                    if (window.console) console.log($(".context-menu-slider-elementtext-input input").val().toString());
+                                }
+                            }
+                        }
+                    },
             "sep3": "---------",
             "fold1a": {
                 "name": "Delete", 
@@ -437,9 +475,11 @@ $(function() {
                     $(this).remove();
             } 
             }
-        }   
-        };
+            }   
+        }
     }
+}
+}
 }); // end of selector: '.context-menu-slider' contextMenu
 
         $.contextMenu({
@@ -580,35 +620,48 @@ $(function() {
                         }
                     }
                 },
-                name: {
-                name: "Component ID",
-                className: "context-menu-toggle-comp-id-input", 
-                type: 'text', 
-                value: "", 
-                events: {
-                    keyup: function(e) {
-                        if(e.keyCode == '13') {
-                            //$(rightClickedElementObject).css("background-color", "blue");
-                            $(rightClickedElementObject).attr('id', $(".context-menu-toggle-comp-id-input input").val().toString());
-                            if (window.console) console.log($(".context-menu-toggle-comp-id-input input").val().toString());
+                "fold3":  {
+                        name: "Component ID",
+                        className: "context-menu-badge-toggle-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                $(rightClickedElementObject).attr('id', $(".context-menu-toggle-comp-id-input input").val().toString());
+                                 if (window.console) console.log($(".context-menu-toggle-comp-id-input input").val().toString());
+                                }
+                            }
                         }
-                    }
-                }
-            },
-            }
-            },
+                    },
+                "fold4":  {
+                        name: "Element Text",
+                        className: "context-menu-toggle-elementtext-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    $(rightClickedElementObject).children().html($(".context-menu-toggle-elementtext-input input").val().toString());
+                                    if (window.console) console.log($(".context-menu-toggle-elementtext-input input").val().toString());
+                                }
+                            }
+                        }
+                    },
             "sep3": "---------",
             "fold1a": {
                 "name": "Delete", 
                 "icon": "delete",
                 callback: function(key, opt){
                     $(this).remove();
-            } 
+           } 
             }
-        }   
-        };
+            }   
+        }
     }
-}); // end of selector: '.context-menu-toggle' contextMenu
+}
+}
+});  // end of selector: '.context-menu-toggle' contextMenu
 
          $.contextMenu({
         selector: '.context-menu-table',
@@ -748,34 +801,46 @@ $(function() {
                         }
                     }
                 },
-                name: {
-                name: "Component ID",
-                className: "context-menu-table-comp-id-input", 
-                type: 'text', 
-                value: "", 
-                events: {
-                    keyup: function(e) {
-                        if(e.keyCode == '13') {
-                            //$(".context-menu-button").css("background-color", "blue");
-                            $(rightClickedElementObject).attr('id', $(".context-menu-table-comp-id-input input").val().toString());
-                            if (window.console) console.log($(".context-menu-table-comp-id-input input").val().toString());
+                "fold3":  {
+                        name: "Component ID",
+                        className: "context-menu-table-comp-id-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                $(rightClickedElementObject).attr('id', $(".context-menu-table-comp-id-input input").val().toString());
+                                 if (window.console) console.log($(".context-menu-table-comp-id-input input").val().toString());
+                                }
+                            }
                         }
-                    }
-                }
-            },
-            }
-            },
+                    },
+                /*"fold4":  {
+                        name: "Element Text",
+                        className: "context-menu-table-elementtext-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    $(rightClickedElementObject).html($(".context-menu-table-elementtext-input input").val().toString());
+                                    if (window.console) console.log($(".context-menu-table-elementtext-input input").val().toString());
+                                }
+                            }
+                        }
+                    }, */
             "sep3": "---------",
             "fold1a": {
                 "name": "Delete", 
                 "icon": "delete",
                 callback: function(key, opt){
-                    $(this).remove();
             } 
             }
-        }   
-        };
+            }   
+        }
     }
+}
+}
 }); // end of selector: '.context-menu-table' contextMenu
 
           $.contextMenu({
@@ -916,23 +981,34 @@ $(function() {
                         }
                     }
                 },
-                name: {
-                name: "Component ID",
-                className: "context-menu-textfield-comp-id-input", 
-                type: 'text', 
-                value: "", 
-                events: {
-                    keyup: function(e) {
-                        if(e.keyCode == '13') {
-                            //$(rightClickedElementObject).css("background-color", "blue");
-                            $(rightClickedElementObject).attr('id', $(".context-menu-textfield-comp-id-input input").val().toString());
-                            if (window.console) console.log($(".context-menu-textfield-comp-id-input input").val().toString());
+                "fold3":  {
+                        name: "Component ID",
+                        className: "context-menu-textfield-comp-id-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                $(rightClickedElementObject).attr('id', $(".context-menu-textfield-comp-id-input input").val().toString());
+                                 if (window.console) console.log($(".context-menu-textfield-comp-id-input input").val().toString());
+                                }
+                            }
                         }
-                    }
-                }
-            },
-            }
-            },
+                    },
+                "fold4":  {
+                        name: "Element Text",
+                        className: "context-menu-textfield-elementtext-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    $(rightClickedElementObject).children().html($(".context-menu-textfield-elementtext-input input").val().toString());
+                                    if (window.console) console.log($(".context-menu-textfield-elementtext-input input").val().toString());
+                                }
+                            }
+                        }
+                    },
             "sep3": "---------",
             "fold1a": {
                 "name": "Delete", 
@@ -941,10 +1017,12 @@ $(function() {
                     $(this).remove();
             } 
             }
-        }   
-        };
+            }   
+        }
     }
-}); // end of selector: '.context-menu-textfield' contextMenu
+}
+}
+});  // end of selector: '.context-menu-textfield' contextMenu
 
  $.contextMenu({
         selector: '.ui-droppable.vertical',
