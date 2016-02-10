@@ -16,11 +16,10 @@
 .menu-item h4 {
   margin-top: 0px;
   margin-bottom: 0px;
-  border-bottom: 1px solid rgba(0,0,0,0.3);
-  border-top: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #fff;
   color: #fff;
   font-size: 15px;
-  font-weight: 500;
   padding: 7px 12px;
   background: #009688;
 }

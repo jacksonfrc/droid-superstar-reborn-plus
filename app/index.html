@@ -4,7 +4,7 @@
 
   <title>Android Superstar</title>
 
-    
+
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/menu.css">
   <link rel="stylesheet" href="css/material.css">
@@ -21,8 +21,9 @@
     var fs = require('fs');
     require("./js/jquery-ui/jquery-ui.js");
   </script>
+
   <script src="js/XMLWriter-1.0.0.js"></script>
-    <script src ="js/xmlparsing.js"></script>
+  <script src ="js/xmlparsing.js"></script>
   <script src="js/scaling.js"></script>
   <script src="js/tabs.js"></script>
   <script src="js/dragging.js"></script>
@@ -33,18 +34,22 @@
   <script src="js/jQuery-contextMenu/dist/jquery.contextMenu.js"></script>
   <script src="js/jQuery-contextMenu/dist/jquery.ui.position.min.js"></script>
 
-  <div id="dialog">
+  <div id="project" class="dialog">
     Please Enter Project Name:
     <input id="project-name" type="text">
   </div>
 
+  <div id="export" class="dialog">
+    Your Project Export Is Complete.
+  </div>
+
     <div id="tabs" class="tab-group vertical">
       <div id="0" class="tab-item active" onclick="activateTab(this)">
-        <img src="icons/ic_clear_black_24px.svg" class="icon-close-tab" onclick="closeTab(this)">
-        <input id="New Tab" type="text" oninput="changeName(this)" placeholder="New Tab">
+        <div class="icon-close-tab" onclick="closeTab(this)"></div>
+        <input id="tab-name" type="text" placeholder="New Tab">
       </div>
       <div class="tab-item tab-item-fixed" onclick="newTab()">
-        <img src="icons/ic_add_black_24px.svg" class="icon">
+        <div class="icon-add-tab"></div>
       </div>
     </div>
 
@@ -136,10 +141,10 @@
 
     <script>
   test('hi','23','34','24','green');
-        
-        
+
+
     </script>
-    
-    
+
+
 </body>
 </html>

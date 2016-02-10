@@ -4,7 +4,7 @@ render.on("exportJava", exportJava);
 render.on("setTitle", setTitle);
 
 function setTitle() {
-  $("#dialog").dialog({
+  $("#project").dialog({
     dialogClass: "no-close",
     draggable: false,
     modal: true,
@@ -12,6 +12,20 @@ function setTitle() {
       text: "OK",
       click: function() {
         $("title").text($("#project-name").val());
+        $(this).dialog("close");
+      }
+    }]
+  });
+}
+
+function exportComplete() {
+  $("#export").dialog({
+    dialogClass: "no-close",
+    draggable: false,
+    modal: true,
+    buttons: [{
+      text: "OK",
+      click: function() {
         $(this).dialog("close");
       }
     }]
@@ -51,7 +65,7 @@ function exportHTML() {
     // Create HTML documents
     var pageName = $("#tabs > #" + $(this).attr("id") + " > input").val();
     if (!pageName) pageName = "New Tab";
-    var doc = "<!DOCTYPE html><html><head><title>" + pageName + "</title><link rel='stylesheet' href='material.css'></head><body><script src='material.js'></script>";
+    var doc = "<!DOCTYPE html><html><head><meta name='viewport' content='width=device-width, height=device-height, user-scalable=no' /><title>" + pageName + "</title><link rel='stylesheet' href='material.css'></head><body><script src='material.js'></script>";
 
     // Loop through elemenst in each workspace.
     $(this).children().each(function () {
@@ -81,7 +95,7 @@ function exportHTML() {
 
   });
 
-  alert("Export Complete.");
+  exportComplete();
 }
 
 function exportJava() {
