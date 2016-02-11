@@ -223,41 +223,51 @@ function exportJava() {
 function test(tag, name, marginLeft, marginTop, color  ){
     var marginL = marginLeft.length;
     var i;
-    for (i=0; i<marginL;i++){
-        var v = new XMLWriter('UTF-8');
+     fs.mkdirSync('/Users/harmanlitt/Desktop/xml');
+        
+var fa;
+     var v = new XMLWriter('UTF-8');
     
             v.writeStartDocument(true);
-            v.writeStartElement('RelativeLayout');
-            v.writeStartElement(tag[i]);
-            v.writeAttributeString('android:layout_width', 'wrap_content');
-            v.writeAttributeString('android:layout_height', 'wrap_content');
-            v.writeAttributeString('android:text', name[i] );
-            v.writeAttributeString('android:id',i);          
-            v.writeAttributeString('android:layout_alignParentTop','true');
-            v.writeAttributeString('android:layout_alignParentLeft','true');
-            v.writeAttributeString('android:layout_alignParentStart', 'true');
-            v.writeAttributeString('android:layout_marginLeft', marginLeft[i]);
-            v.writeAttributeString('android:layout_marginStart',marginLeft[i]);
-            v.writeAttributeString('android:layout_marginTop', marginTop[i]);
+        v.writeStartElement('RelativeLayout');
+                   v.writeAttributeString('xmlns:android', 'http://schemas.android.com/apk/res/android');
+        v.writeAttributeString('xmlns:tools', 'http://schemas.android.com/tools');
+         v.writeAttributeString('android:layout_width', 'match_parent');
+         v.writeAttributeString('android:layout_height', 'match_parent');
+         v.writeAttributeString('android:paddingBottom', '16dp');
+        v.writeAttributeString('android:paddingLeft', '16dp');
+        v.writeAttributeString('android:paddingRight', '16dp');
+        v.writeAttributeString('android:paddingTop', '16dp');
+        v.writeAttributeString('android:paddingBottom', '16dp');
+    for (i=0; i<marginL;i++){
+       
+        var a3=    v.writeStartElement(tag[i]);
+        var a4=    v.writeAttributeString('android:layout_width', 'wrap_content');
+       var a5=     v.writeAttributeString('android:layout_height', 'wrap_content');
+       var a6=     v.writeAttributeString('android:text', name[i] );
+       var a7=     v.writeAttributeString('android:id','@+id/a' + i+1);          
+       var a7=     v.writeAttributeString('android:layout_alignParentTop','true');
+        var a8=    v.writeAttributeString('android:layout_alignParentLeft','true');
+        var a9=    v.writeAttributeString('android:layout_alignParentStart', 'true');
+        var a10=    v.writeAttributeString('android:layout_marginLeft', marginLeft[i]);
+        var a11=    v.writeAttributeString('android:layout_marginStart',marginLeft[i]);
+        var a12 =     v.writeAttributeString('android:layout_marginTop', marginTop[i]);
         
-        
-        if(color == 0){
-      
-          v.writeEndElement();
-          v.writeEndElement();
-           
-         v.writeEndDocument();
-          console.log(v.flush());
-        }
-        
-        else{
-          v.writeAttributeString('android:background', color[i]);
-          v.writeEndElement();
-          v.writeEndElement();
-           
-            v.writeEndDocument();
+        if(color != 0){
+       v.writeAttributeString('android:background', color[i]);      
+     
             console.log(v.flush());
         }
+       
+       
     }
+    
+    v.writeEndElement();
+          v.writeEndElement();
+     v.writeEndDocument();
+    fa = fa+v.flush();
+  var fp = '/Users/harmanlitt/Desktop/xml/androida' + i + '.xml';
             
+                fs.writeFileSync(fp,fa);
+    exportComplete();
         }
