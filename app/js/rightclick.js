@@ -758,9 +758,8 @@ $.contextMenu({
                                 }
                             }
                         }
-                    }
-                }
-            },
+                    },
+       
                "fold3":  {
                         name: "Font Size",
                         className: "context-menu-useraddedtext-fontsize-input", 
@@ -774,11 +773,13 @@ $.contextMenu({
                                     // Print input to console
                                     if (window.console) console.log($(fontSizeInput));
                                     // Change element's CSS to inputted value
-                                    $(rightClickedElementObject).css("font-size", fontSizeInput+ 'px');
+                                    $(rightClickedElementObject).css("font-size", fontSizeInput + 'px');
                                 }
                             }
                         }
-                    },    
+                    }
+                    }
+            },    
                     "sep3": "---------",
                     "fold1a": {
                         "name": "Delete", 
