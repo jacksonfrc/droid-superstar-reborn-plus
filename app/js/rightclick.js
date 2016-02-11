@@ -15,7 +15,7 @@ $(function() {
             "fold1": {
                 "name": "Properties", 
                 "items": {
-                    "fold1-key1": {
+                   /* "fold1-key1": {
                         name: "Background Colour (DOESNT WORK)",
                         className: "context-menu-badge-backgroundcolor-input", 
                         type: 'text', 
@@ -33,7 +33,7 @@ $(function() {
                                 }
                             }
                         }
-                    }, 
+                    }, */
                 "fold4":  {
                         name: "Element Text",
                         className: "context-menu-badge-elementtext-input", 
@@ -674,6 +674,137 @@ $(function() {
 }
 });  // end of selector: '.context-menu-textfield' contextMenu
 
+         $.contextMenu({
+            selector: '.context-menu-useraddedtext',
+            build: function($triggerElement, e){
+            rightClickedElementObject = $triggerElement;
+            console.log(rightClickedElementObject);
+            return {
+            callback: function(){},
+        items: {
+            "fold1": {
+                "name": "Properties", 
+                "items": {
+                    "fold1-key3": {
+                        name: "Element Text",
+                        className: "context-menu-useraddedtext-elementtext-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    $(rightClickedElementObject).html($(".context-menu-useraddedtext-elementtext-input input").val().toString());
+                                    if (window.console) console.log($(".context-menu-useraddedtext-elementtext-input input").val().toString());
+                                }
+                            }
+                        }
+                    },
+                    "fold1-key4":    {
+                name: "Font Colour",
+                className: "context-menu-useraddedtext-fontcolor-input",  
+                type: 'text', 
+                value: "", 
+                events: {
+                            keyup: function(e) {
+                                    if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontColorInput = $(".context-menu-useraddedtext-fontcolor-input input").val().toString();
+                                    // Print input to consoe
+                                    if (window.console) console.log($(fontColorInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).css("color", fontColorInput);
+                                }
+                               }
+                            }
+                    },                 
+                    "fold1-key5":  {
+                        name: "Font Style",
+                        className: "context-menu-useraddedtext-fontstyle-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontStyleInput = $(".context-menu-useraddedtext-fontstyle-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontStyleInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).css("font-style", fontStyleInput);
+                                }
+                            }
+                        }
+                    },
+                    "fold1-key6":  {
+                        name: "Font Weight",
+                        className: "context-menu-useraddedtext-fontweight-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontWeightInput = $(".context-menu-useraddedtext-fontweight-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontWeightInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).css("font-weight", fontWeightInput);
+                                }
+                            }
+                        }
+                    },
+                "fold2":  {
+                        name: "Font Family",
+                        className: "context-menu-useraddedtext-fontfamily-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontFamilyInput = $(".context-menu-useraddedtext-fontfamily-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontFamilyInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).css("font-family", fontFamilyInput);
+                                }
+                            }
+                        }
+                    },
+            /*    "fold3":  {
+                        name: "Font Size",
+                        className: "context-menu-useraddedtext-fontsize-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    // Assign input from text box
+                                    var fontSizeInput = $(".context-menu-useraddedtext-fontsize-input input").val().toString();
+                                    // Print input to console
+                                    if (window.console) console.log($(fontSizeInput));
+                                    // Change element's CSS to inputted value
+                                    $(rightClickedElementObject).css("font-size", fontSizeInput);
+                                }
+                            }
+                        }
+                    },     */
+            "sep3": "---------",
+            "fold1a": {
+                "name": "Delete", 
+                "icon": "delete",
+                callback: function(key, opt){
+                    $(this).remove();
+            } 
+            }
+            }   
+        }
+    }
+}
+}
+});  // end of selector: '.context-menu-useraddedtext' contextMenu
+
+
  $.contextMenu({
         selector: '.ui-droppable.vertical',
         callback: function(key, options) {
@@ -681,11 +812,6 @@ $(function() {
             window.console && console.log(m) || alert(m);
         },
         items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
             "fold1": {
                 "name": "Properties", 
                 "items": {
@@ -731,11 +857,6 @@ $.contextMenu({
             window.console && console.log(m) || alert(m);
         },
         items: {
-            //"edit": {"name": "Edit", "icon": "edit"},
-            //"cut": {"name": "Cut", "icon": "cut"},
-            //"sep1": "---------",
-            //"quit": {"name": "Quit", "icon": "quit"},
-            //"sep2": "---------",
             "fold1": {
                 "name": "Properties", 
                 "items": {
