@@ -256,13 +256,23 @@
       <div class="menu-item">
         <h4>
           <a>
-            Add Text
+            Misc.
           </a>
         </h4>
         <ul>
           <li>
             <a id="c64">
               Text Paragraph
+            </a>
+          </li>
+          <li>
+            <a id="c99">
+              Progress Bar
+            </a>
+          </li>
+          <li>
+            <a id="c100">
+              Spinner
             </a>
           </li>
         </ul>
@@ -272,8 +282,8 @@
 
   <!-- Material design elements -->
   <!-- Badges -->
-  <div id="e1" class="material-icons mdl-badge mdl-badge--overlap" data-badge="1" style="display: none">account_box</div>
-  <div id="e2" class="material-icons mdl-badge mdl-badge--overlap" data-badge="♥" style="display: none">account_box</div>
+  <div id="e1" class="mdl-badge material-icons mdl-badge--overlap" data-badge="1" style="display: none">account_box</div>
+  <div id="e2" class="mdl-badge material-icons mdl-badge--overlap" data-badge="♥" style="display: none">account_box</div>
   <span id="e3" class="mdl-badge" data-badge="♥" style="display: none">Mood</span>
   <span id="e4" class="mdl-badge" data-badge="4" style="display: none">Inbox</span>
 
@@ -281,35 +291,27 @@
   <button id="e5" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" style="display: none">
     <i class="material-icons">add</i>
   </button>
-
   <button id="e6" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" style="display: none">
     <i class="material-icons">add</i>
   </button>
-
   <button id="e7" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="display: none">
     Button
   </button>
-
   <button id="e8" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="display: none">
     Button
   </button>
-
   <button id="e9" class="mdl-button mdl-js-button mdl-button--primary" style="display: none">
     Button
   </button>
-
   <button id="e10" class="mdl-button mdl-js-button mdl-js-ripple-effect" style="display: none">
     Button
   </button>
-
   <button id="e11" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" style="display: none">
     <i class="material-icons">mood</i>
   </button>
-
   <button id="e12" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" style="display: none">
     <i class="material-icons">add</i>
   </button>
-
   <button id="e13" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" style="display: none">
     <i class="material-icons">add</i>
   </button>
@@ -319,21 +321,34 @@
     <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
     <span class="mdl-checkbox__label">Checkbox</span>
   </label>
-
   <label id="e52" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1" style="display: none">
     <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1">
     <span class="mdl-radio__label">Radio</span>
   </label>
-
   <label id="e54" class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect" for="icon-toggle-1" style="display: none">
     <input type="checkbox" id="icon-toggle-1" class="mdl-icon-toggle__input">
     <span class="mdl-icon-toggle__label material-icons">Icon</span>
   </label>
-
   <label id="e56" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2" style="display: none">
     <input type="checkbox" id="switch-2" class="mdl-switch__input">
     <span class="mdl-switch__label">Toggle</span>
   </label>
+
+  <!-- Loading
+  <div id="e99" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display: none"></div>-->
+  <div id="e100" class="mdl-spinner mdl-js-spinner is-active" style="display: none"></div>
+
+  <!-- Menus -->
+  <!-- Left aligned menu below button -->
+  <button id="e99" class="mdl-button mdl-js-button mdl-button--icon">
+    <i class="material-icons">more_vert</i>
+  </button>
+  <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-left">
+    <li class="mdl-menu__item">Some Action</li>
+    <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Another Action</li>
+    <li disabled class="mdl-menu__item">Disabled Action</li>
+    <li class="mdl-menu__item">Yet Another Action</li>
+  </ul>
 
   </body>
 </html>
