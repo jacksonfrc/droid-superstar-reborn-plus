@@ -15,8 +15,7 @@ function init() {
 }
 
 function handleDropEvent(event, ui) {
-  // activeTab is set in tabs.js
-  //var activeTabSelector = "#workspaces > #" + activeTab;
+
   leftPosition = ((ui.offset.left - 10) / $(activeWorkspace).width()) * 100;
   topPosition = ((ui.offset.top - 35) / $(activeWorkspace).height()) * 100;
 
@@ -24,16 +23,35 @@ function handleDropEvent(event, ui) {
 
     var newElem = $(ui.helper)
       .clone()
+      .removeAttr("id")
       .addClass("working")
+      .addClass("context-menu-toggle")
       .removeClass("ui-draggable")
       .removeClass("ui-draggable-handle")
       .draggable({ containment: "#workspaces" })
+      .removeAttr("data-upgraded")
       .css({
         "position": "absolute",
         "left": leftPosition + "%",
         "top": topPosition + "%"
       });
+
+      newElem.children().removeAttr("data-upgraded");
+      //var type = newElem.find("span:first-child").attr("class");
+      //classType = type.split("__")[0] + "__label";
+
+      var num = Math.floor(Math.random() * 1000);
+      var type = newElem.attr('class').split(' ')[0];
+      //var classType = type + "__label";
+      //newElem.children().not("." + classType).not("input").remove();
+      newElem.attr("for", type + num);
+      newElem.children("input").attr("id", type + num);
+
+      console.log(newElem[0]);
+
       $(activeWorkspace).append(newElem);
+      componentHandler.upgradeDom();
+
   } else {
 
     $(ui.helper).css({
@@ -48,7 +66,10 @@ function handleDropEvent(event, ui) {
 function idHelper(event) {
 
     var cId = $(this).attr("id");
+    var clone = $("#" + cId.replace(/c/g,"e")).clone().show();
+    return clone;
 
+/*
     if (cId == "c1") {
         return "<span class='context-menu-badge material-icons mdl-badge' data-badge='1'>account_box</span>";
     } else if (cId == "c2") {
@@ -64,19 +85,12 @@ function idHelper(event) {
     }  else if (cId == "c9") {
         return "<button class=\"context-menu-button mdl-button mdl-js-button mdl-button--fab\" disabled>\r\n  <i class=\"material-icons\">+<\/i>\r\n<\/button>";
     } else if(cId =="c15"){
-    return "<button class='context-menu-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored'> Button</button>";
-    
-    }
-    
-       else if (cId == "c63"){
-    
-    return "<form action=\"#\">\r\n  <div class=\"mdl-textfield mdl-js-textfield mdl-textfield--expandable\">\r\n    <label class=\"mdl-button mdl-js-button mdl-button--icon\" for=\"sample6\">\r\n      <i class=\"material-icons\">search<\/i>\r\n    <\/label>\r\n    <div class=\"mdl-textfield__expandable-holder\">\r\n      <input class=\"mdl-textfield__input\" type=\"text\" id=\"sample6\">\r\n      <label class=\"mdl-textfield__label\" for=\"sample-expandable\">Expandable Input<\/label>\r\n    <\/div>\r\n  <\/div>\r\n<\/form>";
-    
-    }
-    
-    else if (cId == "c16") {
+        return "<button class='context-menu-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored'> Button</button>";
+    } else if (cId == "c63"){
+        return "<form action=\"#\">\r\n  <div class=\"mdl-textfield mdl-js-textfield mdl-textfield--expandable\">\r\n    <label class=\"mdl-button mdl-js-button mdl-button--icon\" for=\"sample6\">\r\n      <i class=\"material-icons\">search<\/i>\r\n    <\/label>\r\n    <div class=\"mdl-textfield__expandable-holder\">\r\n      <input class=\"mdl-textfield__input\" type=\"text\" id=\"sample6\">\r\n      <label class=\"mdl-textfield__label\" for=\"sample-expandable\">Expandable Input<\/label>\r\n    <\/div>\r\n  <\/div>\r\n<\/form>";
+    } else if (cId == "c16") {
         return "<button class=\"context-menu-button mdl-button mdl-js-button\">\r\n  Button\r\n<\/button>";
-    }  else if (cId == "c19") {
+    } else if (cId == "c19") {
         return "<button class=\"context-menu-button mdl-button mdl-js-button mdl-button--primary\">\r\n  Button\r\n<\/button>";
     } else if (cId == "c20") {
         return "<button class=\"context-menu-button mdl-button mdl-js-button mdl-button--accent\">\r\n  Button\r\n<\/button>";
@@ -111,8 +125,7 @@ function idHelper(event) {
     } else if (cId == "c64") {
         return '<p class="context-menu-useraddedtext">Text Paragraph</p>';
     }
-    
- 
 
     //return "<div>Component Error.</div>";
+*/
 }

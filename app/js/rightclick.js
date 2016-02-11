@@ -122,6 +122,7 @@ $(function() {
                                     var linkAddressInput = $(".context-menu-button-linkaddress-input input").val().toString();
                                     // Convert spaces to underscores
                                     linkAddressInput = linkAddressInput.replace(/ /g,"_");
+                                    linkAddressInput = linkAddressInput + ".html";
                                     // Print input to console
                                     if (window.console) console.log($(linkAddressInput));
                                     // Wrap link around element
@@ -556,7 +557,7 @@ $(function() {
                         }
                     },
                     "fold1-key3": {
-                        name: "Element Text",
+                        name: "Default Text",
                         className: "context-menu-textfield-elementtext-input", 
                         type: 'text', 
                         value: "", 

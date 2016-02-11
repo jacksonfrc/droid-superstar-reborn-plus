@@ -1,152 +1,295 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
 
-  <title>Android Superstar</title>
+    <title>Android Superstar</title>
 
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/material.css">
+    <link rel="stylesheet" href="js/jQuery-contextMenu/dist/jquery.contextMenu.css">
+    <link rel="stylesheet" href="js/jquery-ui/jquery-ui.css">
 
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/menu.css">
-  <link rel="stylesheet" href="css/material.css">
-  <link rel="stylesheet" href="js/jQuery-contextMenu/dist/jquery.contextMenu.css">
+  </head>
+  <body>
 
-  <link rel="stylesheet" href="js/jquery-ui/jquery-ui.css">
+    <script>
+      // Declare global libraries.
+      window.jQuery = window.$ = require("./js/jquery.js");
+      var render = require('electron').ipcRenderer;
+      var fs = require('fs');
+      require("./js/jquery-ui/jquery-ui.js");
+    </script>
+    <script src="js/XMLWriter-1.0.0.js">
+    </script>
+    <script src ="js/xmlparsing.js">
+    </script>
+    <script src="js/scaling.js">
+    </script>
+    <script src="js/tabs.js">
+    </script>
+    <script src="js/dragging.js">
+    </script>
+    <script src="js/material.js">
+    </script>
+    <script src="js/rightclick.js">
+    </script>
+    <script src="js/project.js">
+    </script>
+    <script src="js/jQuery-contextMenu/dist/jquery.contextMenu.js">
+    </script>
+    <script src="js/jQuery-contextMenu/dist/jquery.ui.position.min.js">
+    </script>
 
+    <div id="project" class="dialog">
+      Please Enter Project Name:
+      <input id="project-name" type="text">
+    </div>
 
-</head>
-<body>
+    <div id="export" class="dialog">
+      Your Project Export Is Complete.
+    </div>
 
-  <script>
-    // Declare global libraries.
-    window.jQuery = window.$ = require("./js/jquery.js");
-    var render = require('electron').ipcRenderer;
-    var fs = require('fs');
-    require("./js/jquery-ui/jquery-ui.js");
-  </script>
-
-  <script src="js/XMLWriter-1.0.0.js"></script>
-  <script src ="js/xmlparsing.js"></script>
-  <script src="js/scaling.js"></script>
-  <script src="js/tabs.js"></script>
-  <script src="js/dragging.js"></script>
-  <script src="js/material.js"></script>
-  <script src="js/rightclick.js"></script>
-  <script src="js/project.js"></script>
-
-  <script src="js/jQuery-contextMenu/dist/jquery.contextMenu.js"></script>
-  <script src="js/jQuery-contextMenu/dist/jquery.ui.position.min.js"></script>
-
-  <div id="project" class="dialog">
-    Please Enter Project Name:
-    <input id="project-name" type="text">
-  </div>
-
-  <div id="export" class="dialog">
-    Your Project Export Is Complete.
-  </div>
-
+    <!-- Tabs -->
     <div id="tabs" class="tab-group vertical">
       <div id="0" class="tab-item active" onclick="activateTab(this)">
-        <div class="icon-close-tab" onclick="closeTab(this)"></div>
+        <div class="icon-close-tab" onclick="closeTab(this)">
+        </div>
         <input id="tab-name" type="text" placeholder="New Tab">
       </div>
       <div class="tab-item tab-item-fixed" onclick="newTab()">
-        <div class="icon-add-tab"></div>
+        <div class="icon-add-tab">
+        </div>
       </div>
     </div>
 
-    <div id="workspaces" class="vertical">
-      <div id="0"></div>
+  <!-- workspaces -->
+  <div id="workspaces" class="vertical">
+    <div id="0">
     </div>
+  </div>
 
-    <div id="components" class="vertical">
- <nav class = "dropdown-nav">
-			     <div class="menu-item">
-			          <h4><a href="#">Badges</a></h4>
-			          <ul>
-			               <li><a id="c1" href="#">Image Number Badge</a></li>
-			               <li><a id="c2" href="#">Image Icon Badge</a></li>
-			               <li><a id="c3" href="#">Text Icon Badge</a></li>
-                          <li><a id="c4" href="#">Text Number Badge</a></li>
-			          </ul>
-		       </div>
-		       <div class="menu-item">
-			          <h4><a href="#">Buttons</a></h4>
-			          <ul>
-			               <li><a id="c5" href="#">Colored FAB</a></li>
+  <!-- List of components -->
+  <div id="components" class="vertical">
+    <nav class = "dropdown-nav">
+      <div class="menu-item">
+        <h4>
+          <a>
+            Badges
+          </a>
+        </h4>
+        <ul>
+          <li>
+            <a id="c1">
+              Image Number Badge
+            </a>
+          </li>
+          <li>
+            <a id="c2">
+              Image Icon Badge
+            </a>
+          </li>
+          <li>
+            <a id="c3">
+              Text Icon Badge
+            </a>
+          </li>
+          <li>
+            <a id="c4">
+              Text Number Badge
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-item">
+        <h4>
+          <a>
+            Buttons
+          </a>
+        </h4>
+        <ul>
+          <li>
+            <a id="c5">
+              Colored FAB
+            </a>
+          </li>
+          <li>
+            <a id="c7">
+              Plain FAB
+            </a>
+          </li>
+          <li>
+            <a id="c9">
+              Plain Disabled FAB
+            </a>
+          </li>
+          <li>
+            <a id="c15">
+              Coloured Button
+            </a>
+          </li>
+          <li>
+            <a id="c16">
+              Flat Button
+            </a>
+          </li>
+          <li>
+            <a id="c19">
+              Flat Colored Button
+            </a>
+          </li>
+          <li>
+            <a id="c20">
+              Flat Accent Colored Button
+            </a>
+          </li>
+          <li>
+            <a id="c22">
+              Colored Icon Button
+            </a>
+          </li>
+          <li>
+            <a id="c23">
+              Plain Mini FAB
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-item">
+        <h4>
+          <a>
+            Sliders
+          </a>
+        </h4>
+        <ul>
+          <li>
+            <a id="c48">
+              Default Slider
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-item">
+        <h4>
+          <a>
+            Toggles
+          </a>
+        </h4>
+        <ul>
+          <li>
+            <a id="c50">
+              Checkbox
+            </a>
+          </li>
+          <li>
+            <a id="c52">
+              Radio Button
+            </a>
+          </li>
+          <li>
+            <a id="c54">
+              Icon Switch
+            </a>
+          </li>
+          <li>
+            <a id="c56">
+              Toggle Swtich
+              <a>
+              </a>
+            </li>
+          </ul>
+      </div>
+      <div class="menu-item">
+        <h4>
+          <a>
+            Tables
+          </a>
+        </h4>
+        <ul>
+          <li>
+            <a id="c57">
+              Data Table
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-item">
+        <h4>
+          <a>
+            Text Fields
+          </a>
+        </h4>
+        <ul>
+          <li>
+            <a id="c58">
+              Text
+            </a>
+          </li>
+          <li>
+            <a id="c59">
+              Numeric
+            </a>
+          </li>
+          <li>
+            <a id="c60">
+              Text with Floating Label
+            </a>
+          </li>
+          <li>
+            <a id="c61">
+              Numeric with Floating Label
+            </a>
+          </li>
+          <li>
+            <a id="c62">
+              Multiple Line
+            </a>
+          </li>
+          <li>
+            <a id="c63">
+              Expanding
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="menu-item">
+        <h4>
+          <a>
+            Add Text
+          </a>
+        </h4>
+        <ul>
+          <li>
+            <a id="c64">
+              Text Paragraph
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 
-			               <li><a id="c7" href="#">Plain FAB</a></li>
+  <!-- Material design elements -->
+  <!-- Toggles -->
+  <label id="e50" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1" style="display: none">
+    <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
+    <span class="mdl-checkbox__label">Checkbox</span>
+  </label>
 
-                          <li><a id="c9" href="#">Plain Disabled FAB</a></li>
+  <label id="e52" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1" style="display: none">
+    <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1">
+    <span class="mdl-radio__label">Radio</span>
+  </label>
 
+  <label id="e54" class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect" for="icon-toggle-1" style="display: none">
+    <input type="checkbox" id="icon-toggle-1" class="mdl-icon-toggle__input">
+    <span class="mdl-icon-toggle__label material-icons">Icon</span>
+  </label>
 
-<li><a id="c15" href="#"> Coloured Button</a></li>
+  <label id="e56" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2" style="display: none">
+    <input type="checkbox" id="switch-2" class="mdl-switch__input">
+    <span class="mdl-switch__label">Toggle</span>
+  </label>
 
-
-                            <li><a id="c16" href="#">Flat Button</a></li>
-
-
-                          <li><a id="c19" href="#">Flat Colored Button</a></li>
-                          <li><a id="c20" href="#">Flat Accent Colored Button</a></li>
-                                <li><a id="c22" href="#">Colored Icon Button</a></li>
-                             <li><a id="c23" href="#">Plain Mini FAB</a></li>
-
-
-
-			          </ul>
-		      </div>
-
-
-
-            <div class="menu-item">
-               <h4><a href="#">Sliders</a></h4>
-               <ul>
-                    <li><a id="c48" href="#">Default Slider</a></li>
-
-
-               </ul>
-         </div>
-            <div class="menu-item">
-               <h4><a href="#">Toggles</a></h4>
-               <ul>
-
-                    <li><a id="c50" href="#">Check Off</a></li>
-
-                      <li><a id="c52" href="#">Radio Off</a></li>
-                          <li><a id="c54" href="#">Icon Off</a></li>
-                   <li><a id="c56" href="#">Swtich Off</a></li>
-               </ul>
-         </div>
-            <div class="menu-item">
-               <h4><a href="#">Tables</a></h4>
-               <ul>
-                    <li><a id="c57" href="#">Data Table</a></li>
-
-               </ul>
-         </div>
-            <div class="menu-item">
-               <h4><a href="#">Text Fields</a></h4>
-               <ul>
-                    <li><a id="c58" href="#">Text</a></li>
-                    <li><a id="c59" href="#">Numeric</a></li>
-                    <li><a id="c60" href="#">Text with Floating Label</a></li>
-                      <li><a id="c61" href="#">Numeric with Floating Label</a></li>
-                      <li><a id="c62" href="#">Multiple Line</a></li>
-                   <li><a id="c63" href="#">Expanding</a></li>
-               </ul>
-         </div>
-         <div class="menu-item">
-               <h4><a href="#">Add Text</a></h4>
-               <ul>
-                    <li><a id="c64" href="#">Text Paragraph</a></li>
-               </ul>
-         </div>
-
-		  </nav>
-
-
-    </div>
-
-
-</body>
+  </body>
 </html>
