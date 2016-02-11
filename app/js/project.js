@@ -117,12 +117,12 @@ function exportJava() {
  var left = [];
  var top = []; 
   var name = [];
-    var i=0;
-    var tag;
+    
+    var tag =[];
     $("#workspaces").children().each(  function(){
         
     $(this).children().each(function(){
-         
+        
     if (this.nodeName.toLowerCase() === "button"){  
         
     marginLeft= $(this).css('left');
@@ -134,54 +134,69 @@ function exportJava() {
     color.push(colorRGB);  
     eletext = $(this).text();
          name.push(eletext);  
-        tag = 'Button';
+      tag.push('Button');
+       
         
-          return test(tag,name,left, top, color);
+         
     }
-        if (this.nodeName.toLowerCase() === "input"){
+        if ($(this).hasClass('mdl-radio')){
             
-        tag = 'SeekBar';
+      tag.push('SeekBar');
     marginLeft= $(this).css('left');
     left.push(marginLeft);    
     marginTop = $(this).css('top');  
     top.push(marginTop); 
     eletext = $(this).text();
     name.push(eletext);
-    return test(tag,name,left, top,'0');
-        
+ 
+             color.push(0);
         }
         
-        if ($(this).){
-        tag = 'EditText';
+       if ($(this).hasClass('mdl-switch')){
+            
+     tag.push('ToggleButton');
+    marginLeft= $(this).css('left');
+    left.push(marginLeft);    
+    marginTop = $(this).css('top');  
+    top.push(marginTop); 
+    eletext = $(this).text();
+    name.push(eletext);
+ 
+             color.push(0);
+        }
+        
+         if ($(this).hasClass('sample1')){
+        tag.push('EditText');
           marginLeft= $(this).css('left');
     left.push(marginLeft);    
     marginTop = $(this).css('top');  
     top.push(marginTop); 
-             
-             return test(tag,"",left, top,'0');
+                 color.push(0); 
+          
         }
         
-         if ($('#0').hasClass('mdl-radio')){
-        tag = 'RadioGroup';
+        if ($(this).hasClass('mdl-icon-toggle')){
+      tag.push('ToggleButton');
                       marginLeft= $(this).css('left');
     left.push(marginLeft);    
     marginTop = $(this).css('top');  
     top.push(marginTop); 
               eletext = $(this).text();
          name.push(eletext);
-             return test(tag,name,left, top,'0');
-        
+           
+             color.push(0);
         }
         
-       if ($('#0').hasClass('mdl-checkbox')){
-        tag = 'Checkbox';
+  if ($(this).hasClass('mdl-checkbox')){
+       tag.push('Checkbox');
                   marginLeft= $(this).css('left');
     left.push(marginLeft);    
     marginTop = $(this).css('top');  
     top.push(marginTop); 
               eletext = $(this).text();
          name.push(eletext);
-             return test(tag,name,left, top,'0');
+           color.push(0);
+          
         }
             
      
@@ -190,7 +205,7 @@ function exportJava() {
     
         });
         
-   
+   return test(tag,name,left, top, color); 
     
 }
 
@@ -203,7 +218,7 @@ function test(tag, name, marginLeft, marginTop, color  ){
     
             v.writeStartDocument(true);
             v.writeStartElement('RelativeLayout');
-            v.writeStartElement(tag);
+            v.writeStartElement(tag[i]);
             v.writeAttributeString('android:layout_width', 'wrap_content');
             v.writeAttributeString('android:layout_height', 'wrap_content');
             v.writeAttributeString('android:text', name[i] );
@@ -216,8 +231,8 @@ function test(tag, name, marginLeft, marginTop, color  ){
             v.writeAttributeString('android:layout_marginTop', marginTop[i]);
         
         
-        if(color!= '0'){
-          v.writeAttributeString('android:background', color[i]);
+        if(color == 0){
+      
           v.writeEndElement();
           v.writeEndElement();
            
@@ -226,6 +241,7 @@ function test(tag, name, marginLeft, marginTop, color  ){
         }
         
         else{
+          v.writeAttributeString('android:background', color[i]);
           v.writeEndElement();
           v.writeEndElement();
            
