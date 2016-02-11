@@ -758,10 +758,9 @@ $.contextMenu({
                                 }
                             }
                         }
-                    }
-                }
-            },
-            /*    "fold3":  {
+                    },
+       
+               "fold3":  {
                         name: "Font Size",
                         className: "context-menu-useraddedtext-fontsize-input", 
                         type: 'text', 
@@ -774,11 +773,13 @@ $.contextMenu({
                                     // Print input to console
                                     if (window.console) console.log($(fontSizeInput));
                                     // Change element's CSS to inputted value
-                                    $(rightClickedElementObject).css("font-size", fontSizeInput);
+                                    $(rightClickedElementObject).css("font-size", fontSizeInput + 'px');
                                 }
                             }
                         }
-                    },     */
+                    }
+                    }
+            },    
                     "sep3": "---------",
                     "fold1a": {
                         "name": "Delete", 
@@ -807,6 +808,9 @@ $.contextMenu({
                     type: 'text', 
                     value: "", 
                     events: {
+                       /* click: function(e) { 
+                                $(".context-menu-backgroundcolorvert-input").replaceWith('<input type="text" name="context-menu-input-fold1-key1" data-wheelcolorpicker>"').wheelColorPicker();
+                            }, */
                         keyup: function(e) {
                             if(e.keyCode == '13') {
                                     // Assign input from text box

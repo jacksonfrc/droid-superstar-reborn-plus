@@ -36,8 +36,9 @@ function handleDropEvent(event, ui) {
       newElem.attr("for", type + num);
       newElem.children("input").attr("id", type + num);
     } else if (tag == "form") newElem.addClass("context-menu-textfield");
-    else if (type == "mdl-data-table") newElem.addClass("context-menu-table");
-    else if (tag != "p") newElem.addClass("context-menu-slider");
+    else if (type == "mdl-data-table") {
+      newElem.addClass("context-menu-table");
+    } else if (tag != "p") newElem.addClass("context-menu-slider");
 
     newElem
     .addClass("working")
