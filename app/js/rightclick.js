@@ -15,7 +15,7 @@ $(function() {
             "fold1": {
                 "name": "Properties", 
                 "items": {
-                    "fold1-key1": {
+                   /* "fold1-key1": {
                         name: "Background Colour (DOESNT WORK)",
                         className: "context-menu-badge-backgroundcolor-input", 
                         type: 'text', 
@@ -33,7 +33,7 @@ $(function() {
                                 }
                             }
                         }
-                    }, 
+                    }, */
                 "fold4":  {
                         name: "Element Text",
                         className: "context-menu-badge-elementtext-input", 
