@@ -4364,7 +4364,7 @@ input.mdl-button[type="submit"] {
   vertical-align: middle;
   display: inline-block;
   box-sizing: border-box;
-  width: 100%;
+  /*width: 100%;*/
   height: 24px;
   margin: 0;
   padding: 0; }
@@ -8209,7 +8209,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   vertical-align: middle;
   display: inline-block;
   box-sizing: border-box;
-  width: 100%;
+  /*width: 100%;*/
   height: 24px;
   margin: 0;
   padding: 0;

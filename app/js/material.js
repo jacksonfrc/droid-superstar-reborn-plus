@@ -498,6 +498,7 @@ window.addEventListener('load', function() {
   }
 });
 
+
 // Source: https://github.com/darius/requestAnimationFrame/blob/master/requestAnimationFrame.js
 // Adapted from https://gist.github.com/paulirish/1579671 which derived from
 // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
