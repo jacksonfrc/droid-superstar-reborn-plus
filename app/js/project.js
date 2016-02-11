@@ -120,7 +120,7 @@ function exportJava() {
 
     $(this).children().each(function(){
 
-
+if (this.nodeName.toLowerCase() =='button'){
     marginLeft= $(this).css('left');
     left.push(marginLeft);
     marginTop = $(this).css('top');
@@ -131,12 +131,12 @@ function exportJava() {
     eletext = $(this).text();
          name.push(eletext);
       tag.push('Button');
-
+}
 
 
     
 
-  else if  ($(this).hasClass('mdl-radio')){
+if  ($(this).hasClass('mdl-radio')){
     
        
 
@@ -271,58 +271,26 @@ var fa;
         var a10=    v.writeAttributeString('android:layout_marginLeft', marginLeft[i]);
         var a11=    v.writeAttributeString('android:layout_marginStart',marginLeft[i]);
         var a12 =     v.writeAttributeString('android:layout_marginTop', marginTop[i]);
-        
-        if(color != 0){
-       v.writeAttributeString('android:background', color[i]);      
-    
-    for (i=0; i<marginL;i++){
-        var v = new XMLWriter('UTF-8');
+      
 
-            v.writeStartDocument(true);
-            v.writeStartElement('RelativeLayout');
-            v.writeStartElement(tag[i]);
-            v.writeAttributeString('android:layout_width', 'wrap_content');
-            v.writeAttributeString('android:layout_height', 'wrap_content');
-            v.writeAttributeString('android:text', name[i] );
-            v.writeAttributeString('android:id',i);
-            v.writeAttributeString('android:layout_alignParentTop','true');
-            v.writeAttributeString('android:layout_alignParentLeft','true');
-            v.writeAttributeString('android:layout_alignParentStart', 'true');
-            v.writeAttributeString('android:layout_marginLeft', marginLeft[i]);
-            v.writeAttributeString('android:layout_marginStart',marginLeft[i]);
-            v.writeAttributeString('android:layout_marginTop', marginTop[i]);
-
-
-        if(color == 0){
-
-          v.writeEndElement();
-          v.writeEndElement();
-
-         v.writeEndDocument();
-          console.log(v.flush());
-        }
-
-        else{
+        if(color!=0){
           v.writeAttributeString('android:background', color[i]);
-          v.writeEndElement();
-          v.writeEndElement();
-
-            v.writeEndDocument();
-            console.log(v.flush());
+         v.writeEndElement();
         }
-       
+       else{
+       v.writeEndElement();
+       }
        
     }
-
+        
     
-    v.writeEndElement();
+    
           v.writeEndElement();
      v.writeEndDocument();
     fa = fa+v.flush();
   var fp = '/Users/harmanlitt/Desktop/xml/androida' + i + '.xml';
-            
                 fs.writeFileSync(fp,fa);
     exportComplete();
         }
 
-        }
+        
