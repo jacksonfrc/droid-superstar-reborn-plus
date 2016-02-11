@@ -125,6 +125,15 @@ $.contextMenu({
                             }
                         }
                     },
+                 /*   myInput: {
+                        type: "checkbox", 
+                        name: "Link to Camera", 
+                        events: { 
+                            click: function(e) { 
+                                $(rightClickedElementObject).addClass("link-to-camera")
+                            }
+                        }
+                    },  */
                     "fold1-key4":    {
                         name: "Element Text",
                         className: "context-menu-button-innertext-input",  
@@ -456,7 +465,7 @@ $.contextMenu({
                                     // Print input to console
                                     if (window.console) console.log($(fontSizeInput));
                                     // Change element's CSS to inputted value
-                                    $(rightClickedElementObject).css("font-size", fontSizeInput);
+                                    $(rightClickedElementObject).css("font-size", fontSizeInput + 'px');
                                 }
                             }
                         }

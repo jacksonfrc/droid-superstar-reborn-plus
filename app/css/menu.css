@@ -69,4 +69,8 @@
   border-style: solid;
   border-width: 1px;
   margin-left: 1px !important;
+  margin-right: 6px !important;
+}
+.context-menu-input > label > input[type="checkbox"] {
+  top: 6px !important;
 }
