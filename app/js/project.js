@@ -5,9 +5,6 @@ render.on("setTitle", setTitle);
 
 
 
-function exportHTML() {
-
-  $("#workspaces").children().each(function () {
 
 function setTitle() {
   $("#project").dialog({
@@ -236,4 +233,4 @@ function test(tag, name, marginLeft, marginTop, color  ){
         }
     }
             
-        };
+        }
