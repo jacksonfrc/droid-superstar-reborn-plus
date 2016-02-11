@@ -102,13 +102,14 @@ function exportHTML() {
   exportComplete();
 }
 
-function rgb2hex(rgb) {
-    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-    function hex(x) {
-        return ("0" + parseInt(x).toString(16)).slice(-2);
-    }
-    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+function rgb2hex(rgb){
+ rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+ return (rgb && rgb.length === 4) ? "#" +
+  ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+  ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+  ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
 }
+
 
 function exportJava() {
 
@@ -137,7 +138,7 @@ function exportJava() {
         
           return test(tag,name,left, top, color);
     }
-        if (this.children().hasClass("mdl-textfield") ){
+        if (this.nodeName.toLowerCase() === "input"){
             
         tag = 'SeekBar';
     marginLeft= $(this).css('left');
@@ -150,7 +151,7 @@ function exportJava() {
         
         }
         
-        if (this.nodeName.toLowerCase() === "form"){
+        if ($(this).){
         tag = 'EditText';
           marginLeft= $(this).css('left');
     left.push(marginLeft);    
@@ -195,9 +196,9 @@ function exportJava() {
 
 
 function test(tag, name, marginLeft, marginTop, color  ){
-
+    var marginL = marginLeft.length;
     var i;
-    for (i=0; i<marginLeft.length;i++){
+    for (i=0; i<marginL;i++){
         var v = new XMLWriter('UTF-8');
     
             v.writeStartDocument(true);
@@ -215,7 +216,7 @@ function test(tag, name, marginLeft, marginTop, color  ){
             v.writeAttributeString('android:layout_marginTop', marginTop[i]);
         
         
-        if('color' !== 0){
+        if(color!= '0'){
           v.writeAttributeString('android:background', color[i]);
           v.writeEndElement();
           v.writeEndElement();
