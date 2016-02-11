@@ -21,33 +21,41 @@ function handleDropEvent(event, ui) {
 
   if (!$(ui.helper).hasClass("working")) {
 
-    var newElem = $(ui.helper)
-      .clone()
-      .removeAttr("id")
-      .addClass("working")
-      .addClass("context-menu-toggle")
-      .removeClass("ui-draggable")
-      .removeClass("ui-draggable-handle")
-      .draggable({ containment: "#workspaces" })
-      .removeAttr("data-upgraded")
-      .css({
+    var newElem = $(ui.helper).clone();
+    var type = newElem.attr('class').split(' ')[0];
+    console.log(type);
+
+    if (type == "mdl-badge") newElem.addClass("context-menu-badge");
+    if (type == "mdl-button") newElem.addClass("context-menu-button");
+    if (type == "mdl-checkbox" || type == "mdl-radio" || type == "mdl-icon-toggle" || type == "mdl-icon-toggle" || type == "mdl-switch") {
+      newElem.addClass("context-menu-toggle");
+    }
+
+    newElem
+    .removeAttr("id")
+    .addClass("working")
+    .removeClass("ui-draggable")
+    .removeClass("ui-draggable-handle")
+    .draggable({ containment: "#workspaces" })
+    .removeAttr("data-upgraded")
+    .css({
         "position": "absolute",
         "left": leftPosition + "%",
         "top": topPosition + "%"
-      });
+    });
 
       newElem.children().removeAttr("data-upgraded");
       //var type = newElem.find("span:first-child").attr("class");
       //classType = type.split("__")[0] + "__label";
 
       var num = Math.floor(Math.random() * 1000);
-      var type = newElem.attr('class').split(' ')[0];
+
       //var classType = type + "__label";
       //newElem.children().not("." + classType).not("input").remove();
       newElem.attr("for", type + num);
       newElem.children("input").attr("id", type + num);
 
-      console.log(newElem[0]);
+
 
       $(activeWorkspace).append(newElem);
       componentHandler.upgradeDom();
