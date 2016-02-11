@@ -3,13 +3,9 @@ render.on("exportHTML", exportHTML);
 render.on("exportJava", exportJava);
 render.on("setTitle", setTitle);
 
-<<<<<<< HEAD
 
 
-function exportHTML() {
 
-  $("#workspaces").children().each(function () {
-=======
 function setTitle() {
   $("#project").dialog({
     dialogClass: "no-close",
@@ -24,7 +20,7 @@ function setTitle() {
     }]
   });
 }
->>>>>>> cb8cf63e643bf7190042579820375ca8f718deda
+
 
 function exportComplete() {
   $("#export").dialog({
@@ -128,28 +124,29 @@ function exportJava() {
          
     if (this.nodeName.toLowerCase() === "button"){  
         
-          marginLeft= $(this).css('left');
+    marginLeft= $(this).css('left');
     left.push(marginLeft);    
     marginTop = $(this).css('top');  
     top.push(marginTop);    
     rgb= $(this).css('background-color');
-        colorRGB = rgb2hex(rgb);
-     color.push(colorRGB);  
+    colorRGB = rgb2hex(rgb);
+    color.push(colorRGB);  
     eletext = $(this).text();
          name.push(eletext);  
         tag = 'Button';
+        
           return test(tag,name,left, top, color);
     }
-        if (this.nodeName.toLowerCase() === "input"){
+        if (this.children().hasClass("mdl-textfield") ){
             
         tag = 'SeekBar';
-                   marginLeft= $(this).css('left');
+    marginLeft= $(this).css('left');
     left.push(marginLeft);    
     marginTop = $(this).css('top');  
     top.push(marginTop); 
-              eletext = $(this).text();
-         name.push(eletext);
-             return test(tag,name,left, top,'0');
+    eletext = $(this).text();
+    name.push(eletext);
+    return test(tag,name,left, top,'0');
         
         }
         
@@ -204,24 +201,36 @@ function test(tag, name, marginLeft, marginTop, color  ){
         var v = new XMLWriter('UTF-8');
     
             v.writeStartDocument(true);
-          v.writeStartElement('RelativeLayout');
+            v.writeStartElement('RelativeLayout');
             v.writeStartElement(tag);
             v.writeAttributeString('android:layout_width', 'wrap_content');
             v.writeAttributeString('android:layout_height', 'wrap_content');
             v.writeAttributeString('android:text', name[i] );
-            v.writeAttributeString('android:id',i);           
-        v.writeAttributeString('android:layout_alignParentTop','true');                             v.writeAttributeString('android:layout_alignParentLeft','true');
+            v.writeAttributeString('android:id',i);          
+            v.writeAttributeString('android:layout_alignParentTop','true');
+            v.writeAttributeString('android:layout_alignParentLeft','true');
             v.writeAttributeString('android:layout_alignParentStart', 'true');
             v.writeAttributeString('android:layout_marginLeft', marginLeft[i]);
             v.writeAttributeString('android:layout_marginStart',marginLeft[i]);
             v.writeAttributeString('android:layout_marginTop', marginTop[i]);
-            v.writeAttributeString('android:background', color[i]);
+        
+        
+        if('color' !== 0){
+          v.writeAttributeString('android:background', color[i]);
+          v.writeEndElement();
+          v.writeEndElement();
+           
+         v.writeEndDocument();
+          console.log(v.flush());
+        }
+        
+        else{
           v.writeEndElement();
           v.writeEndElement();
            
             v.writeEndDocument();
             console.log(v.flush());
-        
+        }
     }
             
         }
