@@ -14,23 +14,6 @@ $(function() {
                     "fold1": {
                         "name": "Properties", 
                         "items": {
-                            /* "fold1-key1": {
-                                name: "Background Colour (DOESNT WORK)",
-                                className: "context-menu-badge-backgroundcolor-input", 
-                                type: 'text', 
-                                value: "", 
-                                events: {
-                                    keyup: function(e) {
-                                        if(e.keyCode == '13') {
-                                            // Assign input from text box
-                                            var backgroundColorInput = $(".context-menu-badge-backgroundcolor-input input").val().toString();
-                                            if (window.console) console.log($(backgroundColorInput));
-                                            // Change element's CSS to inputted value
-                                            $(rightClickedElementObject).css("background-color", backgroundColorInput);
-                                            }
-                                        }
-                                    }
-                                }, */
                                 "fold4":  {
                                     name: "Element Text",
                                     className: "context-menu-badge-elementtext-input", 
@@ -44,7 +27,9 @@ $(function() {
                                             }
                                         }
                                     }
-                                },
+                                }
+                            }
+                        },
                                 "sep3": "---------",
                                 "fold1a": {
                                     "name": "Delete", 
@@ -56,9 +41,7 @@ $(function() {
                             }   
                         }
                     }
-                }
-            }
-}); // end of selector: '.context-menu-badge' contextMenu     
+                }); // end of selector: '.context-menu-badge' contextMenu     
 $.contextMenu({
     selector: '.context-menu-button',
     build: function($triggerElement, e){
@@ -104,36 +87,6 @@ $.contextMenu({
                             }
                         }
                     },
-                    "fold1-key3": {
-                        name: "Linked Activity",
-                        className: "context-menu-button-linkaddress-input", 
-                        type: 'text', 
-                        value: "", 
-                        events: {
-                            keyup: function(e) {
-                                if(e.keyCode == '13') {
-                                    // Accept input at press of enter key (13)
-                                    var linkAddressInput = $(".context-menu-button-linkaddress-input input").val().toString();
-                                    // Convert spaces to underscores
-                                    linkAddressInput = linkAddressInput.replace(/ /g,"_");
-                                    linkAddressInput = linkAddressInput + ".html";
-                                    // Print input to console
-                                    if (window.console) console.log($(linkAddressInput));
-                                    // Wrap link around element
-                                    $(rightClickedElementObject).wrap('<a href="' + linkAddressInput + '" />');
-                                }
-                            }
-                        }
-                    },
-                 /*   myInput: {
-                        type: "checkbox", 
-                        name: "Link to Camera", 
-                        events: { 
-                            click: function(e) { 
-                                $(rightClickedElementObject).addClass("link-to-camera")
-                            }
-                        }
-                    },  */
                     "fold1-key4":    {
                         name: "Element Text",
                         className: "context-menu-button-innertext-input",  
@@ -170,7 +123,7 @@ $.contextMenu({
                             }
                         }
                     },
-                    "fold1-key6":  {
+                "fold1-key6":  {
                         name: "Font Colour",
                         className: "context-menu-button-fontcolor-input", 
                         type: 'text', 
@@ -188,7 +141,7 @@ $.contextMenu({
                             }
                         }
                     },
-                    "fold2":  {
+                    "fold1-key7":  {
                         name: "Font Style",
                         className: "context-menu-button-fontstyle-input", 
                         type: 'text', 
@@ -206,7 +159,7 @@ $.contextMenu({
                             }
                         }
                     },
-                    "fold3":  {
+                    "fold1-key8":  {
                         name: "Font Weight",
                         className: "context-menu-button-fontweight-input", 
                         type: 'text', 
@@ -224,7 +177,7 @@ $.contextMenu({
                             }
                         }
                     },
-                    "fold4":  {
+                    "fold1-key9":  {
                         name: "Font Family",
                         className: "context-menu-button-fontfamily-input", 
                         type: 'text', 
@@ -242,7 +195,7 @@ $.contextMenu({
                             }
                         }
                     },
-                    "fold5":  {
+                    "fold1-key10":  {
                         name: "Font Size",
                         className: "context-menu-button-fontsize-input", 
                         type: 'text', 
@@ -259,6 +212,43 @@ $.contextMenu({
                                 }
                             }
                         }
+                    }
+                    }
+                    },
+                    "fold2": {
+                        "name": "Actions",
+                        "items": {
+                                                "fold1-key3": {
+                        name: "Linked Activity",
+                        className: "context-menu-button-linkaddress-input", 
+                        type: 'text', 
+                        value: "", 
+                        events: {
+                            keyup: function(e) {
+                                if(e.keyCode == '13') {
+                                    // Accept input at press of enter key (13)
+                                    var linkAddressInput = $(".context-menu-button-linkaddress-input input").val().toString();
+                                    // Convert spaces to underscores
+                                    linkAddressInput = linkAddressInput.replace(/ /g,"_");
+                                    linkAddressInput = linkAddressInput + ".html";
+                                    // Print input to console
+                                    if (window.console) console.log($(linkAddressInput));
+                                    // Wrap link around element
+                                    $(rightClickedElementObject).wrap('<a href="' + linkAddressInput + '" />');
+                                }
+                            }
+                        }
+                    },
+                 /*   myInput: {
+                        type: "checkbox", 
+                        name: "Link to Camera", 
+                        events: { 
+                            click: function(e) { 
+                                $(rightClickedElementObject).addClass("link-to-camera")
+                            }
+                        }
+                    },  */
+                        }
                     },    
                     "sep3": "---------",
                     "fold1a": {
@@ -271,9 +261,8 @@ $.contextMenu({
                 }   
             }
         }
-    }
-}
 });  // end of selector: '.context-menu-button' contextMenu
+
 $.contextMenu({
     selector: '.context-menu-slider',
     build: function($triggerElement, e){
@@ -302,7 +291,9 @@ $.contextMenu({
                                 }
                             }
                         }
-                    },
+                    }
+                    }
+                },
                     "sep3": "---------",
                     "fold1a": {
                         "name": "Delete", 
@@ -314,9 +305,7 @@ $.contextMenu({
                 }   
             }
         }
-    }
-}
-}); // end of selector: '.context-menu-slider' contextMenu
+    }); // end of selector: '.context-menu-slider' contextMenu
 $.contextMenu({
     selector: '.context-menu-toggle',
     build: function($triggerElement, e){
@@ -434,7 +423,7 @@ $.contextMenu({
                             }
                         }
                     },
-                    "fold2":  {
+                    "fold1-key7":  {
                         name: "Font Family",
                         className: "context-menu-toggle-fontfamily-input", 
                         type: 'text', 
@@ -452,7 +441,7 @@ $.contextMenu({
                             }
                         }
                     },
-                    "fold3":  {
+                    "fold1-key8":  {
                         name: "Font Size",
                         className: "context-menu-toggle-fontsize-input", 
                         type: 'text', 
@@ -469,7 +458,9 @@ $.contextMenu({
                                 }
                             }
                         }
-                    },
+                    }
+                }
+            },
                     "sep3": "---------",
                     "fold1a": {
                         "name": "Delete", 
@@ -481,9 +472,7 @@ $.contextMenu({
                 }   
             }
         }
-    }
-}
-});  // end of selector: '.context-menu-toggle' contextMenu
+}); // end of selector: '.context-menu-toggle' contextMenu
 $.contextMenu({
     selector: '.context-menu-table',
     build: function($triggerElement, e){
@@ -569,7 +558,7 @@ $.contextMenu({
                             }
                         }
                     },
-                    "fold1-key4":    {
+                    "fold1-key4": {
                         name: "Font Colour",
                         className: "context-menu-textfield-fontcolor-input",  
                         type: 'text', 
@@ -623,7 +612,7 @@ $.contextMenu({
                             }
                         }
                     },
-                    "fold2":  {
+                    "fold1-key7":  {
                         name: "Font Family",
                         className: "context-menu-textfield-fontfamily-input", 
                         type: 'text', 
@@ -641,7 +630,7 @@ $.contextMenu({
                             }
                         }
                     },
-                    "fold3":  {
+                    "fold1-key8":  {
                         name: "Font Size",
                         className: "context-menu-textfield-fontsize-input", 
                         type: 'text', 
@@ -658,7 +647,9 @@ $.contextMenu({
                                 }
                             }
                         }
-                    },
+                    }
+                }
+                },
                     "sep3": "---------",
                     "fold1a": {
                         "name": "Delete", 
@@ -670,8 +661,6 @@ $.contextMenu({
                 }   
             }
         }
-    }
-}
 });  // end of selector: '.context-menu-textfield' contextMenu
 $.contextMenu({
     selector: '.context-menu-useraddedtext',
@@ -684,7 +673,7 @@ $.contextMenu({
                 "fold1": {
                     "name": "Properties", 
                     "items": {
-                        "fold1-key3": {
+                        "fold1-key1": {
                             name: "Element Text",
                             className: "context-menu-useraddedtext-elementtext-input", 
                             type: 'text', 
@@ -698,7 +687,7 @@ $.contextMenu({
                                 }
                             }
                         },
-                        "fold1-key4":    {
+                        "fold1-key2":    {
                             name: "Font Colour",
                             className: "context-menu-useraddedtext-fontcolor-input",  
                             type: 'text', 
@@ -716,7 +705,7 @@ $.contextMenu({
                             }
                         }
                     },                 
-                    "fold1-key5":  {
+                    "fold1-key3":  {
                         name: "Font Style",
                         className: "context-menu-useraddedtext-fontstyle-input", 
                         type: 'text', 
@@ -734,7 +723,7 @@ $.contextMenu({
                             }
                         }
                     },
-                    "fold1-key6":  {
+                    "fold1-key4":  {
                         name: "Font Weight",
                         className: "context-menu-useraddedtext-fontweight-input", 
                         type: 'text', 
@@ -752,7 +741,7 @@ $.contextMenu({
                             }
                         }
                     },
-                    "fold2":  {
+                    "fold5":  {
                         name: "Font Family",
                         className: "context-menu-useraddedtext-fontfamily-input", 
                         type: 'text', 
@@ -769,7 +758,9 @@ $.contextMenu({
                                 }
                             }
                         }
-                    },
+                    }
+                }
+            },
             /*    "fold3":  {
                         name: "Font Size",
                         className: "context-menu-useraddedtext-fontsize-input", 
@@ -799,9 +790,7 @@ $.contextMenu({
                 }   
             }
         }
-    }
-}
-});  // end of selector: '.context-menu-useraddedtext' contextMenu
+}); // end of selector: '.context-menu-useraddedtext' contextMenu
 $.contextMenu({
     selector: '.ui-droppable.vertical',
     callback: function(key, options) {
