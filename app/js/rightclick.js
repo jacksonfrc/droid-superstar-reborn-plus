@@ -218,7 +218,7 @@ $.contextMenu({
                     "fold2": {
                         "name": "Actions",
                         "items": {
-                                                "fold1-key3": {
+                        "fold1-key3": {
                         name: "Linked Activity",
                         className: "context-menu-button-linkaddress-input", 
                         type: 'text', 
@@ -234,7 +234,7 @@ $.contextMenu({
                                     // Print input to console
                                     if (window.console) console.log($(linkAddressInput));
                                     // Wrap link around element
-                                    $(rightClickedElementObject).wrap('<a href="' + linkAddressInput + '" />');
+                                    $(rightClickedElementObject).wrap('<a href="' + linkAddressInput + '" onclick="return false;" />');
                                 }
                             }
                         }
@@ -364,9 +364,20 @@ $.contextMenu({
                                     var classType;
                                     var type = $(rightClickedElementObject).attr('class').split(' ')[0];
                                     classType = '.' + type + "__label";
+                                    
+                                    var doc = $(rightClickedElementObject);
+                                    var notes = null;
+                                    for (var i = 0; i < doc.children().length; i++) {
+                                        if (doc.children(i).className == classType) {
+                                          notes = doc.children(i);
+                                          break;
+                                        }        
+                                    }
+
+                                    if (window.console) console.log(notes);
                                     if (window.console) console.log(classType);
                                     if (window.console) console.log($(".context-menu-toggle-elementtext-input input").val().toString());
-                                    $(classType).text($(".context-menu-toggle-elementtext-input input").val().toString());
+                                    $(classType).html($(".context-menu-toggle-elementtext-input input").val().toString());
                                 }
                             }
                         }
@@ -378,12 +389,14 @@ $.contextMenu({
                         value: "", 
                         events: {
                             keyup: function(e) {
+                                if(e.keyCode == '13') {
                                     // Assign input from text box
                                     var fontColorInput = $(".context-menu-toggle-fontcolor-input input").val().toString();
                                     // Print input to console
                                     if (window.console) console.log($(fontColorInput));
                                     // Change element's CSS to inputted value
                                     $(rightClickedElementObject).css("color", fontColorInput);
+                                    }
                                 }
                             }
                         },                 
