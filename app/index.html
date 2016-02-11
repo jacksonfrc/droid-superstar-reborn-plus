@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="icons/mdl-icons/sprites/svg-sprite/svg-sprite-av.css">
     <link rel="stylesheet" href="js/jQuery-contextMenu/dist/jquery.contextMenu.css">
     <link rel="stylesheet" href="js/jquery-ui/jquery-ui.css">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
 
@@ -159,41 +159,27 @@
       <div class="menu-item">
         <h4>
           <a>
-            Sliders
-          </a>
-        </h4>
-        <ul>
-          <li>
-            <a id="c48">
-              Default Slider
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="menu-item">
-        <h4>
-          <a>
             Toggles
           </a>
         </h4>
         <ul>
           <li>
-            <a id="c50">
+            <a id="c14">
               Checkbox
             </a>
           </li>
           <li>
-            <a id="c52">
+            <a id="c15">
               Radio Button
             </a>
           </li>
           <li>
-            <a id="c54">
+            <a id="c16">
               Icon Switch
             </a>
           </li>
           <li>
-            <a id="c56">
+            <a id="c17">
               Toggle Swtich
               <a>
               </a>
@@ -203,52 +189,43 @@
       <div class="menu-item">
         <h4>
           <a>
-            Tables
-          </a>
-        </h4>
-        <ul>
-          <li>
-            <a id="c57">
-              Data Table
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="menu-item">
-        <h4>
-          <a>
             Text Fields
           </a>
         </h4>
         <ul>
           <li>
-            <a id="c58">
+            <a id="c18">
               Text
             </a>
           </li>
           <li>
-            <a id="c59">
+            <a id="c19">
               Numeric
             </a>
           </li>
           <li>
-            <a id="c60">
+            <a id="c20">
               Text with Floating Label
             </a>
           </li>
           <li>
-            <a id="c61">
+            <a id="c21">
               Numeric with Floating Label
             </a>
           </li>
           <li>
-            <a id="c62">
+            <a id="c22">
               Multiple Line
             </a>
           </li>
           <li>
-            <a id="c63">
+            <a id="c23">
               Expanding
+            </a>
+          </li>
+          <li>
+            <a id="c24">
+              Text Paragraph
             </a>
           </li>
         </ul>
@@ -256,23 +233,28 @@
       <div class="menu-item">
         <h4>
           <a>
-            Misc.
+            Miscellaneous
           </a>
         </h4>
         <ul>
           <li>
-            <a id="c64">
-              Text Paragraph
-            </a>
-          </li>
-          <li>
-            <a id="c99">
+            <a id="c25">
               Progress Bar
             </a>
           </li>
           <li>
-            <a id="c100">
+            <a id="c26">
               Spinner
+            </a>
+          </li>
+          <li>
+            <a id="c27">
+              Slider
+            </a>
+          </li>
+          <li>
+            <a id="c28">
+              Data Table
             </a>
           </li>
         </ul>
@@ -309,38 +291,110 @@
   </button>
 
   <!-- Toggles -->
-  <label id="e50" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1" style="display: none">
+  <label id="e14" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1" style="display: none">
     <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
     <span class="mdl-checkbox__label">Checkbox</span>
   </label>
-  <label id="e52" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1" style="display: none">
+  <label id="e15" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1" style="display: none">
     <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1">
     <span class="mdl-radio__label">Radio</span>
   </label>
-  <label id="e54" class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect" for="icon-toggle-1" style="display: none">
+  <label id="e16" class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect" for="icon-toggle-1" style="display: none">
     <input type="checkbox" id="icon-toggle-1" class="mdl-icon-toggle__input">
     <span class="mdl-icon-toggle__label material-icons">Icon</span>
   </label>
-  <label id="e56" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2" style="display: none">
+  <label id="e17" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2" style="display: none">
     <input type="checkbox" id="switch-2" class="mdl-switch__input">
     <span class="mdl-switch__label">Toggle</span>
   </label>
 
-  <!-- Loading
-  <div id="e99" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display: none"></div>-->
-  <div id="e100" class="mdl-spinner mdl-js-spinner is-active" style="display: none"></div>
+  <!-- Text Fields -->
+  <form id="e18" action="#" style="display: none">
+    <div class="mdl-textfield mdl-js-textfield">
+      <input class="mdl-textfield__input" type="text" id="sample1">
+      <label class="mdl-textfield__label" for="sample1">Text...</label>
+    </div>
+  </form>
+  <!-- Numeric Textfield -->
+  <form id="e19" action="#" style="display: none">
+    <div class="mdl-textfield mdl-js-textfield">
+      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">
+      <label class="mdl-textfield__label" for="sample2">Number...</label>
+      <span class="mdl-textfield__error">Input is not a number!</span>
+    </div>
+  </form>
+  <!-- Textfield with Floating Label -->
+  <form id="e20" action="#" style="display: none">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="sample3">
+      <label class="mdl-textfield__label" for="sample3">Text...</label>
+    </div>
+  </form>
+  <!-- Numeric Textfield with Floating Label -->
+  <form id="e21" action="#" style="display: none">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+      <label class="mdl-textfield__label" for="sample4">Number...</label>
+      <span class="mdl-textfield__error">Input is not a number!</span>
+    </div>
+  </form>
+  <!-- Floating Multiline Textfield -->
+  <form id="e22" action="#" style="display: none">
+    <div class="mdl-textfield mdl-js-textfield">
+      <textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5" ></textarea>
+      <label class="mdl-textfield__label" for="sample5">Text lines...</label>
+    </div>
+  </form>
+  <!-- Expandable Textfield -->
+  <form id="e23" action="#" style="display: none">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+      <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+        <i class="material-icons">search</i>
+      </label>
+      <div class="mdl-textfield__expandable-holder">
+        <input class="mdl-textfield__input" type="text" id="sample6">
+        <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+      </div>
+    </div>
+  </form>
+  <p id="e24" class="context-menu-useraddedtext" style="display: none">Text Paragraph</p>
 
-  <!-- Menus -->
-  <!-- Left aligned menu below button -->
-  <button id="e99" class="mdl-button mdl-js-button mdl-button--icon" style="display: none">
-    <i class="material-icons">more_vert</i>
-  </button>
-  <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-left">
-    <li class="mdl-menu__item">Some Action</li>
-    <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">Another Action</li>
-    <li disabled class="mdl-menu__item">Disabled Action</li>
-    <li class="mdl-menu__item">Yet Another Action</li>
-  </ul>
+  <!-- Loading -->
+  <div id="e25" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display: none"></div>
+  <div id="e26" class="mdl-spinner mdl-js-spinner is-active" style="display: none"></div>
+
+  <!-- Slider -->
+  <div id="e27" style="display: none">
+    <input class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="0" tabindex="0">
+  </div>
+
+  <!-- Data Table -->
+  <table id="e28" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="display: none">
+    <thead>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric">Material</th>
+        <th>Quantity</th>
+        <th>Unit price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
+        <td>25</td>
+        <td>$2.90</td>
+      </tr>
+      <tr>
+        <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
+        <td>50</td>
+        <td>$1.25</td>
+      </tr>
+      <tr>
+        <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
+        <td>10</td>
+        <td>$2.35</td>
+      </tr>
+    </tbody>
+  </table>
 
   </body>
 </html>
