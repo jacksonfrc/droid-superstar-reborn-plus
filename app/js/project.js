@@ -139,7 +139,7 @@ function exportJava() {
         
          
     }
-        if ($(this).hasClass('mdl-radio')){
+  else if  ($(this).hasClass('mdl-radio')){
             
       tag.push('SeekBar');
     marginLeft= $(this).css('left');
@@ -152,7 +152,7 @@ function exportJava() {
              color.push(0);
         }
         
-       if ($(this).hasClass('mdl-switch')){
+      else if ($(this).hasClass('mdl-switch')){
             
      tag.push('ToggleButton');
     marginLeft= $(this).css('left');
@@ -165,7 +165,7 @@ function exportJava() {
              color.push(0);
         }
         
-         if ($(this).hasClass('sample1')){
+        else if ($(this).hasClass('sample1')){
         tag.push('EditText');
           marginLeft= $(this).css('left');
     left.push(marginLeft);    
@@ -175,7 +175,7 @@ function exportJava() {
           
         }
         
-        if ($(this).hasClass('mdl-icon-toggle')){
+       else if ($(this).hasClass('mdl-icon-toggle')){
       tag.push('ToggleButton');
                       marginLeft= $(this).css('left');
     left.push(marginLeft);    
@@ -187,7 +187,7 @@ function exportJava() {
              color.push(0);
         }
         
-  if ($(this).hasClass('mdl-checkbox')){
+ else if ($(this).hasClass('mdl-checkbox')){
        tag.push('Checkbox');
                   marginLeft= $(this).css('left');
     left.push(marginLeft);    
@@ -198,7 +198,17 @@ function exportJava() {
            color.push(0);
           
         }
-            
+      else if ($(this).hasClass('mdl-badge')){
+       tag.push('QuickContactBadge');
+                  marginLeft= $(this).css('left');
+    left.push(marginLeft);    
+    marginTop = $(this).css('top');  
+    top.push(marginTop); 
+              eletext = $(this).text();
+         name.push(eletext);
+           color.push(0);
+          
+        }       
      
         
     }); 
