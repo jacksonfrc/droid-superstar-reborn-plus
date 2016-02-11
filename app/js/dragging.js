@@ -108,6 +108,8 @@ function idHelper(event) {
         return "<form action=\"#\">\r\n  <div class=\"context-menu-textfield mdl-textfield mdl-js-textfield mdl-textfield--floating-label\">\r\n    <input class=\"mdl-textfield__input\" type=\"text\" pattern=\"-?[0-9]*(\\.[0-9]+)?\" id=\"sample4\">\r\n    <label class=\"mdl-textfield__label\" for=\"sample4\">Number...<\/label>\r\n    <span class=\"mdl-textfield__error\">Input is not a number!<\/span>\r\n  <\/div>\r\n<\/form>";
     } else if (cId == "c62") {
         return "<form action=\"#\">\r\n  <div class=\"context-menu-textfield mdl-textfield mdl-js-textfield\">\r\n    <textarea class=\"mdl-textfield__input\" type=\"text\" rows= \"3\" id=\"sample5\" ><\/textarea>\r\n    <label class=\"mdl-textfield__label\" for=\"sample5\">Text lines...<\/label>\r\n  <\/div>\r\n<\/form>";
+    } else if (cId == "c64") {
+        return '<p class="context-menu-useraddedtext">Text Paragraph</p>';
     }
     
  
