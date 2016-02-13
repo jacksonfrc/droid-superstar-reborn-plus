@@ -157,7 +157,7 @@ if  ($(this).hasClass('mdl-radio')){
 
      
 
-     tag.push('ToggleButton');
+     tag.push('Switch');
     marginLeft= $(this).css('left');
     left.push(marginLeft);
     marginTop = $(this).css('top');
