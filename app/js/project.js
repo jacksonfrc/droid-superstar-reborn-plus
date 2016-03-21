@@ -120,7 +120,9 @@ function exportJava() {
   var textcolor = [];
   var tag = [];
   var text = [];
+  var fontsize = [];
   $("#workspaces").children().each(function() {
+
 
     $(this).children().each(function() {
 
@@ -140,6 +142,7 @@ function exportJava() {
         eletext = $(this).text();
         name.push(eletext);
         tag.push('Button');
+        console.log('hi-button');
       }
 
 
@@ -160,7 +163,7 @@ function exportJava() {
         textRGB = rgb2hex(text_color);
         textcolor.push(textRGB);
         color.push(0);
-      } else if ($(this).hasClass('mdl-switch')) {
+      } if ($(this).hasClass('mdl-switch')) {
 
 
 
@@ -177,7 +180,24 @@ function exportJava() {
         textcolor.push(textRGB);
         color.push(0);
 
-      } else if ($(this).hasClass('mdl-textfield')) {
+      }if (this.nodeName.toLowerCase() == 'form') {
+
+
+        tag.push('EditView');
+        marginLeft = $(this).css('left');
+        left.push(marginLeft);
+        marginTop = $(this).css('top');
+        top.push(marginTop);
+        eletext = $(this).text();
+        name.push(eletext);
+        text_color = $(this).css('color');
+        textRGB = rgb2hex(text_color);
+        textcolor.push(textRGB);
+        color.push('#ffffffff');
+        texti = $(this).text();
+        text.push(texti);
+
+      }if ($(this).hasClass('context-menu-useraddedtext')) {
 
 
 
@@ -192,11 +212,12 @@ function exportJava() {
         text_color = $(this).css('color');
         textRGB = rgb2hex(text_color);
         textcolor.push(textRGB);
-        color.push('#ffffffff');
-        texti = $(this).text();
-        text.push(texti);
+        color.push(0);
+        fonts = $(this).css('font-size');
+        fontsize.push(fonts);
 
-      } else if ($(this).hasClass('mdl-icon-toggle')) {
+      }
+      if ($(this).hasClass('mdl-icon-toggle')) {
 
 
         tag.push('SeekBar');
@@ -210,7 +231,7 @@ function exportJava() {
         textRGB = rgb2hex(text_color);
         textcolor.push(textRGB);
         color.push('#ffffffff');
-      } else if ($(this).hasClass('mdl-checkbox')) {
+      } if ($(this).hasClass('mdl-checkbox')) {
 
 
 
@@ -228,7 +249,7 @@ function exportJava() {
 
 
 
-      } else if ($(this).hasClass('mdl-badge')) {
+      } if ($(this).hasClass('mdl-badge')) {
         tag.push('QuickContactBadge');
         marginLeft = $(this).css('left');
         left.push(marginLeft);
@@ -248,17 +269,21 @@ function exportJava() {
   });
 
 
-  return test(tag, name, left, top, color, textcolor,text);
+  return test(tag, name, left, top, color, textcolor,text, fontsize);
 
 }
 
 
 
-function test(tag, name, marginLeft, marginTop, color, textcolor,text) {
+function test(tag, name, marginLeft, marginTop, color, textcolor,text, fontsize) {
   var marginL = marginLeft.length;
   var i;
-
+var background;
   fs.mkdirSync('/Users/harmanlitt/Desktop/xml');
+$("#workspaces").children().each(function() {
+  rgb = $(this).css('background-color');
+      background = rgb2hex(rgb);
+});
 
   var fa;
   var v = new XMLWriter('UTF-8');
@@ -274,6 +299,7 @@ function test(tag, name, marginLeft, marginTop, color, textcolor,text) {
   v.writeAttributeString('android:paddingRight', '16dp');
   v.writeAttributeString('android:paddingTop', '16dp');
   v.writeAttributeString('android:paddingBottom', '16dp');
+    v.writeAttributeString('android:background', background);
   for (i = 0; i < marginL; i++) {
 
     var a3 = v.writeStartElement(tag[i]);
@@ -295,6 +321,8 @@ function test(tag, name, marginLeft, marginTop, color, textcolor,text) {
 
     if (text!= 0) {
       v.writeAttributeString('android:text', text[i]);
+      v.writeAttributeString('android:textSize', fontsize[i]);
+
     }
   v.writeEndElement();
   }
