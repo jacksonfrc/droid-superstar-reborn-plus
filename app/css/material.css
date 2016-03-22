@@ -361,7 +361,7 @@
    Base styles: opinionated defaults
    ========================================================================== */
 html {
-  color: rgba(0,0,0, 0.87);
+  color: lightgrey;
   font-size: 1em;
   line-height: 1.4; }
 

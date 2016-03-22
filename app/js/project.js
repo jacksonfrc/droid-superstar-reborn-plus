@@ -121,6 +121,7 @@ function exportJava() {
   var tag = [];
   var text = [];
   var fontsize = [];
+  var textType = [];
   $("#workspaces").children().each(function() {
 
 
@@ -142,13 +143,13 @@ function exportJava() {
         eletext = $(this).text();
         name.push(eletext);
         tag.push('Button');
-        console.log('hi-button');
+
       }
 
 
 
 
-      if ($(this).hasClass('mdl-radio')) {
+    else  if ($(this).hasClass('mdl-radio')) {
 
 
 
@@ -163,7 +164,7 @@ function exportJava() {
         textRGB = rgb2hex(text_color);
         textcolor.push(textRGB);
         color.push(0);
-      } if ($(this).hasClass('mdl-switch')) {
+      }else if ($(this).hasClass('mdl-switch')) {
 
 
 
@@ -180,10 +181,10 @@ function exportJava() {
         textcolor.push(textRGB);
         color.push(0);
 
-      }if (this.nodeName.toLowerCase() == 'form') {
+      }else if (this.nodeName.toLowerCase() == 'form') {
 
 
-        tag.push('EditView');
+        tag.push('EditText');
         marginLeft = $(this).css('left');
         left.push(marginLeft);
         marginTop = $(this).css('top');
@@ -194,10 +195,14 @@ function exportJava() {
         textRGB = rgb2hex(text_color);
         textcolor.push(textRGB);
         color.push('#ffffffff');
-        texti = $(this).text();
-        text.push(texti);
+        if($(this).hasClass('numerictext')){
+          textType.push('number');
+        }
+        if($(this).hasClass('multiLineText')){
+          textType.push('textMultiLine');
+        }
 
-      }if ($(this).hasClass('context-menu-useraddedtext')) {
+      }else if ($(this).hasClass('context-menu-useraddedtext')) {
 
 
 
@@ -217,7 +222,7 @@ function exportJava() {
         fontsize.push(fonts);
 
       }
-      if ($(this).hasClass('mdl-icon-toggle')) {
+    else  if ($(this).hasClass('mdl-icon-toggle')) {
 
 
         tag.push('SeekBar');
@@ -231,7 +236,7 @@ function exportJava() {
         textRGB = rgb2hex(text_color);
         textcolor.push(textRGB);
         color.push('#ffffffff');
-      } if ($(this).hasClass('mdl-checkbox')) {
+      }else if ($(this).hasClass('mdl-checkbox')) {
 
 
 
@@ -249,7 +254,7 @@ function exportJava() {
 
 
 
-      } if ($(this).hasClass('mdl-badge')) {
+      }else if ($(this).hasClass('mdl-badge')) {
         tag.push('QuickContactBadge');
         marginLeft = $(this).css('left');
         left.push(marginLeft);
@@ -269,13 +274,13 @@ function exportJava() {
   });
 
 
-  return test(tag, name, left, top, color, textcolor,text, fontsize);
+  return test(tag, name, left, top, color, textcolor,text, fontsize,textType);
 
 }
 
 
 
-function test(tag, name, marginLeft, marginTop, color, textcolor,text, fontsize) {
+function test(tag, name, marginLeft, marginTop, color, textcolor,text, fontsize,textType) {
   var marginL = marginLeft.length;
   var i;
 var background;
@@ -283,6 +288,7 @@ var background;
 $("#workspaces").children().each(function() {
   rgb = $(this).css('background-color');
       background = rgb2hex(rgb);
+      console.log(this);
 });
 
   var fa;
@@ -320,8 +326,9 @@ $("#workspaces").children().each(function() {
     }
 
     if (text!= 0) {
-      v.writeAttributeString('android:text', text[i]);
+
       v.writeAttributeString('android:textSize', fontsize[i]);
+        v.writeAttributeString(' android:inputType', textType[i]);
 
     }
   v.writeEndElement();
