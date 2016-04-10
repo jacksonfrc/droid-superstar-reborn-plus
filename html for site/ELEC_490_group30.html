@@ -1,0 +1,211 @@
+
+<br>
+<body style="margin-left:60px; margin-right:60px; font-family:arial">
+<img style="margin:0 auto; display:block" src="img/12988063_10154675817263368_88916130_n.png"/>
+<br>
+
+<h2>Introduction</h2>
+
+<p>The primary objective of the Mobile Application Development Toolkit outlined in
+
+this report is to create an alternative tool that simplifies the process of building an
+
+Android application, more specifically the user interface aspect of said Android
+
+application. By simplifying this process, development of Android applications can be
+
+opened to a broader audience. The key points of this as an objective are minimal
+
+design, accessibility, easy to learn for new users, a swift workflow, and that it is not
+
+lacking any required functionality. Although novice developers are targeted as our
+
+primary audience it was our goal was to satisfy this audience while keeping the
+
+application extensive enough to also be of help to users with appropriate technical
+
+knowledge.
+</p>
+
+<p>
+A second objective of the application was complete integration of the toolkit with
+
+Android. This means that projects created within the toolkit should be able to be run on
+
+Android devices of all variations and files exported from the toolkit should be editable
+
+within Android Studio and/or other development environments. This objective was
+
+divided into two components: front-end functionality for Android (essentially what the
+
+user sees) and back-end functionality for android (what makes the mobile application
+
+function behind the scenes). Of these two components front-end functionality was
+
+determined to be of higher importance due to the nature of the toolkit and its focus on
+
+user interface design. Back end functionality acted as a stretch goal.</p>
+
+
+<p>Development tools currently available are tailored to the experienced user and
+
+offer hundreds of tools that a user with little experience can find confusing and have
+
+issues deciphering. In addition to the issues surrounding the actual development
+
+application we must realize that the problem is an inherently technical issue due to the
+
+field that it exists within. There will be no way to completely solve the matter because a
+
+certain amount of technical knowledge in the realm of computing or computer science,
+
+albeit minimal, will always be required to confidently operate any form of tool used in
+
+Android design and development.</p>
+
+<h2>Design and Development</h2>
+
+<p>The final design of the product underwent multiple iterations of prototyping and
+
+live changes. The first stage prototype was created using an online UI creation tool for
+
+the project proposal, this was the beginning of the design process. As the design
+
+process progressed we opted for a faster and easier way to refine our UX design by
+
+creating paper prototypes. During group meetings we would brainstorm functionality and
+
+design on a white board as this allowed for numerous small changes to be made
+
+throughout the meeting, once we were happy with the design we would draw the design
+
+on paper as this is more reflective of the scale and use of the application. Paper
+
+prototyping is commonly used in software development as it is a cheap and fast method
+
+of prototyping that produces a tangible result, we found this type of prototyping to be
+
+quite effective as our final design closely resembles the final prototype.</p>
+<div style="display:inline-block; text-align:center">
+<img style=" max-width:600px; " src="img/prototypes.png"/>
+<img style="max-width:400px" src="img/vertical_final.png"/>
+<img style="max-width:400px" src="img/horizontal_final.png"/>
+<p style="font-style: italic; ">Paper prototypes of the design (left). Final vertical design of application (center). Final horizontal design of application (right). </p>
+</div>
+
+<p>Development of Android Superstar was done using the Electron framework, an open
+
+source cross platform architecture for creating desktop applications with web
+
+technologies. The source of the application is written in HTML, CSS, and JavaScript,
+
+which is then rendered in a lightweight chromium instance. Chromium is Google's open
+
+source version of their Chrome browser, the browser acts as a virtual machine to render
+
+the source code but doesn't require an internet connection as all of the data is stored
+
+locally in the application. Allowing all computers capable of running the chromium
+
+browser, to run our application, which are all modern operating systems. Chromium
+
+maintains a lightweight build and is not CPU intensive allowing our application to run
+
+smoothly on all computers and will not cause interference with other tasks running
+
+simultaneously.</p>
+
+
+<p>The main deployment of Android Superstar will be a cross platform desktop application
+
+in the form of an executable for Windows, Mac and Linux available for download from
+
+the product's website. Since the project will remain open source, more advanced users
+
+have the option of downloading and manually running the source code with Electron. In
+
+the future we would like to port the application over to a website, allowing for users to
+
+quickly and easily build Android applications from their browser, this would broaden the
+
+potential user base of the application. Similar to any other software project we will
+
+continue with rolling releases & bug fixes, and slowly integrating more advanced
+
+Android functionality.</p>
+
+
+<h2>Testing and Results</h2>
+<p>Testing for the Android Superstar application consisted of two parts, first part
+
+being functional testing and second being requirements testing. Functional testing
+
+ensures that the program itself works. It tests for any bugs and/or glitches that may
+
+occur when using the software. Requirements testing ensures that the program works
+
+the way that it is supposed to. In other words, this second type of testing ensures that all
+
+the requirements laid out in the planning stage of the application are met and that the
+
+project is not going off track.</p>
+
+<p>During testing, failures were fixed by going into the code and forcing console
+
+outputs to show what was being outputted. This console output also helped pinpoint
+
+where in the code the error may lie. Once fixed, the tests were run again to ensure that
+
+no other functionality had broken due to the changes that were made.</p>
+
+<img style="max-width:750px; margin:0 auto; display:block" src="img/Screen%20Shot%202016-04-10%20at%203.06.37%20PM.png"/>
+
+<p style="font-style: italic; text-align:center">Result of XML output from Android Superstar in Android Studio</p>
+
+<p>While Android Superstar still has a few bugs, it is, for the most part, a complete
+
+application. It can easily build Android GUIs and web application GUIs by dragging and
+
+dropping components. The design itself is quite reliable and robust. It does not break
+
+when building or outputting applications. As shown in figure 5, the XML file is being
+
+outputted correctly and that the positioning and color scheme is being executed
+
+correctly. Figure 6 shows that the web application is correctly displayed on the Chrome
+
+Browser when outputted as an HTML file.</p>
+
+
+<h2>Intellectual Property</h2>
+<p>All contributors to the project believe finances should not hold someone back
+
+from using our product. Therefore, all parts of Android Superstar will be subject to the
+
+Apache 2.0 software license. The licence states that anyone may use or manipulate
+
+the application as they please for free. This allows users to generate their own
+
+applications and these applications may also be used for commercial purposes.</p>
+
+<h2>Conclusion</h2>
+
+<p>In conclusion, an application that builds both web and Android GUIs was built.
+
+The initial goals were to build an application that can allow novice developers to build
+
+fully functioning Android applications. As time went on, the goals were modified to
+
+create an application that helps novice developers to build Android and web application
+
+GUIs. Constraints such as time and scheduling conflicts due to other course work were
+
+mostly overcome and managed. In the future, we would like to increase the amount of
+
+GUI components that are available to the user. Also, we would like to add more
+
+functionality, such as a camera feature, to Android Superstar. Android Superstar is
+
+forever a work in progress, but we hope it will be deemed helpful by its users.</p>
+    
+    </body>

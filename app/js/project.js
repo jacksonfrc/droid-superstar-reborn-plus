@@ -35,14 +35,14 @@ function exportHTML() {
 
   // Create project folder.
   var projectName = $("title").text().replace(/ /g, "_");
-  var folderPath = "./" + projectName;
+  var folderPath = "/Users/harmanlitt/Desktop/html" + projectName;
   var count = 1;
   var exists = true;
   while (exists) {
     try {
       var stats = fs.statSync(folderPath);
       if (stats.isDirectory()) {
-        folderPath = "./" + projectName + "_" + count;
+        folderPath = "/Users/harmanlitt/Desktop/html" + projectName + "_" + count;
         count++;
       }
     } catch (err) {
